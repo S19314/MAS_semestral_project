@@ -1,5 +1,6 @@
 ﻿{
 "Version 0.*" : "Objects/elements initialization.",
 "Version 1.1.*" : "Client List editing.",
-"Version 2.*" : "SQL_Code editing."
+"Version 2.*" : "SQL_Code editing.",
+"Version 3.*" : "Models editing."
 }
