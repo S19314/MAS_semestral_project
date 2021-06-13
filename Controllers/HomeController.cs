@@ -1,4 +1,5 @@
 ﻿using MAS_semestral_project_MVS.Models;
+using MAS_semestral_project_MVS.DBModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,6 +12,7 @@ namespace MAS_semestral_project_MVS.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -30,13 +32,15 @@ namespace MAS_semestral_project_MVS.Controllers
 
         public IActionResult Clients()
         {
-            return View();
+            return null; 
+            // return View(dbContext.People.ToList().Where(e => e.RelationWithCompany.Equals("Client")));
         }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }

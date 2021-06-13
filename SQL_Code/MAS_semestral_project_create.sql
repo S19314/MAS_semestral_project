@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2021-06-09 19:22:01.016
+-- Last modification date: 2021-06-10 08:58:22.338
 
 -- tables
 -- Table: CleaningGroup
@@ -73,26 +73,25 @@ CREATE TABLE "Order" (
     CONSTRAINT Order_pk PRIMARY KEY  (IdOrder)
 );
 
--- Table: Osoba
-CREATE TABLE Osoba (
+-- Table: Person
+CREATE TABLE Person (
     IdOsoba int  NOT NULL,
-    EmployeeType varchar(100)  NOT NULL,
     RelationWithCompany varchar(100)  NOT NULL,
-    EmployeeExperienceType varchar(100)  NOT NULL,
+    EmployeeType varchar(100)  NULL,
+    EmployeeExperienceType varchar(100)  NULL,
     FirstName varchar(100)  NOT NULL,
     SecondName varchar(100)  NOT NULL,
-    PassportData varchar(120)  NOT NULL,
-    PhoneNumber varchar(50)  NOT NULL,
-    FirstLastPlaceWork varchar(100)  NOT NULL,
-    SecondLastPlaceWork varchar(100)  NOT NULL,
-    ThirdLastPlaceWork varchar(100)  NOT NULL,
-    InternshipDaysInCurentHotel int  NOT NULL,
-    HourRate decimal(10,2)  NOT NULL,
-    MaxRate decimal(10,2)  NOT NULL,
-    LastDateChangeRate datetime  NOT NULL,
-    WorkShift varchar(60)  NOT NULL,
-    CleaningGroup_IdGroup int  NOT NULL,
-    CONSTRAINT Osoba_pk PRIMARY KEY  (IdOsoba)
+    PassportData varchar(120)  NULL,
+    PhoneNumber varchar(50)  NULL,
+    FirstLastPlaceWork varchar(100)  NULL,
+    SecondLastPlaceWork varchar(100)  NULL,
+    ThirdLastPlaceWork varchar(100)  NULL,
+    InternshipDaysInCurentHotel int  NULL,
+    HourRate decimal(10,2)  NULL,
+    LastDateChangeRate datetime  NULL,
+    WorkShift varchar(60)  NULL,
+    CleaningGroup_IdGroup int  NULL,
+    CONSTRAINT Person_pk PRIMARY KEY  (IdOsoba)
 );
 
 -- Table: Room
@@ -108,17 +107,17 @@ CREATE TABLE Room (
 -- Reference: CleaningTools_Osoba (table: CleaningTools)
 ALTER TABLE CleaningTools ADD CONSTRAINT CleaningTools_Osoba
     FOREIGN KEY (Osoba_IdOsoba)
-    REFERENCES Osoba (IdOsoba);
+    REFERENCES Person (IdOsoba);
 
 -- Reference: CustomerConversation_Client (table: CustomerConversation)
 ALTER TABLE CustomerConversation ADD CONSTRAINT CustomerConversation_Client
     FOREIGN KEY (Client_IdOsoba)
-    REFERENCES Osoba (IdOsoba);
+    REFERENCES Person (IdOsoba);
 
 -- Reference: CustomerConversation_Employee (table: CustomerConversation)
 ALTER TABLE CustomerConversation ADD CONSTRAINT CustomerConversation_Employee
     FOREIGN KEY (Employee_IdOsoba)
-    REFERENCES Osoba (IdOsoba);
+    REFERENCES Person (IdOsoba);
 
 -- Reference: Language_Employee_KnowedLanguage (table: Language_Employee)
 ALTER TABLE Language_Employee ADD CONSTRAINT Language_Employee_KnowedLanguage
@@ -128,7 +127,7 @@ ALTER TABLE Language_Employee ADD CONSTRAINT Language_Employee_KnowedLanguage
 -- Reference: Language_Employee_Osoba (table: Language_Employee)
 ALTER TABLE Language_Employee ADD CONSTRAINT Language_Employee_Osoba
     FOREIGN KEY (Osoba_IdOsoba)
-    REFERENCES Osoba (IdOsoba);
+    REFERENCES Person (IdOsoba);
 
 -- Reference: LastCleanedRoom_CleaningGroup (table: LastCleanedRoom)
 ALTER TABLE LastCleanedRoom ADD CONSTRAINT LastCleanedRoom_CleaningGroup
@@ -148,20 +147,20 @@ ALTER TABLE Offer ADD CONSTRAINT Offer_Room
 -- Reference: Order_Client (table: Order)
 ALTER TABLE "Order" ADD CONSTRAINT Order_Client
     FOREIGN KEY (Osoba_2_IdOsoba)
-    REFERENCES Osoba (IdOsoba);
+    REFERENCES Person (IdOsoba);
 
 -- Reference: Order_Employee (table: Order)
 ALTER TABLE "Order" ADD CONSTRAINT Order_Employee
     FOREIGN KEY (Osoba_IdOsoba)
-    REFERENCES Osoba (IdOsoba);
+    REFERENCES Person (IdOsoba);
 
 -- Reference: Order_Offer (table: Order)
 ALTER TABLE "Order" ADD CONSTRAINT Order_Offer
     FOREIGN KEY (Offer_Id)
     REFERENCES Offer (Id);
 
--- Reference: Osoba_CleaningGroup (table: Osoba)
-ALTER TABLE Osoba ADD CONSTRAINT Osoba_CleaningGroup
+-- Reference: Osoba_CleaningGroup (table: Person)
+ALTER TABLE Person ADD CONSTRAINT Osoba_CleaningGroup
     FOREIGN KEY (CleaningGroup_IdGroup)
     REFERENCES CleaningGroup (IdGroup);
 

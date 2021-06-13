@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2021-06-09 19:22:01.016
+-- Last modification date: 2021-06-10 08:58:42.322
 
 -- foreign keys
 ALTER TABLE CleaningTools DROP CONSTRAINT CleaningTools_Osoba;
@@ -24,7 +24,7 @@ ALTER TABLE "Order" DROP CONSTRAINT Order_Employee;
 
 ALTER TABLE "Order" DROP CONSTRAINT Order_Offer;
 
-ALTER TABLE Osoba DROP CONSTRAINT Osoba_CleaningGroup;
+ALTER TABLE Person DROP CONSTRAINT Osoba_CleaningGroup;
 
 -- tables
 DROP TABLE CleaningGroup;
@@ -43,7 +43,7 @@ DROP TABLE Offer;
 
 DROP TABLE "Order";
 
-DROP TABLE Osoba;
+DROP TABLE Person;
 
 DROP TABLE Room;
 
