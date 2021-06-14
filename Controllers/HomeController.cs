@@ -1,5 +1,5 @@
 ﻿using MAS_semestral_project_MVS.Models;
-using MAS_semestral_project_MVS.DBModels;
+using MAS_semestral_project_MVS.DataBaseModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -32,7 +32,8 @@ namespace MAS_semestral_project_MVS.Controllers
 
         public IActionResult Clients()
         {
-            return null; 
+            return View();
+            // return null; 
             // return View(dbContext.People.ToList().Where(e => e.RelationWithCompany.Equals("Client")));
         }
         
