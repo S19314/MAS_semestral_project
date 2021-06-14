@@ -13,6 +13,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             People = new HashSet<Person>();
         }
 
+        public int IdAttribute { get; set; }
         public int IdGroup { get; set; }
         public DateTime StartWorkTime { get; set; }
         public DateTime EndWorkTime { get; set; }

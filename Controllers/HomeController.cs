@@ -12,7 +12,7 @@ namespace MAS_semestral_project_MVS.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
+        // private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)

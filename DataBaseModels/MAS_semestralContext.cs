@@ -20,7 +20,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual DbSet<ClassAttribute> ClassAttributes { get; set; }
         public virtual DbSet<CleaningGroup> CleaningGroups { get; set; }
         public virtual DbSet<CleaningTool> CleaningTools { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<CustomerConversation> CustomerConversations { get; set; }
         public virtual DbSet<KnowedLanguage> KnowedLanguages { get; set; }
         public virtual DbSet<LanguageEmployee> LanguageEmployees { get; set; }
@@ -28,7 +27,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Person> People { get; set; }
-        // public virtual DbSet<Employee> Employees { get { People.ToList().Where(e => e.RelationShipWithCompany = "Employee") } set; } /// TO DO Also add string into Enum or josn-parameters/
         public virtual DbSet<PlaceWork> PlaceWorks { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
 
@@ -37,7 +35,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             if (!optionsBuilder.IsConfigured)
             {
 // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-   /// TO DO Move to JSON-parameters.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-QBPEBIC\\DEVELOPERDB;Initial Catalog=MAS_semestral;Integrated Security=True");
             }
         }
@@ -50,8 +47,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             {
                 entity.HasKey(e => e.IdAttribute)
                     .HasName("ClassAttributes_pk");
-
-                entity.Property(e => e.IdAttribute).ValueGeneratedNever();
 
                 entity.Property(e => e.NameAttribut).HasColumnName("nameAttribut");
 
@@ -73,6 +68,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
 
                 entity.Property(e => e.EndWorkTime).HasColumnType("datetime");
 
+                entity.Property(e => e.IdAttribute).ValueGeneratedOnAdd();
+
                 entity.Property(e => e.StartWorkTime).HasColumnType("datetime");
             });
 
@@ -80,8 +77,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             {
                 entity.HasKey(e => e.IdTool)
                     .HasName("CleaningTools_pk");
-
-                entity.Property(e => e.IdTool).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -95,36 +90,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .HasForeignKey(d => d.OsobaIdOsoba)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("CleaningTools_Osoba");
-            });
-
-            modelBuilder.Entity<Client>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToView("Client");
-
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PassportData)
-                    .HasMaxLength(120)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PhoneNumber)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.RelationWithCompany)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.SecondName)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<CustomerConversation>(entity =>
@@ -161,8 +126,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .HasName("KnowedLanguage_pk");
 
                 entity.ToTable("KnowedLanguage");
-
-                entity.Property(e => e.IdLanguage).ValueGeneratedNever();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -201,8 +164,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
 
                 entity.ToTable("LastCleanedRoom");
 
-                entity.Property(e => e.IdLastCleanedRoom).ValueGeneratedNever();
-
                 entity.Property(e => e.CleaningGroupIdGroup).HasColumnName("CleaningGroup_IdGroup");
 
                 entity.Property(e => e.DurationCleanedTime).HasColumnType("datetime");
@@ -225,8 +186,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             modelBuilder.Entity<Offer>(entity =>
             {
                 entity.ToTable("Offer");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.AvailableFrom).HasColumnType("datetime");
 
@@ -254,8 +213,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .HasName("Order_pk");
 
                 entity.ToTable("Order");
-
-                entity.Property(e => e.IdOrder).ValueGeneratedNever();
 
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
 
@@ -290,8 +247,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .HasName("Person_pk");
 
                 entity.ToTable("Person");
-
-                entity.Property(e => e.IdOsoba).ValueGeneratedNever();
 
                 entity.Property(e => e.CleaningGroupIdGroup).HasColumnName("CleaningGroup_IdGroup");
 
@@ -347,8 +302,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
 
                 entity.ToTable("PlaceWork");
 
-                entity.Property(e => e.IdPlaceWork).ValueGeneratedNever();
-
                 entity.Property(e => e.EmployeeIdPerson).HasColumnName("Employee_IdPerson");
 
                 entity.Property(e => e.Name)
@@ -369,8 +322,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .HasName("Room_pk");
 
                 entity.ToTable("Room");
-
-                entity.Property(e => e.IdRoom).ValueGeneratedNever();
 
                 entity.Property(e => e.RoomDescription)
                     .IsRequired()
