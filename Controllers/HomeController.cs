@@ -31,8 +31,9 @@ namespace MAS_semestral_project_MVS.Controllers
         }
 
         /// <summary>
-        /// Show all Clients in DataBase.
+        ///  Show all Clients in DataBase. 
         /// </summary>
+        /// <returns></returns>
         public IActionResult Clients()
         {
             return View();

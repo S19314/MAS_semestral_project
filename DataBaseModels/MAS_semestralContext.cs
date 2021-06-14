@@ -28,6 +28,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Person> People { get; set; }
+        // public virtual DbSet<Employee> Employees { get { People.ToList().Where(e => e.RelationShipWithCompany = "Employee") } set; } /// TO DO Also add string into Enum or josn-parameters/
         public virtual DbSet<PlaceWork> PlaceWorks { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
 
@@ -35,7 +36,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+   /// TO DO Move to JSON-parameters.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-QBPEBIC\\DEVELOPERDB;Initial Catalog=MAS_semestral;Integrated Security=True");
             }
         }
