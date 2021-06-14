@@ -23,7 +23,10 @@ namespace MAS_semestral_project_MVS
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddSwaggerGen();
         }
+    
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,7 +43,17 @@ namespace MAS_semestral_project_MVS
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseSwagger();
+
+            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
+
+        app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
