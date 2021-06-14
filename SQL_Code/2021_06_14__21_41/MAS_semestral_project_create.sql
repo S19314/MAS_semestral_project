@@ -4,7 +4,7 @@
 -- tables
 -- Table: ClassAttributes
 CREATE TABLE ClassAttributes (
-    IdAttribute int  NOT NULL,
+    IdAttribute int IDENTITY(10,1) NOT NULL,
     nameAttribut int  NOT NULL,
     value varchar(120)  NOT NULL,
     CONSTRAINT ClassAttributes_pk PRIMARY KEY  (IdAttribute)
@@ -12,6 +12,7 @@ CREATE TABLE ClassAttributes (
 
 -- Table: CleaningGroup
 CREATE TABLE CleaningGroup (
+    IdAttribute int IDENTITY(10,1) NOT NULL,
     IdGroup int  NOT NULL,
     StartWorkTime datetime  NOT NULL,
     EndWorkTime datetime  NOT NULL,
@@ -20,7 +21,7 @@ CREATE TABLE CleaningGroup (
 
 -- Table: CleaningTools
 CREATE TABLE CleaningTools (
-    IdTool int  NOT NULL,
+    IdTool int IDENTITY(10,1) NOT NULL,
     Name varchar(100)  NOT NULL,
     Osoba_IdOsoba int  NOT NULL,
     CONSTRAINT CleaningTools_pk PRIMARY KEY  (IdTool)
@@ -39,7 +40,7 @@ CREATE TABLE CustomerConversation (
 
 -- Table: KnowedLanguage
 CREATE TABLE KnowedLanguage (
-    IdLanguage int  NOT NULL,
+    IdLanguage int IDENTITY(10,1)  NOT NULL,
     Name varchar(100)  NOT NULL,
     CONSTRAINT KnowedLanguage_pk PRIMARY KEY  (IdLanguage)
 );
@@ -53,7 +54,7 @@ CREATE TABLE Language_Employee (
 
 -- Table: LastCleanedRoom
 CREATE TABLE LastCleanedRoom (
-    IdLastCleanedRoom int  NOT NULL,
+    IdLastCleanedRoom int IDENTITY(10,1) NOT NULL,
     DurationCleanedTime datetime  NOT NULL,
     CleaningGroup_IdGroup int  NOT NULL,
     Room_IdRoom int  NOT NULL,
@@ -62,7 +63,7 @@ CREATE TABLE LastCleanedRoom (
 
 -- Table: Offer
 CREATE TABLE Offer (
-    Id int  NOT NULL,
+    Id int IDENTITY(10,1) NOT NULL,
     OfferStatus varchar(80)  NOT NULL,
     RoomPrice decimal(10,2)  NOT NULL,
     AvailableTo datetime  NOT NULL,
@@ -73,7 +74,7 @@ CREATE TABLE Offer (
 
 -- Table: Order
 CREATE TABLE "Order" (
-    IdOrder int  NOT NULL,
+    IdOrder int IDENTITY(10,1) NOT NULL,
     CreationDate datetime  NOT NULL,
     Offer_Id int  NOT NULL,
     Osoba_IdOsoba int  NOT NULL,
@@ -83,7 +84,7 @@ CREATE TABLE "Order" (
 
 -- Table: Person
 CREATE TABLE Person (
-    IdOsoba int  NOT NULL,
+    IdOsoba int IDENTITY(10,1) NOT NULL,
     RelationWithCompany varchar(100)  NOT NULL,
     EmployeeType varchar(100)  NULL,
     EmployeeExperienceType varchar(100)  NULL,
@@ -101,7 +102,7 @@ CREATE TABLE Person (
 
 -- Table: PlaceWork
 CREATE TABLE PlaceWork (
-    IdPlaceWork int  NOT NULL,
+    IdPlaceWork int IDENTITY(10,1) NOT NULL,
     name VARCHAR(120)  NOT NULL,
     Employee_IdPerson int  NOT NULL,
     CONSTRAINT PlaceWork_pk PRIMARY KEY  (IdPlaceWork)
@@ -109,7 +110,7 @@ CREATE TABLE PlaceWork (
 
 -- Table: Room
 CREATE TABLE Room (
-    IdRoom int  NOT NULL,
+    IdRoom int IDENTITY(10,1) NOT NULL,
     SeatQuantity int  NOT NULL,
     RoomDescription varchar(1000)  NOT NULL,
     RoomType varchar(60)  NOT NULL,

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MAS_semestral_project_MVS.DataBaseModels
 {
-    public partial class Client
+    public partial class Client  // : Person
     {
         public int IdOsoba { get; set; }
         public string RelationWithCompany { get; set; }
