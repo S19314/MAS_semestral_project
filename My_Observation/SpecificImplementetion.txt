@@ -1,0 +1,10 @@
+﻿Omówienie decyzji projektowych i skutków analizy dynamicznej: 
+1. Było podnięta decyzja o korzystaniu z system baz danych w relacyjnym modelu, ponieważ żtechnologia jest popularna i w takim przypadku łatwie będzie znaleźć  programista dla wdrożenia systemu w przyszłości.  
+2. Serwer Baz danych SQL gwarantuje wymagania ACID dla transakcji. 
+
+3. Dziedziczenie Dynamic o typie "staż pracy w firmie" został realizowany przez szybkie kopiowanie. Bo ten sposób jest łatwy do realizacji i jest bliższy do rzeczywistości, z punktu widzenia zmiany obijektu z czasem. 
+
+4. Overlapping dla Klienta i Pracownika jest realizowane zastąpieniem całej hierarchii dziedziczenia jedną klasą. Łatwej zarządzać obijektami i robić zmiany w nich. Tę podejście jest 
+bliskie do sposobu mappowania objiektów z associacjej <<overlapping>>  dla serwerów baz danych w relacyjnej modeli, co również tworzy łatwiejsze i lepsze zarządzanie obiktami pod czas napisanie programu przez programisty. 
+5. Assocji z atrybutem zostałe zmienione na associajce dwóch klas  za pośrednictwem klasy associatywnej. Potrzebno korzystać z następującej struktury, żeby logika albo ceł associacji w języku opragramowania była odpowiednia do associacji w diagramie klas UML. 
+6. Dla stworzenia wielodziedziczenia „Recepcjonist-Sprzątacza” potrzebno zkorzystać z interfejsu, który będzie opisywał ISprzątacza, ponieważ język oprogramowania C# nie wspiera wielodziedziczenia. A interfejsy są zastąpieniem wielodziedziczenia. I dzięki interfejsu – będą zadeklarowane metody obiektu ISprzątać, które będą opisane w obiekcie klasy Recepcjonist-Sprzątacza. 7. Agregacja w UML – zamienia się na zwykłą asocjacje w języku oprogramowania C#.   
