@@ -56,14 +56,61 @@
         <p><a href="computer-element-form.html" class="button-add">Dodaj nowy element komputera</a></p>
     </main>
 
-
+    <p>primaryPerson</p>
     <p>
-        Закреплено пользователем Luca B.
-        Miruu Kon
-        3 недели назад (изменено)
-        oh shiii someone finally inserted  a meme in it xD
+        @ViewData["personToString"];
 
-        btw am the one who did the sound fx on this one haha
+        @(((Person)ViewData["person"]).GetPersonShortInfo());
+        @(((Person)ViewData["person"]).ToString());
     </p>
 
+    <p>
+
+        @ViewData["languagesToString"];
+
+    </p>
+    <p>
+
+        @ViewData["allLanguagesToString"]
+
+    </p>
+    
+    <p>
+
+        _____________________________________________________________________________________________________________________________________________________________________
+
+    </p>
+    <p>
+
+        @ViewData["languageByEmployeeToString"]
+
+    </p>
+        
+    <p>
+
+        _____________________________________________________________________________________________________________________________________________________________________
+
+    </p>
+    <p>
+
+        @ViewData["employeeByLanguageToString"]
+
+    </p>
+    
+
+    <!--
+    <p>personByKnowedLanguage</p>
+    <p>
+
+         {
+            (((Person)ViewData["personByKnowedLanguage"])).GetPersonShortInfo();
+        }
+    </p>
+    <p>
+        Is persons equals?
+    </p>
+    <p>
+         ViewData["isEqualPerson"];
+    </p>
+    -->
 </div>

@@ -22,7 +22,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 if (this.EmployeeIdPersonNavigation != null) throw new Exception("PlaceWork already have connection/relation with Employee, and can't be connected to another one.");
                 employeeIdPersonNavigation = value;
                 EmployeeIdPerson = value.IdOsoba;
-                value.Add
+                // value.Add
+                /// TO DO
             } 
         }
 

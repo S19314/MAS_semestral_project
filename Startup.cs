@@ -44,12 +44,6 @@ namespace MAS_semestral_project_MVS
 
             app.UseRouting();
 
-
-
-            
-
-
-
         app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

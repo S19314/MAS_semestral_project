@@ -12,7 +12,7 @@ namespace MAS_semestral_project_MVS.Controllers
 {
     public class HomeController : Controller
     {
-        // private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
+        private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -36,7 +36,34 @@ namespace MAS_semestral_project_MVS.Controllers
         /// <returns></returns>
         public IActionResult Clients()
         {
-            return View();
+            var person = dbContext.People.Where(e => e.IdOsoba == 11).First();
+            ViewData["person"] = person;
+            var languages = dbContext.LanguageEmployees.ToList();
+            var languagesToString = LanguageEmployee.ListToString(languages);
+            
+            
+            // toString();
+            // var knowedLanguage = person.LanguageEmployees.Where(e => e.KnowedLanguageIdLanguage > 1).First(); // Не работаетю...
+            var allLanguagesToString = LanguageEmployee.ListToString( person.LanguageEmployees.ToList()); // Не работаетю...
+            var languageByEmployeeToString = person.LanguageEmployees.Where(e => e.KnowedLanguageIdLanguage == 11).First().ToString(); 
+            var languageByEmployee = person.LanguageEmployees.Where(e => e.KnowedLanguageIdLanguage == 11).First();
+            var employeeByLanguageToString = languageByEmployee.OsobaIdOsobaNavigation.GetPersonShortInfo();
+            /*
+            var personByKnowedLanguage = knowedLanguage.OsobaIdOsobaNavigation;
+            var isEqualPerson = personByKnowedLanguage.Equals(person);
+            
+            
+            ViewData["personToString"] = person.GetPersonShortInfo();
+            
+            ViewData["personByKnowedLanguage"] = personByKnowedLanguage;
+            ViewData["isEqualPerson"] = isEqualPerson;
+            */
+            
+            ViewData["languagesToString"] = languagesToString;
+            ViewData["allLanguagesToString"] = allLanguagesToString;
+            ViewData["languageByEmployeeToString"] = languageByEmployeeToString;
+            ViewData["employeeByLanguageToString"] = employeeByLanguageToString;
+            return View(ViewData);
             // return null; 
             // return View(dbContext.People.ToList().Where(e => e.RelationWithCompany.Equals("Client")));
         }

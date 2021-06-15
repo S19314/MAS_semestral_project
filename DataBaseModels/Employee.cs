@@ -13,8 +13,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
         public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
         /*
-            Допилить создание ассоциации.
-         */
+          Допилить создание ассоциации.
+        */
 
         /// <summary>
         /// Adding an employee's place of last Work.
@@ -38,6 +38,9 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             // placeWork.EmployeeIdPersonNavigation = this; // special method
 
             PlaceWorks.Add(placeWork);
+            // placeWork.SetEmployee(this); 
+            /// TO DO <paramref name="placeWork"/>.SetEmployee(this); 
+
             // this.PlaceWorks.Add(placeWork);
         }
 
