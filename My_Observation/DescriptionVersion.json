@@ -3,5 +3,7 @@
   "Version 1.1.*": "Client List editing.",
   "Version 2.*": "SQL_Code editing.",
   "Version 3.*": "Models editing.",
-  "Version 4.*": "Auto-documentation editing."
+  "Version 4.*": "Auto-documentation editing.",
+  "Version 5.*": "GIT configutraiton editing."
+
 }
