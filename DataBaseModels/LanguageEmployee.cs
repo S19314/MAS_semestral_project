@@ -12,21 +12,5 @@ namespace MAS_semestral_project_MVS.DataBaseModels
 
         public virtual KnowedLanguage KnowedLanguageIdLanguageNavigation { get; set; }
         public virtual Person OsobaIdOsobaNavigation { get; set; }
-
-        public string ToString() 
-        {
-            return "KnowedLanguageIdLanguage: " + KnowedLanguageIdLanguage;
-        }
-
-        public static string ListToString(ICollection<LanguageEmployee> languageEployees)
-        {
-            var languagesToString = "";
-            foreach (var l in languageEployees)
-            {
-                languagesToString += l.ToString() + "\n";
-            }
-
-            return languagesToString;
-        }
     }
 }

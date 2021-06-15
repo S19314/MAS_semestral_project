@@ -15,8 +15,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             LanguageEmployees = new HashSet<LanguageEmployee>();
             OrderOsoba2IdOsobaNavigations = new HashSet<Order>();
             OrderOsobaIdOsobaNavigations = new HashSet<Order>();
-             PlaceWorks = new HashSet<PlaceWork>();
-            /// TO DO
+            PlaceWorks = new HashSet<PlaceWork>();
         }
 
         public int IdOsoba { get; set; }
@@ -25,7 +24,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public string EmployeeExperienceType { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
-
         public string PassportData { get; set; }
         public string PhoneNumber { get; set; }
         public int? InternshipDaysInCurentHotel { get; set; }
@@ -41,23 +39,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual ICollection<LanguageEmployee> LanguageEmployees { get; set; }
         public virtual ICollection<Order> OrderOsoba2IdOsobaNavigations { get; set; }
         public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; }
-         public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
-
-        /// TO DO 
-
-        public string GetPersonShortInfo() 
-        {
-            return "Person: FirstName: " + FirstName + ", SecondName: " + SecondName;
-        }
-
-        public override string ToString()
-        {
-            string elements = "";
-            foreach (var language in LanguageEmployees) 
-            {
-                elements += language.ToString() + "\n";
-            }
-            return "LanguageEmployes: " + elements;
-        }
+        public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
     }
 }
