@@ -12,7 +12,7 @@ namespace MAS_semestral_project_MVS.Controllers
 {
     public class HomeController : Controller
     {
-        // private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
+        private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -36,9 +36,7 @@ namespace MAS_semestral_project_MVS.Controllers
         /// <returns></returns>
         public IActionResult Clients()
         {
-            return View();
-            // return null; 
-            // return View(dbContext.People.ToList().Where(e => e.RelationWithCompany.Equals("Client")));
+           return View();
         }
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
