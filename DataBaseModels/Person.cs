@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MAS_semestral_project_MVS.Models.Enums;
 #nullable disable
 
 namespace MAS_semestral_project_MVS.DataBaseModels
@@ -40,5 +40,61 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual ICollection<Order> OrderOsoba2IdOsobaNavigations { get; set; }
         public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; }
         public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
+
+        private static Person CreatePerson(string firstName, string secondName)
+        {
+            return new Person { 
+                FirstName = firstName,
+                SecondName = secondName
+            };
+        }
+        public static Person CreateClient(string firstName, string secondName, string passportData, string phoneNumber) 
+        {
+            var client = CreatePerson(firstName, secondName);
+            client.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
+                RelationWithCompanyEnum.RelationWithCompany.Client
+                );
+            client.PassportData = passportData;
+            client.PhoneNumber = phoneNumber;
+            return client;
+        }
+        /// TO DO: ДОбавить: 1. статические поля; 2. Как статическое поле сделать ограничение количества последних мест работы.
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="secondName"></param>
+        /// <param name="internshipDaysInCurentHotel"></param>
+        /// <param name="hourRate"></param>
+        /// <param name="lastDateChangeRate"></param>
+        /// <param name="placeWorks"></param>
+        /// <returns></returns>
+        private static Person CreateEmployee(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks ) 
+        {
+            var employee = CreatePerson(firstName, secondName);
+            employee.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
+                RelationWithCompanyEnum.RelationWithCompany.Employee
+                );
+            employee.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
+            employee.HourRate = hourRate;
+            employee.LastDateChangeRate = lastDateChangeRate;
+            throw new NotImplementedException("1.set placeWorks; 2. Set EmployeeType(create own \"Construct\"")
+            // employee.
+            return employee;
+        }
+
+        public static Person CreatePracownik_Client (string firstName, string secondName, string passportData, string phoneNumber)
+        {
+            throw new NotImplementedException("        public static Person CreatePracownik_Client (string firstName, string secondName, string passportData, string phoneNumber)");
+            var client = CreatePerson(firstName, secondName);
+            client.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
+                RelationWithCompanyEnum.RelationWithCompany.Client
+                );
+            client.PassportData = passportData;
+            client.PhoneNumber = phoneNumber;
+            return client;
+        }
+
     }
 }

@@ -1,0 +1,4 @@
+1. Implementacja dziedziczenia wieloaspektowego: Page: 41.
+Method number 1: In subclass adding required fields.
+file:///D:/OneDrive%20-%20Polsko-Japoska%20Akademia%20Technik%20Komputerowych/Copy%20from%20DELL/Uniwesity/6_semestr/MAS/mtrzaska_com/wyklady/MAS-07.pdf
+

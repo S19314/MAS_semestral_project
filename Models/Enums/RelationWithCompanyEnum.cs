@@ -10,14 +10,15 @@ namespace MAS_semestral_project_MVS.Models.Enums
         public enum RelationWithCompany
         {
             Client = 0,
-            Employee = 1
+            Employee = 1,
+            Client_Employee = 2
         }
-        private readonly string[] RelationInString = { "Client", "Employee" };
+        private static string[] RelationInString = { "Client", "Employee", "Client_Employee" };
         public RelationWithCompanyEnum()
         {
         }
 
-        public string GetConformityEnumValue(RelationWithCompany enumValue)
+        public static string GetConformityEnumValue(RelationWithCompany enumValue)
         {
             // return  (string)RelationInString.GetValue(((int)enumValue));
             return RelationInString[(int)enumValue];
