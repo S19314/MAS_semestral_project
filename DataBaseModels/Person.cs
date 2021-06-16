@@ -24,12 +24,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
 
         public int IdOsoba { get; set; }
         public string relationWithCompany;
-        public string RelationWithCompany 
+        public string RelationWithCompany
         {
             get { return relationWithCompany; }
-            set 
+            set
             {
-                if (!RelationWithCompanyEnum.Contains(value)) 
+                if (!RelationWithCompanyEnum.Contains(value))
                 {
                     throw new Exception("U  nsupported RealtionWithCompany.");
                 }
@@ -37,24 +37,24 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             }
         }
         public string employeeType;
-        
-        public string EmployeeType 
+
+        public string EmployeeType
         {
-            get 
-            {
-                if (!IsEmployee()) 
-                {
-                    throw new Exception("This type of object have no permission for access EmployeeType property.");
-                }
-                return employeeType;
-            }  // Добваить ограниечение: мол если ты не работник, то доступ не имеешь.
-            set 
+            get
             {
                 if (!IsEmployee())
                 {
                     throw new Exception("This type of object have no permission for access EmployeeType property.");
                 }
-                if (!EmployeeExperienceTypeEnum.Contains(employeeType)) 
+                return employeeType;
+            }  // Добваить ограниечение: мол если ты не работник, то доступ не имеешь.
+            set
+            {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                if (!EmployeeExperienceTypeEnum.Contains(employeeType))
                 {
                     throw new Exception("Unsupported EmployeeType.");
                 }
@@ -63,7 +63,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
         public string employeeExperienceType;
 
-        public string EmployeeExperienceType 
+        public string EmployeeExperienceType
         {
             get {
                 if (!IsEmployee())
@@ -72,7 +72,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 }
                 return employeeType;
             }
-            set 
+            set
             {
                 if (!IsEmployee())
                 {
@@ -103,7 +103,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("New HourRate can't bigger than MaxHourRate.");
                 }
-                if (LastDateChangeRate.Value.Subtract(DateTime.Now).TotalDays < 30) 
+                if (LastDateChangeRate.Value.Subtract(DateTime.Now).TotalDays < 30)
                 {
                     throw new Exception("HourRate can be changed only one in 30 days.");
                 }
@@ -118,19 +118,19 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         /// </summary>
         public decimal MaxHourRate
         {
-            get 
+            get
             {
-                if(IsEmployee())
+                if (IsEmployee())
                 {
-                    if(EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner))) 
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner)))
                     {
                         return (decimal)DataBaseService.GetCleanerMaxHourRateFromClassAttributesInColumn();
                     }
-                    if(EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner_Receptionist))) 
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner_Receptionist)))
                     {
                         return (decimal)DataBaseService.GetCleanerReceptionistMaxHourRateFromClassAttributesInColumn();
                     }
-                    if(EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Director))) 
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Director)))
                     {
                         return (decimal)DataBaseService.GetDirectorMaxHourRateFromClassAttributesInColumn();
                     }
@@ -139,7 +139,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                         return (decimal)DataBaseService.GetReceptionistMaxHourRateFromClassAttributesInColumn();
                     }
                 }
-            throw new Exception("This object doesn't have permission for MaxHourRate property.");
+                throw new Exception("This object doesn't have permission for MaxHourRate property.");
             }
             /// <summary>
             /// Property that depends on type of Person.
@@ -168,27 +168,27 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 throw new Exception("This object doesn't have permission for this property.");
             }
         }
-        
-        
-        public static int CleanerMaxToolsQuantity 
+
+
+        public static int CleanerMaxToolsQuantity
         {
-            get { return (int)DataBaseService.GetCleanerMaxToolsQuantityFromClassAttributesInColumn();  }
-            set { DataBaseService.SetCleanerMaxToolsQuantityFromClassAttributesInColumn(value);  }
+            get { return (int)DataBaseService.GetCleanerMaxToolsQuantityFromClassAttributesInColumn(); }
+            set { DataBaseService.SetCleanerMaxToolsQuantityFromClassAttributesInColumn(value); }
         }
         public static int EpmloyeeMaxPlaceWorkQuantity
         {
-            get { return (int)DataBaseService.GetEpmloyeeMaxPlaceWorkQuantity();  }
-            set { DataBaseService.SetEpmloyeeMaxPlaceWorkQuantity(value);  }
+            get { return (int)DataBaseService.GetEpmloyeeMaxPlaceWorkQuantity(); }
+            set { DataBaseService.SetEpmloyeeMaxPlaceWorkQuantity(value); }
         }
         public static int ReceptionistMaxKnowedLanguages
         {
-            get { return (int)DataBaseService.GetReceptionistMaxKnowedLanguages();  }
-            set { DataBaseService.SetReceptionistMaxKnowedLanguages(value);  }
+            get { return (int)DataBaseService.GetReceptionistMaxKnowedLanguages(); }
+            set { DataBaseService.SetReceptionistMaxKnowedLanguages(value); }
         }
         public static int ReceptionistMinKnowedLanguages
         {
-            get { return (int)DataBaseService.GetReceptionistMinKnowedLanguages();  }
-            set { DataBaseService.SetReceptionistMinKnowedLanguages(value);  }
+            get { return (int)DataBaseService.GetReceptionistMinKnowedLanguages(); }
+            set { DataBaseService.SetReceptionistMinKnowedLanguages(value); }
         }
 
         public virtual CleaningGroup CleaningGroupIdGroupNavigation { get; set; }
@@ -203,15 +203,15 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         /// <summary>
         /// Association from Client side.
         /// </summary>
-        public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; } 
+        public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; }
         public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
 
-        public bool IsEmployee() 
+        public bool IsEmployee()
         {
             return RelationWithCompanyEnum.IsEmployee(RelationWithCompany);
         }
-        
-        public bool IsClient() 
+
+        public bool IsClient()
         {
             return RelationWithCompanyEnum.IsClient(RelationWithCompany);
         }
@@ -239,21 +239,21 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 EmployeeTypeEnum.EmployeeType.Director
                 );
         }
-        
+
         public void SetEmployeeTypeAsCleaner()
         {
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
                 EmployeeTypeEnum.EmployeeType.Cleaner
                 );
         }
-        
+
         public void SetEmployeeTypeAsReceptionist()
         {
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
                 EmployeeTypeEnum.EmployeeType.Receptionist
                 );
         }
-        
+
         public void SetEmployeeTypeAsCleaner_Receptionist()
         {
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
@@ -274,13 +274,13 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
 
 
-        public void DefineEmployeeExperienceType() 
+        public void DefineEmployeeExperienceType()
         {
             if (InternshipDaysInCurentHotel > 182)
             {
                 SetEmployeeExperienceTypeAsCleaner_Experienced();
             }
-            else 
+            else
             {
                 SetEmployeeExperienceTypeAsCleaner_Apprentice();
             }
@@ -288,12 +288,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
 
         private static Person CreatePerson(string firstName, string secondName)
         {
-            return new Person { 
+            return new Person {
                 FirstName = firstName,
                 SecondName = secondName
             };
         }
-        public static Person CreateClient(string firstName, string secondName, string passportData, string phoneNumber) 
+        public static Person CreateClient(string firstName, string secondName, string passportData, string phoneNumber)
         {
             var client = CreatePerson(firstName, secondName);
             client.SetRelationWithCompanyAsClient();
@@ -302,9 +302,9 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             return client;
         }
 
-        
+
         /// TO DO: ДОбавить: 1. статические поля; 2. Как статическое поле сделать ограничение количества последних мест работы.
-        
+
         /// <summary>
         ///  
         /// </summary>
@@ -315,7 +315,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         /// <param name="lastDateChangeRate"></param>
         /// <param name="placeWorks"></param>
         /// <returns></returns>
-        private static Person CreateEmployee(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks ) 
+        private static Person CreateEmployee(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
         {
             var employee = CreatePerson(firstName, secondName);
             employee.SetRelationWithCompanyAsEmployee();
@@ -323,28 +323,28 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             employee.HourRate = hourRate;
             employee.LastDateChangeRate = lastDateChangeRate;
             employee.DefineEmployeeExperienceType();
-            if (placeWorks.Length + employee.PlaceWorks.Count > Person.EpmloyeeMaxPlaceWorkQuantity) 
+            if (placeWorks.Length + employee.PlaceWorks.Count > Person.EpmloyeeMaxPlaceWorkQuantity)
             {
-                throw new Exception("Employee can't have more than " + Person.EpmloyeeMaxPlaceWorkQuantity +"; You should remove some PlaceWork before additing new.");
+                throw new Exception("Employee can't have more than " + Person.EpmloyeeMaxPlaceWorkQuantity + "; You should remove some PlaceWork before additing new.");
             }
-            for(int i = 0; i < placeWorks.Length; i++) { 
+            for (int i = 0; i < placeWorks.Length; i++) {
                 employee.PlaceWorks.Add(placeWorks[i]);
             }
             return employee;
         }
-        private static Person CreateDirector(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
+        public static Person CreateDirector(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
         {
-            
-            var director = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
+
+            var director = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
             director.SetEmployeeTypeAsDirector();
             return director;
-            
+
         }
-        private static Person CreateCleaner(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, CleaningTool[] cleaningTools)
+        public static Person CreateCleaner(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, CleaningTool[] cleaningTools)
         {
-            var cleaner = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
+            var cleaner = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
             cleaner.SetEmployeeTypeAsCleaner();
-        
+
             if (cleaningTools.Length + cleaner.CleaningTools.Count > Person.CleanerMaxToolsQuantity)
             {
                 throw new Exception("Employee can't have more than " + Person.CleanerMaxToolsQuantity + "; You should remove some CleaningTools before additing new.");
@@ -354,6 +354,38 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 cleaner.CleaningTools.Add(cleaningTools[i]);
             }
             return cleaner;
+        }
+
+        public void AddConnectionBetweenPersonAndKnowedLanguage(KnowedLanguage knowedLanguage){
+            if (knowedLanguage.Equals(null)) 
+            {
+                throw new Exception("Can't be added KnowedLanguage as null.");
+            }
+            var languageEmployee = new LanguageEmployee
+            {
+                KnowedLanguageIdLanguage = knowedLanguage.IdLanguage,
+                KnowedLanguageIdLanguageNavigation = knowedLanguage,
+                OsobaIdOsoba = this.IdOsoba,
+                OsobaIdOsobaNavigation = this
+            };
+            this.LanguageEmployees.Add(languageEmployee);
+        }
+
+        public static Person CreateReceptionist(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
+        {
+            var receptionist = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
+            receptionist.SetEmployeeTypeAsReceptionist();
+        
+            if (knowedLanguages.Length + receptionist.CleaningTools.Count > Person.ReceptionistMaxKnowedLanguages)
+            {
+                throw new Exception("Employee can't have more than " + Person.ReceptionistMaxKnowedLanguages + "; You should remove some CleaningTools before additing new.");
+            }
+            for (int i = 0; i < knowedLanguages.Length; i++)
+            {
+                receptionist.AddConnectionBetweenPersonAndKnowedLanguage(knowedLanguages[i]);
+            }
+            receptionist.WorkShift = workShift;
+            return receptionist;
         }
 
         public static Person CreatePracownik_Client (string firstName, string secondName, string passportData, string phoneNumber)
