@@ -44,11 +44,11 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("New HourRate can't bigger than MaxHourRate.");
                 }
-                else
+                if (LastDateChangeRate.Value.Subtract(DateTime.Now).TotalDays < 30) 
                 {
-                    hourRate = value;
+                    throw new Exception("HourRate can be changed only one in 30 days.");
                 }
-
+                hourRate = value;
             }
         }
         public DateTime? LastDateChangeRate { get; set; }
@@ -156,7 +156,18 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         {
             return RelationWithCompanyEnum.IsClient(RelationWithCompany);
         }
-
+        public void SetRelationWithCompanyAsEmployee()
+        {
+            this.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
+                RelationWithCompanyEnum.RelationWithCompany.Employee
+                );
+        }
+        public void SetRelationWithCompanyAsClient()
+        {
+            this.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
+                RelationWithCompanyEnum.RelationWithCompany.Client
+                );
+        }
         private static Person CreatePerson(string firstName, string secondName)
         {
             return new Person { 
@@ -174,6 +185,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             client.PhoneNumber = phoneNumber;
             return client;
         }
+
+        
         /// TO DO: ДОбавить: 1. статические поля; 2. Как статическое поле сделать ограничение количества последних мест работы.
         
         /// <summary>
@@ -189,15 +202,37 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         private static Person CreateEmployee(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks ) 
         {
             var employee = CreatePerson(firstName, secondName);
-            employee.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
-                RelationWithCompanyEnum.RelationWithCompany.Employee
-                );
+            employee.SetRelationWithCompanyAsEmployee();
             employee.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
             employee.HourRate = hourRate;
             employee.LastDateChangeRate = lastDateChangeRate;
-            throw new NotImplementedException("1.set placeWorks; 2. Set EmployeeType(create own \"Construct\"");
-            // employee.
+            if (placeWorks.Length + employee.PlaceWorks.Count > Person.EpmloyeeMaxPlaceWorkQuantity) 
+            {
+                throw new Exception("Employee can't have more than " + Person.EpmloyeeMaxPlaceWorkQuantity +"; You should remove some PlaceWork before additing new.");
+            }
+            for(int i = 0; i < placeWorks.Length; i++) { 
+                employee.PlaceWorks.Add(placeWorks[i]);
+            }
             return employee;
+        }
+        private static Person CreateDirector(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
+        {
+            
+            var director = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
+            director.EmployeeType = EmployeeTypeEnum.EmployeeType.Director;
+            director.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
+            director.HourRate = hourRate;
+            director.LastDateChangeRate = lastDateChangeRate;
+            if (placeWorks.Length + director.PlaceWorks.Count > Person.EpmloyeeMaxPlaceWorkQuantity)
+            {
+                throw new Exception("Eployee can't have more than " + Person.EpmloyeeMaxPlaceWorkQuantity + "; You should remove some PlaceWork before additing new.");
+            }
+            for (int i = 0; i < placeWorks.Length; i++)
+            {
+                director.PlaceWorks.Add(placeWorks[i]);
+            }
+            return director;
+            
         }
 
         public static Person CreatePracownik_Client (string firstName, string secondName, string passportData, string phoneNumber)

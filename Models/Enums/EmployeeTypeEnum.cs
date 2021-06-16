@@ -24,5 +24,16 @@ namespace MAS_semestral_project_MVS.Models.Enums
             return EmployeeTypeInString[(int)enumValue];
         }
 
+        public static bool Contains(string enumName)
+        {
+            for (int i = 0; i < EmployeeTypeInString.Length; i++)
+            {
+                if (EmployeeTypeInString[i].Equals(enumName))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

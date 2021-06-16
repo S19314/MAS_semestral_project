@@ -57,5 +57,17 @@ namespace MAS_semestral_project_MVS.Models.Enums
             }
             return false;
         }
+
+        public static bool Contains(string enumName)
+        {
+            for (int i = 0; i < RelationInString.Length; i++)
+            {
+                if (RelationInString[i].Equals(enumName))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
