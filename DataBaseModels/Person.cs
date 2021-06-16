@@ -72,10 +72,26 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             }
         }
         */
+        
         public static int CleanerMaxToolsQuantity 
         {
             get { return (int)DataBaseService.GetCleanerMaxToolsQuantityFromClassAttributesInColumn();  }
             set { DataBaseService.SetCleanerMaxToolsQuantityFromClassAttributesInColumn(value);  }
+        }
+        public static int EpmloyeeMaxPlaceWorkQuantity
+        {
+            get { return (int)DataBaseService.GetEpmloyeeMaxPlaceWorkQuantity();  }
+            set { DataBaseService.SetEpmloyeeMaxPlaceWorkQuantity(value);  }
+        }
+        public static int ReceptionistMaxKnowedLanguages
+        {
+            get { return (int)DataBaseService.GetReceptionistMaxKnowedLanguages();  }
+            set { DataBaseService.SetReceptionistMaxKnowedLanguages(value);  }
+        }
+        public static int ReceptionistMinKnowedLanguages
+        {
+            get { return (int)DataBaseService.GetReceptionistMinKnowedLanguages();  }
+            set { DataBaseService.SetReceptionistMinKnowedLanguages(value);  }
         }
 
         public virtual CleaningGroup CleaningGroupIdGroupNavigation { get; set; }
@@ -83,8 +99,14 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual ICollection<CustomerConversation> CustomerConversationClientIdOsobaNavigations { get; set; }
         public virtual ICollection<CustomerConversation> CustomerConversationEmployeeIdOsobaNavigations { get; set; }
         public virtual ICollection<LanguageEmployee> LanguageEmployees { get; set; }
+        /// <summary>
+        /// Association from Eployee side.
+        /// </summary>
         public virtual ICollection<Order> OrderOsoba2IdOsobaNavigations { get; set; }
-        public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; }
+        /// <summary>
+        /// Association from Client side.
+        /// </summary>
+        public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; } 
         public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
 
         private static Person CreatePerson(string firstName, string secondName)
