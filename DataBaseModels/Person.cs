@@ -54,7 +54,9 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public DateTime? LastDateChangeRate { get; set; }
         public string WorkShift { get; set; }
         public int? CleaningGroupIdGroup { get; set; }
-
+        /// <summary>
+        /// Property that depends on type of Person.
+        /// </summary>
         public decimal MaxHourRate
         {
             get 
@@ -80,7 +82,10 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 }
             throw new Exception("This object doesn't have permission for this property.");
             }
-            set 
+            /// <summary>
+            /// Property that depends on type of Person.
+            /// </summary>
+            set
             {
                 if (IsEmployee())
                 {
