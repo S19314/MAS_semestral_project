@@ -340,9 +340,9 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             return director;
 
         }
-        public static Person CreateCleaner(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, CleaningTool[] cleaningTools)
+
+        private static Person ConfigurationCleanerDuringCreation(Person cleaner, CleaningTool[] cleaningTools)
         {
-            var cleaner = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
             cleaner.SetEmployeeTypeAsCleaner();
 
             if (cleaningTools.Length + cleaner.CleaningTools.Count > Person.CleanerMaxToolsQuantity)
@@ -353,6 +353,19 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             {
                 cleaner.CleaningTools.Add(cleaningTools[i]);
             }
+            return cleaner;
+        }
+        public static Person CreateCleaner(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, CleaningTool[] cleaningTools)
+        {
+            var cleaner = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
+            cleaner = ConfigurationCleanerDuringCreation(cleaner, cleaningTools);
+            return cleaner;
+        }
+
+        public static Person CreateCleaner_Client(string firstName, string secondName, string passportData, string phoneNumber,  int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, CleaningTool[] cleaningTools)
+        {
+            var cleaner = CreateEmployee_Client(firstName, secondName, passportData, phoneNumber, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
+            cleaner = ConfigurationCleanerDuringCreation(cleaner, cleaningTools);
             return cleaner;
         }
 
@@ -372,7 +385,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
 
         
-        private static Person ConfigurationReceptionistDuringCreation(Person receptionist, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift) 
+        private static Person ConfigurationReceptionistDuringCreation(Person receptionist, KnowedLanguage[] knowedLanguages, string workShift) 
         {
             receptionist.SetEmployeeTypeAsReceptionist();
 
@@ -390,27 +403,16 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public static Person CreateReceptionist(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
         {
             var receptionist = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
-            receptionist = ConfigurationReceptionistDuringCreation(receptionist, placeWorks, knowedLanguages, workShift);
+            receptionist = ConfigurationReceptionistDuringCreation(receptionist, knowedLanguages, workShift);
             return receptionist;
         }
         public static Person CreateReceptionist_Client(string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
         {
             var receptionist_client = CreateEmployee_Client(firstName, secondName, passportData, phoneNumber, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
-            receptionist_client = ConfigurationReceptionistDuringCreation(receptionist_client, placeWorks, knowedLanguages, workShift);
+            receptionist_client = ConfigurationReceptionistDuringCreation(receptionist_client, knowedLanguages, workShift);
             return receptionist_client;
         }
 
-        /*
-        public static Person CreateEmployee_Client (string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
-        {
-            var recepctionist = Person.CreateReceptionist(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks, knowedLanguages, workShift);
-
-            recepctionist.SetRelationWithCompanyAsClient_Employee();
-            client.PassportData = passportData;
-            client.PhoneNumber = phoneNumber;
-            return client;
-        }
-        */
         private static Person CreateEmployee_Client(string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
         {
             var employee = Person.CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
