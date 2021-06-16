@@ -227,6 +227,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 RelationWithCompanyEnum.RelationWithCompany.Client
                 );
         }
+        public void SetRelationWithCompanyAsClient_Employee()
+        {
+            this.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
+                RelationWithCompanyEnum.RelationWithCompany.Client_Employee
+                );
+        }
         public void SetEmployeeTypeAsDirector()
         {
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
@@ -290,9 +296,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public static Person CreateClient(string firstName, string secondName, string passportData, string phoneNumber) 
         {
             var client = CreatePerson(firstName, secondName);
-            client.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
-                RelationWithCompanyEnum.RelationWithCompany.Client
-                );
+            client.SetRelationWithCompanyAsClient();
             client.PassportData = passportData;
             client.PhoneNumber = phoneNumber;
             return client;
@@ -335,6 +339,21 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             director.SetEmployeeTypeAsDirector();
             return director;
             
+        }
+        private static Person CreateCleaner(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, CleaningTool[] cleaningTools)
+        {
+            var cleaner = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
+            cleaner.SetEmployeeTypeAsCleaner();
+        
+            if (cleaningTools.Length + cleaner.CleaningTools.Count > Person.CleanerMaxToolsQuantity)
+            {
+                throw new Exception("Employee can't have more than " + Person.CleanerMaxToolsQuantity + "; You should remove some CleaningTools before additing new.");
+            }
+            for (int i = 0; i < cleaningTools.Length; i++)
+            {
+                cleaner.CleaningTools.Add(cleaningTools[i]);
+            }
+            return cleaner;
         }
 
         public static Person CreatePracownik_Client (string firstName, string secondName, string passportData, string phoneNumber)
