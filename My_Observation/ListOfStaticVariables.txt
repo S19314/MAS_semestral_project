@@ -1,0 +1,12 @@
+Employee: 
+	MaxHourRateEmployee
+Director: 
+	MaxHourRateDirector
+Cleaner:
+	MaxToolsQuantity
+	MaxHourRateCleaner
+Receptionist:
+	MaxHourRateReceptionist
+Cleaner-Receptionist:
+	MaxHourRateCleaner_Receptionist
+

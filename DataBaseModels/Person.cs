@@ -31,6 +31,24 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public DateTime? LastDateChangeRate { get; set; }
         public string WorkShift { get; set; }
         public int? CleaningGroupIdGroup { get; set; }
+        // TO DO 
+        // add in DB
+        private static decimal maxHourRateDirector; 
+        private static decimal maxHourRateCleaner; 
+        private static decimal maxHourRateReceptionist; 
+        private static decimal maxHourRateCleaner_Receptionist;
+        private static HashSet<decimal> maxHourRates = new HashSet<decimal>(); // ?
+        public decimal MaxHourRate 
+        {
+            get 
+            {
+                return maxHourRateCleaner;   // Заглушка     
+            }
+            set 
+            {
+                maxHourRateCleaner = value; // Заглушка
+            }
+        }
 
         public virtual CleaningGroup CleaningGroupIdGroupNavigation { get; set; }
         public virtual ICollection<CleaningTool> CleaningTools { get; set; }
