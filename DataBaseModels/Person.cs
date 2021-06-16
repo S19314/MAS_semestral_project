@@ -23,9 +23,68 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
 
         public int IdOsoba { get; set; }
-        public string RelationWithCompany { get; set; }
-        public string EmployeeType { get; set; }
-        public string EmployeeExperienceType { get; set; }
+        public string relationWithCompany;
+        public string RelationWithCompany 
+        {
+            get { return relationWithCompany; }
+            set 
+            {
+                if (!RelationWithCompanyEnum.Contains(value)) 
+                {
+                    throw new Exception("U  nsupported RealtionWithCompany.");
+                }
+                relationWithCompany = value;
+            }
+        }
+        public string employeeType;
+        
+        public string EmployeeType 
+        {
+            get 
+            {
+                if (!IsEmployee()) 
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                return employeeType;
+            }  // Добваить ограниечение: мол если ты не работник, то доступ не имеешь.
+            set 
+            {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                if (!EmployeeExperienceTypeEnum.Contains(employeeType)) 
+                {
+                    throw new Exception("Unsupported EmployeeType.");
+                }
+                employeeType = value;
+            }
+        }
+        public string employeeExperienceType;
+
+        public string EmployeeExperienceType 
+        {
+            get {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                return employeeType;
+            }
+            set 
+            {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                if (!EmployeeExperienceTypeEnum.Contains(employeeType))
+                {
+                    throw new Exception("Unsupported EmployeeType.");
+                }
+                employeeExperienceType = value;
+            }
+        }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string PassportData { get; set; }
@@ -80,7 +139,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                         return (decimal)DataBaseService.GetReceptionistMaxHourRateFromClassAttributesInColumn();
                     }
                 }
-            throw new Exception("This object doesn't have permission for this property.");
+            throw new Exception("This object doesn't have permission for MaxHourRate property.");
             }
             /// <summary>
             /// Property that depends on type of Person.
@@ -168,6 +227,59 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 RelationWithCompanyEnum.RelationWithCompany.Client
                 );
         }
+        public void SetEmployeeTypeAsDirector()
+        {
+            this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
+                EmployeeTypeEnum.EmployeeType.Director
+                );
+        }
+        
+        public void SetEmployeeTypeAsCleaner()
+        {
+            this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
+                EmployeeTypeEnum.EmployeeType.Cleaner
+                );
+        }
+        
+        public void SetEmployeeTypeAsReceptionist()
+        {
+            this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
+                EmployeeTypeEnum.EmployeeType.Receptionist
+                );
+        }
+        
+        public void SetEmployeeTypeAsCleaner_Receptionist()
+        {
+            this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
+                EmployeeTypeEnum.EmployeeType.Cleaner_Receptionist
+                );
+        }
+        public void SetEmployeeExperienceTypeAsCleaner_Apprentice()
+        {
+            this.EmployeeType = EmployeeExperienceTypeEnum.GetConformityEnumValue(
+                    EmployeeExperienceTypeEnum.EmployeeExperienceType.Apprentice
+                );
+        }
+        public void SetEmployeeExperienceTypeAsCleaner_Experienced()
+        {
+            this.EmployeeType = EmployeeExperienceTypeEnum.GetConformityEnumValue(
+                    EmployeeExperienceTypeEnum.EmployeeExperienceType.Experienced
+                );
+        }
+
+
+        public void DefineEmployeeExperienceType() 
+        {
+            if (InternshipDaysInCurentHotel > 182)
+            {
+                SetEmployeeExperienceTypeAsCleaner_Experienced();
+            }
+            else 
+            {
+                SetEmployeeExperienceTypeAsCleaner_Apprentice();
+            }
+        }
+
         private static Person CreatePerson(string firstName, string secondName)
         {
             return new Person { 
@@ -206,6 +318,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             employee.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
             employee.HourRate = hourRate;
             employee.LastDateChangeRate = lastDateChangeRate;
+            employee.DefineEmployeeExperienceType();
             if (placeWorks.Length + employee.PlaceWorks.Count > Person.EpmloyeeMaxPlaceWorkQuantity) 
             {
                 throw new Exception("Employee can't have more than " + Person.EpmloyeeMaxPlaceWorkQuantity +"; You should remove some PlaceWork before additing new.");
@@ -219,18 +332,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         {
             
             var director = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
-            director.EmployeeType = EmployeeTypeEnum.EmployeeType.Director;
-            director.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
-            director.HourRate = hourRate;
-            director.LastDateChangeRate = lastDateChangeRate;
-            if (placeWorks.Length + director.PlaceWorks.Count > Person.EpmloyeeMaxPlaceWorkQuantity)
-            {
-                throw new Exception("Eployee can't have more than " + Person.EpmloyeeMaxPlaceWorkQuantity + "; You should remove some PlaceWork before additing new.");
-            }
-            for (int i = 0; i < placeWorks.Length; i++)
-            {
-                director.PlaceWorks.Add(placeWorks[i]);
-            }
+            director.SetEmployeeTypeAsDirector();
             return director;
             
         }

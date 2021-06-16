@@ -8,7 +8,7 @@ namespace MAS_semestral_project_MVS.Models.Enums
     {
         public enum EmployeeExperienceType
         {
-            Apprentice= 0,
+            Apprentice  = 0,
             Experienced = 1
         }
         private readonly static string[] EmployeeExperienceTypeInString = { "Apprentice", "Experienced" };
@@ -16,7 +16,7 @@ namespace MAS_semestral_project_MVS.Models.Enums
         {
         }
 
-        public string GetConformityEnumValue(EmployeeExperienceType enumValue)
+        public static string GetConformityEnumValue(EmployeeExperienceType enumValue)
         {
             return EmployeeExperienceTypeInString[(int)enumValue];
         }
