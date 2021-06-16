@@ -8,7 +8,7 @@ INSERT INTO ClassAttributesInColumn (
     Cleaner_Receptionist__MaxHourRate  ,
     CleanerMaxToolsQuantity
 )
-VALUES(1, NULL,NULL,NULL,NULL,NULL,NULL);
+VALUES(1, 100,4500,2500,3000,4700,3);
 
 -- Set statistic values.
 
