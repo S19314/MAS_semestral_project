@@ -7,17 +7,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using MAS_semestral_project_MVS.Services;
 
 namespace MAS_semestral_project_MVS.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MAS_semestralContext dbContext = new MAS_semestralContext();
+        private readonly IDataBaseService dataBaseService;
+            // MAS_semestralContext dbContext = new MAS_semestralContext();
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IDataBaseService service)
         {
             _logger = logger;
+            dataBaseService = service;
         }
 
         public IActionResult Index()

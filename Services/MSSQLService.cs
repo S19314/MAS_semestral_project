@@ -6,7 +6,7 @@ using MAS_semestral_project_MVS.DataBaseModels;
 
 namespace MAS_semestral_project_MVS.Services
 {
-    public class MSSQLService : IDataBbaseService
+    public class MSSQLService : IDataBaseService
     {
 
         public MAS_semestralContext dbContext { get; set; }

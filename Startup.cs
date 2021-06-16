@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 using System;
 using System.Reflection;
 using System.IO;
-
+using MAS_semestral_project_MVS.Services;
+using MAS_semestral_project_MVS.DataBaseModels;
 
 namespace MAS_semestral_project_MVS
 {
@@ -27,7 +28,11 @@ namespace MAS_semestral_project_MVS
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IDataBaseService, MSSQLService>();
+            // services.AddScoped<IDataBaseService, MSSQLService>();
+            services.AddDbContext<MAS_semestralContext>();
             services.AddControllersWithViews();
+
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

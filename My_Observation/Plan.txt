@@ -14,7 +14,7 @@ TO DO:
 
 ________________________
 Next git commit message:
-1.  Create Folder "Services" with service interface and MSSQLService class.
+
 
 ______________________________________
 Примечание:
