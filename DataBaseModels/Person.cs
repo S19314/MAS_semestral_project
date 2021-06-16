@@ -97,7 +97,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             employee.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
             employee.HourRate = hourRate;
             employee.LastDateChangeRate = lastDateChangeRate;
-            throw new NotImplementedException("1.set placeWorks; 2. Set EmployeeType(create own \"Construct\"")
+            throw new NotImplementedException("1.set placeWorks; 2. Set EmployeeType(create own \"Construct\"");
             // employee.
             return employee;
         }

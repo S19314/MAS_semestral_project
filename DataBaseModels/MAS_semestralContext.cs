@@ -29,7 +29,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<PlaceWork> PlaceWorks { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
-
+        public virtual DbSet<ClassAttributesInColumn> ClassAttributesInColumns { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -332,6 +333,26 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .IsRequired()
                     .HasMaxLength(60)
                     .IsUnicode(false);
+            });
+            modelBuilder.HasAnnotation("Relational:Collation", "Cyrillic_General_CI_AS");
+
+            modelBuilder.Entity<ClassAttributesInColumn>(entity =>
+            {
+                entity.ToTable("ClassAttributesInColumn");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.CleanerMaxHourRate).HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.CleanerReceptionistMaxHourRate)
+                    .HasColumnType("decimal(10, 2)")
+                    .HasColumnName("Cleaner_Receptionist__MaxHourRate");
+
+                entity.Property(e => e.DirectorMaxHourRate).HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.EmployeeMaxHourRate).HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.ReceptionistMaxHourRate).HasColumnType("decimal(10, 2)");
             });
 
             OnModelCreatingPartial(modelBuilder);
