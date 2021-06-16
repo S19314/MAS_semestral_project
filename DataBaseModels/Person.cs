@@ -332,13 +332,16 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             }
             return employee;
         }
-        public static Person CreateDirector(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
+        private static Person ConfigurationDirectorDuringCreation(Person director)
         {
-
-            var director = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
             director.SetEmployeeTypeAsDirector();
             return director;
-
+        }
+        public static Person CreateDirector(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
+        {
+            var director = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
+            director = Person.ConfigurationDirectorDuringCreation(director);
+            return director;
         }
 
         private static Person ConfigurationCleanerDuringCreation(Person cleaner, CleaningTool[] cleaningTools)
