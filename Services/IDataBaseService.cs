@@ -14,6 +14,13 @@ namespace MAS_semestral_project_MVS.Services
         public decimal? GetCleanerMaxHourRateFromClassAttributesInColumn();
         public decimal? GetReceptionistMaxHourRateFromClassAttributesInColumn();
         public decimal? GetCleanerReceptionistMaxHourRateFromClassAttributesInColumn();
-        public decimal? GetCleanerMaxToolsQuantityFromClassAttributesInColumn();
+        public int? GetCleanerMaxToolsQuantityFromClassAttributesInColumn();
+    
+        public void SetEmployeeMaxHourRateFromClassAttributesInColumn(decimal maxHourRate);
+        public void SetDirectorMaxHourRateFromClassAttributesInColumn(decimal maxHourRate);
+        public void SetCleanerMaxHourRateFromClassAttributesInColumn(decimal maxHourRate);
+        public void SetReceptionistMaxHourRateFromClassAttributesInColumn(decimal maxHourRate);
+        public void SetCleanerReceptionistMaxHourRateFromClassAttributesInColumn(decimal maxHourRate);
+        public int? SetCleanerMaxToolsQuantityFromClassAttributesInColumn(int maxToolQuantity);
     }
 }

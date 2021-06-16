@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MAS_semestral_project_MVS.DataBaseModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace MAS_semestral_project_MVS.Services
 {
@@ -46,9 +47,59 @@ namespace MAS_semestral_project_MVS.Services
             return dbContext.ClassAttributesInColumns.Select(e => e.CleanerReceptionistMaxHourRate).First();            
         }
         
-        public decimal? GetCleanerMaxToolsQuantityFromClassAttributesInColumn() 
+        public int? GetCleanerMaxToolsQuantityFromClassAttributesInColumn() 
         {
             return dbContext.ClassAttributesInColumns.Select(e => e.CleanerMaxToolsQuantity).First();            
         }
+
+        public void SetEmployeeMaxHourRateFromClassAttributesInColumn(decimal maxHourRate) 
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.EmployeeMaxHourRate = maxHourRate;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+        public void SetDirectorMaxHourRateFromClassAttributesInColumn(decimal maxHourRate)
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.DirectorMaxHourRate = maxHourRate;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+        public void SetCleanerMaxHourRateFromClassAttributesInColumn(decimal maxHourRate)
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.CleanerMaxHourRate = maxHourRate;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+        public void SetReceptionistMaxHourRateFromClassAttributesInColumn(decimal maxHourRate)
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.ReceptionistMaxHourRate = maxHourRate;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+        public void SetCleanerReceptionistMaxHourRateFromClassAttributesInColumn(decimal maxHourRate)
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.CleanerReceptionistMaxHourRate = maxHourRate;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+        public void SetCleanerMaxToolsQuantityFromClassAttributesInColumn(int maxToolQuantity)
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.CleanerMaxToolsQuantity = maxToolQuantity;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+
     }
 }

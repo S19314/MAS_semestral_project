@@ -31,7 +31,26 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public string PassportData { get; set; }
         public string PhoneNumber { get; set; }
         public int? InternshipDaysInCurentHotel { get; set; }
-        public decimal? HourRate { get; set; }
+        private decimal? hourRate;
+        public decimal? HourRate 
+        {
+            get 
+            {
+                return hourRate;  
+            }
+            set 
+            {
+                if (value > MaxHourRate)
+                {
+                    throw new Exception("New HourRate can't bigger than MaxHourRate.");
+                }
+                else 
+                {
+                    hourRate = value;
+                }
+
+            }
+        }
         public DateTime? LastDateChangeRate { get; set; }
         public string WorkShift { get; set; }
         public int? CleaningGroupIdGroup { get; set; }
@@ -40,7 +59,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         
         /// TO DO add get/set guction 1->*
         
-        public decimal MaxHourRate;
+        public decimal MaxHourRate; // static!!!
         /* 
         {
             get 
@@ -53,6 +72,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             }
         }
         */
+        public int CleanerMaxToolsQuantity 
+        {
+            get { return (int)DataBaseService.GetCleanerMaxToolsQuantityFromClassAttributesInColumn();  }
+            set { }
+        }
+
         public virtual CleaningGroup CleaningGroupIdGroupNavigation { get; set; }
         public virtual ICollection<CleaningTool> CleaningTools { get; set; }
         public virtual ICollection<CustomerConversation> CustomerConversationClientIdOsobaNavigations { get; set; }

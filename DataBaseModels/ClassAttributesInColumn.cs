@@ -14,5 +14,9 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public decimal? ReceptionistMaxHourRate { get; set; }
         public decimal? CleanerReceptionistMaxHourRate { get; set; }
         public int? CleanerMaxToolsQuantity { get; set; }
+        public int? EpmloyeeMaxPlaceWorkQuantity { get; set; }
+        public int? ReceptionistMaxKnowedLanguages { get; set; }
+        public int? ReceptionistMinKnowedLanguages { get; set; }
+
     }
 }
