@@ -371,11 +371,11 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             this.LanguageEmployees.Add(languageEmployee);
         }
 
-        public static Person CreateReceptionist(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
-        {
-            var receptionist = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
-            receptionist.SetEmployeeTypeAsReceptionist();
         
+        private static Person ConfigurationReceptionistDuringCreation(Person receptionist, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift) 
+        {
+            receptionist.SetEmployeeTypeAsReceptionist();
+
             if (knowedLanguages.Length + receptionist.CleaningTools.Count > Person.ReceptionistMaxKnowedLanguages)
             {
                 throw new Exception("Employee can't have more than " + Person.ReceptionistMaxKnowedLanguages + "; You should remove some CleaningTools before additing new.");
@@ -387,18 +387,37 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             receptionist.WorkShift = workShift;
             return receptionist;
         }
-
-        public static Person CreatePracownik_Client (string firstName, string secondName, string passportData, string phoneNumber)
+        public static Person CreateReceptionist(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
         {
-            throw new NotImplementedException("        public static Person CreatePracownik_Client (string firstName, string secondName, string passportData, string phoneNumber)");
-            var client = CreatePerson(firstName, secondName);
-            client.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
-                RelationWithCompanyEnum.RelationWithCompany.Client
-                );
+            var receptionist = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
+            receptionist = ConfigurationReceptionistDuringCreation(receptionist, placeWorks, knowedLanguages, workShift);
+            return receptionist;
+        }
+        public static Person CreateReceptionist_Client(string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
+        {
+            var receptionist_client = CreateEmployee_Client(firstName, secondName, passportData, phoneNumber, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks);
+            receptionist_client = ConfigurationReceptionistDuringCreation(receptionist_client, placeWorks, knowedLanguages, workShift);
+            return receptionist_client;
+        }
+
+        /*
+        public static Person CreateEmployee_Client (string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
+        {
+            var recepctionist = Person.CreateReceptionist(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate,  placeWorks, knowedLanguages, workShift);
+
+            recepctionist.SetRelationWithCompanyAsClient_Employee();
             client.PassportData = passportData;
             client.PhoneNumber = phoneNumber;
             return client;
         }
-
+        */
+        private static Person CreateEmployee_Client(string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
+        {
+            var employee = Person.CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
+            employee.SetRelationWithCompanyAsClient_Employee();
+            employee.PassportData = passportData;
+            employee.PhoneNumber = phoneNumber;
+            return employee;
+        }
     }
 }
