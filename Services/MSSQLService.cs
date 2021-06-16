@@ -125,5 +125,101 @@ namespace MAS_semestral_project_MVS.Services
             dbContext.Entry(staticValues).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
+        private bool ValidationAddKnownLanguagePartPerson(Person person) 
+        {
+            if (person.Equals(null))
+            {
+                throw new Exception("Person can't be null.");
+            }
+            if (!person.IsEmployee())
+            {
+                throw new Exception("Only Employee can add knowedLanguage");
+            }
+            if (person.LanguageEmployees.Count + 1 > Person.ReceptionistMaxKnowedLanguages)
+            {
+                throw new Exception("Employee can't have more than " + Person.ReceptionistMaxKnowedLanguages + " knowedLanguage.");
+            }
+            return true;
+        }
+        private bool ValidationAddKnownLanguagePartKnowedLanguage(KnowedLanguage knowedLanguage) 
+        {
+            if (knowedLanguage.Equals(null))
+            {
+                throw new Exception("KnowedLanguage can't be null.");
+            }
+            return true;
+        }
+        private bool ValidationAddKnownLanguage(Person person, KnowedLanguage knowedLanguage) 
+        {
+            var validated = ValidationAddKnownLanguagePartPerson(person) &&
+                            ValidationAddKnownLanguagePartKnowedLanguage(knowedLanguage);
+            return validated;
+        }
+        
+        public void AddKnownLanguage(Person person, KnowedLanguage knowedLanguage) 
+        {
+            ValidationAddKnownLanguage(person, knowedLanguage);
+            var languageEmployee = new LanguageEmployee 
+            {
+                KnowedLanguageIdLanguage = knowedLanguage.IdLanguage, 
+                KnowedLanguageIdLanguageNavigation = knowedLanguage,
+                OsobaIdOsoba = person.IdOsoba,
+                OsobaIdOsobaNavigation = person
+            };
+            dbContext.LanguageEmployees.Add(languageEmployee);
+            dbContext.Entry(languageEmployee).State = EntityState.Added;
+            dbContext.SaveChanges();
+        }
+
+        private bool ValidationRemoveKnownLanguagePartPerson(Person person)
+        {
+            if (person.Equals(null))
+            {
+                throw new Exception("Person can't be null.");
+            }
+            if (!person.IsEmployee())
+            {
+                throw new Exception("Only Employee can add knowedLanguage");
+            }
+            if (person.LanguageEmployees.Count - 1 < Person.ReceptionistMinKnowedLanguages)
+            {
+                throw new Exception("Employee can't have less than " + Person.ReceptionistMinKnowedLanguages + " knowedLanguage.");
+            }
+            return true;
+        }
+        private bool ValidationRemoveKnownLanguagePartKnowedLanguage(KnowedLanguage knowedLanguage)
+        {
+            if (knowedLanguage.Equals(null))
+            {
+                throw new Exception("KnowedLanguage can't be null.");
+            }
+            return true;
+        }
+        private bool ValidationAddKnownLanguagePartLanguageEmployee(LanguageEmployee languageEmployee)
+        {
+            if (languageEmployee.Equals(null))
+            {
+                throw new Exception("LanguageEmployee can't be null.");
+            }
+            return true;
+        }
+        
+        private bool ValidationRemoveKnownLanguage(LanguageEmployee languageEmployee)
+        {
+            var person = languageEmployee.OsobaIdOsobaNavigation;
+            var knowedLanguage = languageEmployee.KnowedLanguageIdLanguageNavigation;
+            var validated = ValidationAddKnownLanguagePartPerson(person) &&
+                            ValidationAddKnownLanguagePartKnowedLanguage(knowedLanguage) &&
+                            ValidationAddKnownLanguagePartLanguageEmployee(languageEmployee)
+                            ;
+            return validated;
+        }
+        public void RemoveKnownLanguage(LanguageEmployee languageEmployee)
+        {
+            ValidationRemoveKnownLanguage(languageEmployee);
+            dbContext.LanguageEmployees.Remove(languageEmployee);
+            dbContext.Entry(languageEmployee).State = EntityState.Deleted;
+            dbContext.SaveChanges();
+        }
     }
 }

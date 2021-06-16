@@ -109,6 +109,11 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; } 
         public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
 
+        public bool IsEmployee() 
+        {
+            return RelationWithCompanyEnum.IsEmployee(RelationWithCompany);
+        }
+
         private static Person CreatePerson(string firstName, string secondName)
         {
             return new Person { 

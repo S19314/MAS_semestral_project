@@ -23,6 +23,35 @@ namespace MAS_semestral_project_MVS.Models.Enums
             // return  (string)RelationInString.GetValue(((int)enumValue));
             return RelationInString[(int)enumValue];
         }
+        public static string GetConformityEnumValue(string enumValue)
+        {
+            // return  (string)RelationInString.GetValue(((int)enumValue));
 
+            for (int i = 0; i < RelationInString.Length; i++) 
+            {
+                if (RelationInString[i].Equals(enumValue)) 
+                {
+                    return RelationInString[i];
+                }
+            }
+            throw new Exception("Enum doesn't exist that equals string: " + enumValue);
+        }
+
+        public static bool IsEmployee(string enumValue)
+        { 
+            if (RelationInString[1].Equals(enumValue) || RelationInString[2].Equals(enumValue))
+            {
+                return true;
+            }  
+            return false;
+        }
+        public static bool IsClient(string enumValue)
+        {
+            if (RelationInString[0].Equals(enumValue))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
