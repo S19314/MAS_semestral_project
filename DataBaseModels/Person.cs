@@ -32,19 +32,19 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public string PhoneNumber { get; set; }
         public int? InternshipDaysInCurentHotel { get; set; }
         private decimal? hourRate;
-        public decimal? HourRate 
+        public decimal? HourRate
         {
-            get 
+            get
             {
-                return hourRate;  
+                return hourRate;
             }
-            set 
+            set
             {
                 if (value > MaxHourRate)
                 {
                     throw new Exception("New HourRate can't bigger than MaxHourRate.");
                 }
-                else 
+                else
                 {
                     hourRate = value;
                 }
@@ -55,23 +55,56 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public string WorkShift { get; set; }
         public int? CleaningGroupIdGroup { get; set; }
 
-
-        
-        /// TO DO add get/set guction 1->*
-        
-        public decimal MaxHourRate; // static!!!
-        /* 
+        public decimal MaxHourRate
         {
             get 
             {
-                return ;   // Заглушка     
+                if(IsEmployee())
+                {
+                    if(EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner))) 
+                    {
+                        return (decimal)DataBaseService.GetCleanerMaxHourRateFromClassAttributesInColumn();
+                    }
+                    if(EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner_Receptionist))) 
+                    {
+                        return (decimal)DataBaseService.GetCleanerReceptionistMaxHourRateFromClassAttributesInColumn();
+                    }
+                    if(EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Director))) 
+                    {
+                        return (decimal)DataBaseService.GetDirectorMaxHourRateFromClassAttributesInColumn();
+                    }
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Receptionist)))
+                    {
+                        return (decimal)DataBaseService.GetReceptionistMaxHourRateFromClassAttributesInColumn();
+                    }
+                }
+            throw new Exception("This object doesn't have permission for this property.");
             }
             set 
             {
-                maxHourRateCleaner = value; // Заглушка
+                if (IsEmployee())
+                {
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner)))
+                    {
+                        DataBaseService.SetCleanerMaxHourRateFromClassAttributesInColumn(value);
+                    }
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Cleaner_Receptionist)))
+                    {
+                        DataBaseService.SetCleanerReceptionistMaxHourRateFromClassAttributesInColumn(value);
+                    }
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Director)))
+                    {
+                        DataBaseService.SetDirectorMaxHourRateFromClassAttributesInColumn(value);
+                    }
+                    if (EmployeeType.Equals(EmployeeTypeEnum.GetConformityEnumValue(EmployeeTypeEnum.EmployeeType.Receptionist)))
+                    {
+                        DataBaseService.SetReceptionistMaxHourRateFromClassAttributesInColumn(value);
+                    }
+                }
+                throw new Exception("This object doesn't have permission for this property.");
             }
         }
-        */
+        
         
         public static int CleanerMaxToolsQuantity 
         {
@@ -112,6 +145,11 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public bool IsEmployee() 
         {
             return RelationWithCompanyEnum.IsEmployee(RelationWithCompany);
+        }
+        
+        public bool IsClient() 
+        {
+            return RelationWithCompanyEnum.IsClient(RelationWithCompany);
         }
 
         private static Person CreatePerson(string firstName, string secondName)

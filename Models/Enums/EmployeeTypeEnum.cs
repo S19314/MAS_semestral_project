@@ -18,7 +18,7 @@ namespace MAS_semestral_project_MVS.Models.Enums
         {
         }
 
-        public string GetConformityEnumValue(EmployeeType enumValue)
+        public static string GetConformityEnumValue(EmployeeType enumValue)
         {
             // return  (string)EmployeeTypeInString.GetValue(((int)enumValue));
             return EmployeeTypeInString[(int)enumValue];
