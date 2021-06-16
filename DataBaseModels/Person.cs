@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using MAS_semestral_project_MVS.Models.Enums;
+using MAS_semestral_project_MVS.DataBaseModels;
+using MAS_semestral_project_MVS.Services;
+
 #nullable disable
 
 namespace MAS_semestral_project_MVS.DataBaseModels
 {
     public partial class Person
     {
+        public static IDataBaseService DataBaseService { get; set; }
         public Person()
         {
             CleaningTools = new HashSet<CleaningTool>();
@@ -31,25 +35,24 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public DateTime? LastDateChangeRate { get; set; }
         public string WorkShift { get; set; }
         public int? CleaningGroupIdGroup { get; set; }
-        // TO DO 
-        // add in DB
-        private static decimal maxHourRateDirector; 
-        private static decimal maxHourRateCleaner; 
-        private static decimal maxHourRateReceptionist; 
-        private static decimal maxHourRateCleaner_Receptionist;
-        private static HashSet<decimal> maxHourRates = new HashSet<decimal>(); // ?
-        public decimal MaxHourRate 
+
+
+        
+        /// TO DO add get/set guction 1->*
+        
+        public decimal MaxHourRate;
+        /* 
         {
             get 
             {
-                return maxHourRateCleaner;   // Заглушка     
+                return ;   // Заглушка     
             }
             set 
             {
                 maxHourRateCleaner = value; // Заглушка
             }
         }
-
+        */
         public virtual CleaningGroup CleaningGroupIdGroupNavigation { get; set; }
         public virtual ICollection<CleaningTool> CleaningTools { get; set; }
         public virtual ICollection<CustomerConversation> CustomerConversationClientIdOsobaNavigations { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using MAS_semestral_project_MVS.Services;
 
 #nullable disable
 
@@ -10,11 +11,13 @@ namespace MAS_semestral_project_MVS.DataBaseModels
     {
         public MAS_semestralContext()
         {
+            
         }
 
         public MAS_semestralContext(DbContextOptions<MAS_semestralContext> options)
             : base(options)
         {
+            
         }
 
         public virtual DbSet<ClassAttribute> ClassAttributes { get; set; }
@@ -359,5 +362,13 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        /// <summary>
+        /// It is a configuation method for initialization static variables in objects. Value for static variables storing in Data Base. That why we should this method during initialization DataContext in DataBaseService.
+        /// </summary>
+        /// <param name="dataBaseService"></param>
+        public void SetServiceInEntities(IDataBaseService dataBaseService)
+        {
+            Person.DataBaseService = dataBaseService;
+        }
     }
 }

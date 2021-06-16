@@ -13,6 +13,7 @@ namespace MAS_semestral_project_MVS.Services
         public MSSQLService(MAS_semestralContext context)
         {
             dbContext = context;
+            dbContext.SetServiceInEntities(this);
         }
 
         public ClassAttributesInColumn GetClassAttributesInColumn()
