@@ -13,7 +13,7 @@ namespace MAS_semestral_project_MVS.Models.Enums
             Receptionist = 2,
             Cleaner_Receptionist = 3
         }
-        private readonly string[] EmployeeTypeInString = { "Director", "Cleaner", "Receptionist", "Cleaner-Receptionist"};
+        private static readonly string[] EmployeeTypeInString = { "Director", "Cleaner", "Receptionist", "Cleaner-Receptionist"};
         public EmployeeTypeEnum()
         {
         }

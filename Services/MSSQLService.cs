@@ -51,7 +51,18 @@ namespace MAS_semestral_project_MVS.Services
         {
             return dbContext.ClassAttributesInColumns.Select(e => e.CleanerMaxToolsQuantity).First();            
         }
-
+        public int? GetEpmloyeeMaxPlaceWorkQuantity() 
+        {
+            return dbContext.ClassAttributesInColumns.First().EpmloyeeMaxPlaceWorkQuantity.Value;
+        }
+        public int? GetReceptionistMaxKnowedLanguages() 
+        {
+            return dbContext.ClassAttributesInColumns.First().ReceptionistMaxKnowedLanguages.Value;
+        }
+        public int? GetReceptionistMinKnowedLanguages()
+        {
+            return dbContext.ClassAttributesInColumns.First().ReceptionistMinKnowedLanguages.Value;
+        }
         public void SetEmployeeMaxHourRateFromClassAttributesInColumn(decimal maxHourRate) 
         {
             var staticValues = GetClassAttributesInColumn();
