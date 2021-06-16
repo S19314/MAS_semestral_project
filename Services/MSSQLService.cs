@@ -101,5 +101,29 @@ namespace MAS_semestral_project_MVS.Services
             dbContext.SaveChanges();
         }
 
+        public void SetEpmloyeeMaxPlaceWorkQuantity(int maxPlaceWorkQuantity) 
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.EpmloyeeMaxPlaceWorkQuantity = maxPlaceWorkQuantity;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+        public void SetReceptionistMaxKnowedLanguages(int maxKnowedLanguages)
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.ReceptionistMaxKnowedLanguages = maxKnowedLanguages;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
+        public void SetReceptionistMinKnowedLanguages(int minKnowedLanguages)
+        {
+            var staticValues = GetClassAttributesInColumn();
+            staticValues.ReceptionistMinKnowedLanguages = minKnowedLanguages;
+            /// Information about update for other future Contexts.
+            dbContext.Entry(staticValues).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
     }
 }

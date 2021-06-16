@@ -72,10 +72,10 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             }
         }
         */
-        public int CleanerMaxToolsQuantity 
+        public static int CleanerMaxToolsQuantity 
         {
             get { return (int)DataBaseService.GetCleanerMaxToolsQuantityFromClassAttributesInColumn();  }
-            set { }
+            set { DataBaseService.SetCleanerMaxToolsQuantityFromClassAttributesInColumn(value);  }
         }
 
         public virtual CleaningGroup CleaningGroupIdGroupNavigation { get; set; }
