@@ -343,6 +343,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             director = Person.ConfigurationDirectorDuringCreation(director);
             return director;
         }
+        public static Person CreateDirector(string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks)
+        {
+            var director = CreateEmployee_Client(firstName, secondName, passportData, phoneNumber, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks);
+            director = Person.ConfigurationDirectorDuringCreation(director);
+            return director;
+        }
 
         private static Person ConfigurationCleanerDuringCreation(Person cleaner, CleaningTool[] cleaningTools)
         {
