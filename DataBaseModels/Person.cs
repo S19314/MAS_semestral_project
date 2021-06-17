@@ -301,12 +301,13 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             client.PhoneNumber = phoneNumber;
             return client;
         }
-
+        
+        
 
         /// TO DO: ДОбавить: 1. статические поля; 2. Как статическое поле сделать ограничение количества последних мест работы.
 
         /// <summary>
-        ///  
+        ///  Move definition HorRate from CreatingEmployee to creating specefic EmployeeType, because - MaxHourRate depenends of EmployeeType. MaxHourRate influence on Hour Rate.
         /// </summary>
         /// <param name="firstName"></param>
         /// <param name="secondName"></param>
@@ -399,7 +400,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         {
             receptionist.SetEmployeeTypeAsReceptionist();
             receptionist.HourRate = hourRate;
-            if (knowedLanguages.Length + receptionist.CleaningTools.Count > Person.ReceptionistMaxKnowedLanguages)
+            if (knowedLanguages.Length + receptionist.LanguageEmployees.Count > Person.ReceptionistMaxKnowedLanguages)
             {
                 throw new Exception("Employee can't have more than " + Person.ReceptionistMaxKnowedLanguages + "; You should remove some CleaningTools before additing new.");
             }
@@ -416,11 +417,41 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             receptionist = ConfigurationReceptionistDuringCreation(receptionist, hourRate, knowedLanguages, workShift);
             return receptionist;
         }
+        private static Person ConfigurationReceptionist_CleanerDuringCreation(Person receptionist_cleaner, decimal hourRate, KnowedLanguage[] knowedLanguages, string workShift, CleaningTool[] cleaningTools)
+        {
+            receptionist_cleaner.SetEmployeeTypeAsCleaner_Receptionist();
+            receptionist_cleaner.HourRate = hourRate;
+            if (knowedLanguages.Length + receptionist_cleaner.LanguageEmployees.Count > Person.ReceptionistMaxKnowedLanguages)
+            {
+                throw new Exception("Employee can't have more than " + Person.ReceptionistMaxKnowedLanguages + "; You should remove some CleaningTools before additing new.");
+            }
+            for (int i = 0; i < knowedLanguages.Length; i++)
+            {
+                receptionist_cleaner.AddConnectionBetweenPersonAndKnowedLanguage(knowedLanguages[i]);
+            }
+            receptionist_cleaner.WorkShift = workShift;
+            if (cleaningTools.Length + receptionist_cleaner.CleaningTools.Count > Person.CleanerMaxToolsQuantity)
+            {
+                throw new Exception("Employee can't have more than " + Person.CleanerMaxToolsQuantity + "; You should remove some CleaningTools before additing new.");
+            }
+            for (int i = 0; i < cleaningTools.Length; i++)
+            {
+                receptionist_cleaner.CleaningTools.Add(cleaningTools[i]);
+            }
 
-        public static Person CreateReceptionist_Cleaner(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
+            return receptionist_cleaner;
+        }
+
+        public static Person CreateReceptionist_Cleaner(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift, CleaningTool[] cleaningTools)
         {
             var receptionist = CreateEmployee(firstName, secondName, internshipDaysInCurentHotel, lastDateChangeRate, placeWorks);
-            receptionist = ConfigurationReceptionistDuringCreation(receptionist, hourRate, knowedLanguages, workShift);
+            receptionist = ConfigurationReceptionist_CleanerDuringCreation(receptionist, hourRate, knowedLanguages, workShift, cleaningTools);
+            return receptionist;
+        }
+        public static Person CreateReceptionist_Cleaner_Client(string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift, CleaningTool[] cleaningTools)
+        {
+            var receptionist = CreateEmployee_Client(firstName, secondName, passportData, phoneNumber, internshipDaysInCurentHotel, lastDateChangeRate, placeWorks);
+            receptionist = ConfigurationReceptionist_CleanerDuringCreation(receptionist, hourRate, knowedLanguages, workShift, cleaningTools);
             return receptionist;
         }
         public static Person CreateReceptionist_Client(string firstName, string secondName, string passportData, string phoneNumber, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
