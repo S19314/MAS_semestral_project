@@ -39,6 +39,7 @@ namespace MAS_semestral_project_MVS.Controllers
         /// <returns></returns>
         public IActionResult Clients()
         {
+
            return View();
         }
 
