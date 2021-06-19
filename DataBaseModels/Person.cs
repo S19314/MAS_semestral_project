@@ -23,7 +23,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
 
         public int IdOsoba { get; set; }
-        public string relationWithCompany;
+        private string relationWithCompany;
         public string RelationWithCompany
         {
             get { return relationWithCompany; }
@@ -36,7 +36,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 relationWithCompany = value;
             }
         }
-        public string employeeType;
+        private string employeeType;
 
         public string EmployeeType
         {
@@ -61,8 +61,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 employeeType = value;
             }
         }
-        public string employeeExperienceType;
-
+        private string employeeExperienceType;
         public string EmployeeExperienceType
         {
             get {
@@ -87,9 +86,78 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
-        public string PassportData { get; set; }
-        public string PhoneNumber { get; set; }
-        public int? InternshipDaysInCurentHotel { get; set; }
+        private string passportData;
+        public string PassportData 
+        {
+            get
+            {
+                if (!IsClient())
+                {
+                    throw new Exception("This type of object have no permission for access to Client property.");
+                }
+                return passportData;
+            }
+            set
+            {
+                if (!IsClient())
+                {
+                    throw new Exception("This type of object have no permission for access to Client property.");
+                }
+                if (!RelationWithCompanyEnum.Contains(relationWithCompany))
+                {
+                    throw new Exception("Unsupported RelationWithCompanyEnum.");
+                }
+                passportData = value;
+            }
+        }
+        private string phoneNumber;
+        public string PhoneNumber {
+            get
+            {
+                if (!IsClient())
+                {
+                    throw new Exception("This type of object have no permission for access to Client property.");
+                }
+                return phoneNumber;
+            }
+            set
+            {
+                if (!IsClient())
+                {
+                    throw new Exception("This type of object have no permission for access to Client property.");
+                }
+                if (!RelationWithCompanyEnum.Contains(relationWithCompany))
+                {
+                    throw new Exception("Unsupported RelationWithCompanyEnum.");
+                }
+                phoneNumber = value;
+            }
+        }
+        private int? internshipDaysInCurentHotel;
+
+        public int? InternshipDaysInCurentHotel 
+        {
+            get
+            {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                return internshipDaysInCurentHotel;
+            }
+            set
+            {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                if (!EmployeeExperienceTypeEnum.Contains(employeeType))
+                {
+                    throw new Exception("Unsupported EmployeeType.");
+                }
+                internshipDaysInCurentHotel = value;
+            }
+        }
         private decimal? hourRate;
         public decimal? HourRate
         {
@@ -110,11 +178,74 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 hourRate = value;
             }
         }
-        public DateTime? LastDateChangeRate { get; set; }
-        public string WorkShift { get; set; }
-        public int? CleaningGroupIdGroup { get; set; }
+        private DateTime? lastDateChangeRate;
+        public DateTime? LastDateChangeRate 
+        {
+            get
+            {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                return lastDateChangeRate;
+            }
+            set
+            {
+                if (!IsEmployee())
+                {
+                    throw new Exception("This type of object have no permission for access EmployeeType property.");
+                }
+                if (!EmployeeExperienceTypeEnum.Contains(employeeType))
+                {
+                    throw new Exception("Unsupported EmployeeType.");
+                }
+                lastDateChangeRate = value;
+            }
+        }
+        private string workShift;
+        public string WorkShift 
+        {
+            get
+            {
+                if (!IsReceptionist())
+                {
+                    throw new Exception("This type of object have no permission for access to Receptionist property.");
+                }
+                return workShift;
+            }
+            set
+            {
+                if (!IsReceptionist())
+                {
+                    throw new Exception("This type of object have no permission for access to Receptionist property.");
+                }
+
+                workShift = value;
+            }
+        }
+        private int? cleaningGroupIdGroup;
+        public int? CleaningGroupIdGroup 
+        {
+            get
+            {
+                if (!IsCleaner())
+                {
+                    throw new Exception("This type of object have no permission for access to Cleaner property.");
+                }
+                return cleaningGroupIdGroup;
+            }
+            set
+            {
+                if (!IsCleaner())
+                {
+                    throw new Exception("This type of object have no permission for access to Cleaner property.");
+                }
+
+                cleaningGroupIdGroup = value;
+            }
+        }
         /// <summary>
-        /// Property that depends on type of Person.
+        /// Property that depends on type   of Person.
         /// </summary>
         public decimal MaxHourRate
         {
@@ -209,6 +340,15 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public bool IsEmployee()
         {
             return RelationWithCompanyEnum.IsEmployee(RelationWithCompany);
+        }
+        public bool IsReceptionist()
+        {
+            return EmployeeTypeEnum.IsReceptionist(RelationWithCompany);
+        }
+
+        public bool IsCleaner()
+        {
+            return EmployeeTypeEnum.IsCleaner(RelationWithCompany);
         }
 
         public bool IsClient()

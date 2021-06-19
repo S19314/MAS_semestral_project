@@ -35,5 +35,24 @@ namespace MAS_semestral_project_MVS.Models.Enums
             }
             return false;
         }
+
+        public static bool IsReceptionist(string enumValue)
+        {
+            if (EmployeeTypeInString[2].Equals(enumValue) || EmployeeTypeInString[3].Equals(enumValue))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+        public static bool IsCleaner(string enumValue)
+        {
+            if (EmployeeTypeInString[1].Equals(enumValue) || EmployeeTypeInString[3].Equals(enumValue))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
