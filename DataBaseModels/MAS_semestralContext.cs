@@ -33,7 +33,11 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual DbSet<PlaceWork> PlaceWorks { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<ClassAttributesInColumn> ClassAttributesInColumns { get; set; }
-        
+
+        public virtual DbSet<ConnectionItemPage> ConnectionItemPages { get; set; }
+        public virtual DbSet<MenuBarItem> MenuBarItems { get; set; }
+        public virtual DbSet<WebPage> WebPages { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -358,6 +362,57 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 entity.Property(e => e.ReceptionistMaxHourRate).HasColumnType("decimal(10, 2)");
             });
 
+            modelBuilder.Entity<ConnectionItemPage>(entity =>
+            {
+                entity.HasKey(e => new { e.MenuBarItemIdMenuBarItem, e.WebPageIdWebPage })
+                    .HasName("ConnectionItemPage_pk");
+
+                entity.ToTable("ConnectionItemPage");
+
+                entity.Property(e => e.MenuBarItemIdMenuBarItem).HasColumnName("MenuBarItem_IdMenuBarItem");
+
+                entity.Property(e => e.WebPageIdWebPage).HasColumnName("WebPage_IdWebPage");
+
+                entity.HasOne(d => d.MenuBarItemIdMenuBarItemNavigation)
+                    .WithMany(p => p.ConnectionItemPages)
+                    .HasForeignKey(d => d.MenuBarItemIdMenuBarItem)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Table_18_MenuBarItem");
+
+                entity.HasOne(d => d.WebPageIdWebPageNavigation)
+                    .WithMany(p => p.ConnectionItemPages)
+                    .HasForeignKey(d => d.WebPageIdWebPage)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Table_18_WebPage");
+            });
+            modelBuilder.Entity<MenuBarItem>(entity =>
+            {
+                entity.HasKey(e => e.IdMenuBarItem)
+                    .HasName("MenuBarItem_pk");
+
+                entity.ToTable("MenuBarItem");
+
+                entity.Property(e => e.IdMenuBarItem).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+            });
+            modelBuilder.Entity<WebPage>(entity =>
+            {
+                entity.HasKey(e => e.IdWebPage)
+                    .HasName("WebPage_pk");
+
+                entity.ToTable("WebPage");
+
+                entity.Property(e => e.IdWebPage).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+            });
             OnModelCreatingPartial(modelBuilder);
         }
 
