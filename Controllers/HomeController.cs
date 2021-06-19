@@ -41,7 +41,12 @@ namespace MAS_semestral_project_MVS.Controllers
         {
            return View();
         }
-        
+
+        public IActionResult HelloWorld()
+        {
+            return PartialView("HelloWorldView");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

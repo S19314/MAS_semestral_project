@@ -452,7 +452,6 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         /// <param name="firstName"></param>
         /// <param name="secondName"></param>
         /// <param name="internshipDaysInCurentHotel"></param>
-        /// <param name="hourRate"></param>
         /// <param name="lastDateChangeRate"></param>
         /// <param name="placeWorks"></param>
         /// <returns></returns>
