@@ -31,7 +31,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             {
                 if (!RelationWithCompanyEnum.Contains(value))
                 {
-                    throw new Exception("U  nsupported RealtionWithCompany.");
+                    throw new Exception("Unsupported RealtionWithCompany.");
                 }
                 relationWithCompany = value;
             }
