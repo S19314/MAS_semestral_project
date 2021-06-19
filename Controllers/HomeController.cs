@@ -42,11 +42,18 @@ namespace MAS_semestral_project_MVS.Controllers
 
            return View();
         }
-
+        /*
         public IActionResult HelloWorld()
         {
             return PartialView("HelloWorldView");
         }
+        */
+        public IActionResult MenuShowElements() 
+        {
+            ViewData["navigation_title_page"] = "menu_show_elements";
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
