@@ -81,7 +81,37 @@ p {
 
 */
 
+/*
+    wrapper{
+	position: relative;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	text-align: justify;
+	/* Свои стили * /
+}
 
+.wrapper:after {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: top;
+    content: '';
+}
+
+.wrapper > div {
+    position: relative;
+    display: inline-block;
+    width: 25%;
+    height: 50px;
+    box-sizing: border-box;
+    text-align: left;
+    vertical-align: top;
+    /* Свои стили * /
+}
+*/
 html {
     background-color: #EDF0FF;
 }
@@ -111,10 +141,7 @@ a.nav-link{
 }
 
 
-    a.nav-link:hover,
-    a.nav-link:active {
-        background-color: #91A5FF;
-    }
+    
     a.nav-link:link,
     a.nav-link:visited {
         background-color: #6E89FF;
@@ -124,7 +151,10 @@ a.nav-link{
         text-decoration: none;
         display: block;
     }
-
+    a.nav-link:hover,
+    a.nav-link:active {
+        background-color: #91A5FF;
+    }
 
 .footer {
     position: absolute;
@@ -200,9 +230,8 @@ table.list-element tbody.table-element-body {
 a.button-edit,
 a.button-details,
 a.button-delete,
-a.button-find
-/*,
-a.button-create*/ {
+a.button-find,
+div.button-create-position a.button-create {
     font-family: Arial;
     font-size: 100%;
     border-radius: 5px;
@@ -220,10 +249,6 @@ a.button-create {
     border-radius: 0px;
 }
     */
-    a.button-edit:hover,
-    a.button-edit:active {
-        background-color: #5DA962;
-    }
 
     a.button-edit:link,
     a.button-edit:visited {
@@ -234,11 +259,9 @@ a.button-create {
         text-decoration: none;
         /* display: auto; */
     }
-
-
-    a.button-details:hover,
-    a.button-details:active {
-        background-color: #F4CA16;
+    a.button-edit:hover,
+    a.button-edit:active {
+        background-color: #5DA962;
     }
 
     a.button-details:link,
@@ -250,11 +273,11 @@ a.button-create {
         text-decoration: none;
         /* display: auto; */
     }
-
-    a.button-delete:hover,
-    a.button-delete:active {
-        background-color: #EB4C42;
+    a.button-details:hover,
+    a.button-details:active {
+        background-color: #F4DF7F;
     }
+    
 
     a.button-delete:link,
     a.button-delete:visited {
@@ -265,12 +288,11 @@ a.button-create {
         text-decoration: none;
         /* display: auto; */
     }
-
-    a.button-find:hover,
-    a.button-find:active {
-        background-color: #318CE7;
+    a.button-delete:hover,
+    a.button-delete:active {
+        background-color: #EB948E;
     }
-
+    
     a.button-find:link,
     a.button-find:visited {
         background-color: #318CE7   ;
@@ -280,16 +302,22 @@ a.button-create {
         text-decoration: none;
         /* display: auto; */
     }
+    a.button-find:hover,
+    a.button-find:active {
+        background-color: #66A7E7;
+    }
+
 /* a.button-create:hover,
 a.button-create:active 
+       */
 div.button-create-position .button-create:hover,
 div.button-create-position .button-create:active {
     background-color: #318CE7;
 }
-    */
+
 /* a.button-create:link,
     a.button-create:visited 
-      
+    */      
 div.button-create-position .button-create:visited,
 div.button-create-position .button-create:link {
     background-color: #52C868;
@@ -297,63 +325,24 @@ div.button-create-position .button-create:link {
     padding: 4px 5px;
     text-align: center;
     text-decoration: none;
-    /* display: auto; * /
 }
-*/
 
-/*
+
+
 div.button-create-position a.button-create {
     position: relative;
     top: 50%;
     display: inline-block;
-    vertical-align: bottom; /* top * /
-    right: -69%; /* -1000px;* /
-    /* right: 3*widht/4; /* -1000px;* /
-    z-index: -1;
-    /* color: white;* /
-    color: black;
+    /* vertical-align: bottom; */
+    right: -69%; /* -1000px;*/
+    /* right: 3*widht/4; /* -1000px;*/
+    /* z-index: -1; */
+    color: white;
 }
-    */
+    
 /*
 div.button-create-position {
     display: inline-block;
     position: center;
 }
     */
-/*
-    
-    button-details
-    button-delete
-    button-find
-*/
-/*
-    wrapper{
-	position: relative;
-	display: block;
-	width: 100%;
-	box-sizing: border-box;
-	text-align: justify;
-	/* Свои стили * /
-}
-
-.wrapper:after {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
-    vertical-align: top;
-    content: '';
-}
-
-.wrapper > div {
-    position: relative;
-    display: inline-block;
-    width: 25%;
-    height: 50px;
-    box-sizing: border-box;
-    text-align: left;
-    vertical-align: top;
-    /* Свои стили * /
-}
-*/
