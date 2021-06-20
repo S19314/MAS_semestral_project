@@ -26,6 +26,20 @@ namespace MAS_semestral_project_MVS.Controllers
 
         public IActionResult Index()
         {
+
+            dataBaseService.AddCustomerConversation(
+                new CustomerConversation
+                {
+                    ClientIdOsoba = 12,
+                    ClientIdOsobaNavigation = dataBaseService.GetPersonById(10),
+                    EmployeeIdOsoba = 11,
+                    EmployeeIdOsobaNavigation = dataBaseService.GetPersonById(11),
+                    MarkServiceQuality = 4,
+                    StartDateTime = new DateTime(2021, 06, 14, 5, 10, 20),
+                    EndDateTime = new DateTime(2021, 06, 14, 15, 10, 20),
+                    ConversationDurationInSeconds = 600
+                }
+            );
             // model data
             var clients = dataBaseService.GetClients();
             var receptionists = dataBaseService.GetReceptionists();
@@ -33,11 +47,13 @@ namespace MAS_semestral_project_MVS.Controllers
             return View(homeModelView);
         }
 
-        
         public IActionResult FindByReceptionistClients(Person receptionist) 
         {
-            
-            receptionist.CustomerConversationEmployeeIdOsobaNavigations
+            var clients = CustomerConversation.GetClients(receptionist.CustomerConversationEmployeeIdOsobaNavigations);
+            var receptionists = new List<Person>();
+            receptionists.Add(receptionist);
+            var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
+            return View("Index", homeModelView);
         }
         public IActionResult Privacy()
         {

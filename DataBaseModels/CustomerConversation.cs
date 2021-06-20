@@ -35,8 +35,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             var receptionists = new List<Person>();
             foreach (var converation in customerConversations)
             {
-                var person = converation.ClientIdOsobaNavigation;
-                if (person.IsReceptionist()) 
+                var person = converation.EmployeeIdOsobaNavigation;
+                if (person.IsEmployee() && person.IsReceptionist()) 
                 {
                     receptionists.Add(person);
                 }

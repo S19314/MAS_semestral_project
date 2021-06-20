@@ -24,40 +24,40 @@ namespace MAS_semestral_project_MVS.Services
             return dbContext.ClassAttributesInColumns.First();
         }
 
-        public decimal? GetEmployeeMaxHourRateFromClassAttributesInColumn() 
+        public decimal? GetEmployeeMaxHourRateFromClassAttributesInColumn()
         {
-            return dbContext.ClassAttributesInColumns.Select(e => e.EmployeeMaxHourRate).First();            
+            return dbContext.ClassAttributesInColumns.Select(e => e.EmployeeMaxHourRate).First();
         }
-        
-        public decimal? GetDirectorMaxHourRateFromClassAttributesInColumn() 
+
+        public decimal? GetDirectorMaxHourRateFromClassAttributesInColumn()
         {
-            return dbContext.ClassAttributesInColumns.Select(e => e.DirectorMaxHourRate).First();            
+            return dbContext.ClassAttributesInColumns.Select(e => e.DirectorMaxHourRate).First();
         }
-        
-        public decimal? GetCleanerMaxHourRateFromClassAttributesInColumn() 
+
+        public decimal? GetCleanerMaxHourRateFromClassAttributesInColumn()
         {
-            return dbContext.ClassAttributesInColumns.Select(e => e.CleanerMaxHourRate).First();            
+            return dbContext.ClassAttributesInColumns.Select(e => e.CleanerMaxHourRate).First();
         }
-        
-        public decimal? GetReceptionistMaxHourRateFromClassAttributesInColumn() 
+
+        public decimal? GetReceptionistMaxHourRateFromClassAttributesInColumn()
         {
-            return dbContext.ClassAttributesInColumns.Select(e => e.ReceptionistMaxHourRate).First();            
+            return dbContext.ClassAttributesInColumns.Select(e => e.ReceptionistMaxHourRate).First();
         }
-        
-        public decimal? GetCleanerReceptionistMaxHourRateFromClassAttributesInColumn() 
+
+        public decimal? GetCleanerReceptionistMaxHourRateFromClassAttributesInColumn()
         {
-            return dbContext.ClassAttributesInColumns.Select(e => e.CleanerReceptionistMaxHourRate).First();            
+            return dbContext.ClassAttributesInColumns.Select(e => e.CleanerReceptionistMaxHourRate).First();
         }
-        
-        public int? GetCleanerMaxToolsQuantityFromClassAttributesInColumn() 
+
+        public int? GetCleanerMaxToolsQuantityFromClassAttributesInColumn()
         {
-            return dbContext.ClassAttributesInColumns.Select(e => e.CleanerMaxToolsQuantity).First();            
+            return dbContext.ClassAttributesInColumns.Select(e => e.CleanerMaxToolsQuantity).First();
         }
-        public int? GetEpmloyeeMaxPlaceWorkQuantity() 
+        public int? GetEpmloyeeMaxPlaceWorkQuantity()
         {
             return dbContext.ClassAttributesInColumns.First().EpmloyeeMaxPlaceWorkQuantity.Value;
         }
-        public int? GetReceptionistMaxKnowedLanguages() 
+        public int? GetReceptionistMaxKnowedLanguages()
         {
             return dbContext.ClassAttributesInColumns.First().ReceptionistMaxKnowedLanguages.Value;
         }
@@ -65,7 +65,7 @@ namespace MAS_semestral_project_MVS.Services
         {
             return dbContext.ClassAttributesInColumns.First().ReceptionistMinKnowedLanguages.Value;
         }
-        public void SetEmployeeMaxHourRateFromClassAttributesInColumn(decimal maxHourRate) 
+        public void SetEmployeeMaxHourRateFromClassAttributesInColumn(decimal maxHourRate)
         {
             var staticValues = GetClassAttributesInColumn();
             staticValues.EmployeeMaxHourRate = maxHourRate;
@@ -114,7 +114,7 @@ namespace MAS_semestral_project_MVS.Services
             dbContext.SaveChanges();
         }
 
-        public void SetEpmloyeeMaxPlaceWorkQuantity(int maxPlaceWorkQuantity) 
+        public void SetEpmloyeeMaxPlaceWorkQuantity(int maxPlaceWorkQuantity)
         {
             var staticValues = GetClassAttributesInColumn();
             staticValues.EpmloyeeMaxPlaceWorkQuantity = maxPlaceWorkQuantity;
@@ -138,7 +138,7 @@ namespace MAS_semestral_project_MVS.Services
             dbContext.Entry(staticValues).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
-        private bool ValidationAddKnownLanguagePartPerson(Person person) 
+        private bool ValidationAddKnownLanguagePartPerson(Person person)
         {
             if (person.Equals(null))
             {
@@ -154,7 +154,7 @@ namespace MAS_semestral_project_MVS.Services
             }
             return true;
         }
-        private bool ValidationAddKnownLanguagePartKnowedLanguage(KnowedLanguage knowedLanguage) 
+        private bool ValidationAddKnownLanguagePartKnowedLanguage(KnowedLanguage knowedLanguage)
         {
             if (knowedLanguage.Equals(null))
             {
@@ -162,19 +162,19 @@ namespace MAS_semestral_project_MVS.Services
             }
             return true;
         }
-        private bool ValidationAddKnownLanguage(Person person, KnowedLanguage knowedLanguage) 
+        private bool ValidationAddKnownLanguage(Person person, KnowedLanguage knowedLanguage)
         {
             var validated = ValidationAddKnownLanguagePartPerson(person) &&
                             ValidationAddKnownLanguagePartKnowedLanguage(knowedLanguage);
             return validated;
         }
-        
-        public void AddKnownLanguage(Person person, KnowedLanguage knowedLanguage) 
+
+        public void AddKnownLanguage(Person person, KnowedLanguage knowedLanguage)
         {
             ValidationAddKnownLanguage(person, knowedLanguage);
-            var languageEmployee = new LanguageEmployee 
+            var languageEmployee = new LanguageEmployee
             {
-                KnowedLanguageIdLanguage = knowedLanguage.IdLanguage, 
+                KnowedLanguageIdLanguage = knowedLanguage.IdLanguage,
                 KnowedLanguageIdLanguageNavigation = knowedLanguage,
                 OsobaIdOsoba = person.IdOsoba,
                 OsobaIdOsobaNavigation = person
@@ -216,7 +216,7 @@ namespace MAS_semestral_project_MVS.Services
             }
             return true;
         }
-        
+
         private bool ValidationRemoveKnownLanguage(LanguageEmployee languageEmployee)
         {
             var person = languageEmployee.OsobaIdOsobaNavigation;
@@ -235,7 +235,7 @@ namespace MAS_semestral_project_MVS.Services
             dbContext.SaveChanges();
         }
 
-        public IEnumerable<Person> GetClients() 
+        public IEnumerable<Person> GetClients()
         {
             return dbContext.People
                 .Where(e =>
@@ -246,7 +246,7 @@ namespace MAS_semestral_project_MVS.Services
                 .ToList<Person>();
         }
 
-        public IEnumerable<Person> GetReceptionists() 
+        public IEnumerable<Person> GetReceptionists()
         {
             return dbContext.People
                     .Where(e =>
@@ -256,7 +256,7 @@ namespace MAS_semestral_project_MVS.Services
                     )
                     .ToList<Person>();
         }
-        public IEnumerable<CustomerConversation> GetCustomerConversations() 
+        public IEnumerable<CustomerConversation> GetCustomerConversations()
         {
             return dbContext.CustomerConversations
                 .ToList<CustomerConversation>();
@@ -271,5 +271,15 @@ namespace MAS_semestral_project_MVS.Services
             return dbContext.Orders
                 .ToList<Order>();
         }
-    }
+
+        public void AddCustomerConversation(CustomerConversation customerConversation)
+        {
+            dbContext.CustomerConversations.Add(customerConversation);
+            dbContext.SaveChanges();
+        }
+        public Person GetPersonById(int id) 
+        {
+            return dbContext.People.First(e => e.IdOsoba == id);
+        }
+}
 }

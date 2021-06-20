@@ -33,6 +33,7 @@ namespace MAS_semestral_project_MVS.Services
         public IEnumerable<CustomerConversation> GetCustomerConversations();
         public IEnumerable<Offer> GetOffers();
         public IEnumerable<Order> GetOrders();
-        
+        public void AddCustomerConversation(CustomerConversation customerConversation);
+        public Person GetPersonById(int id);
     }
 }
