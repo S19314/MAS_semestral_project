@@ -33,6 +33,12 @@ namespace MAS_semestral_project_MVS.Controllers
             return View(homeModelView);
         }
 
+        
+        public IActionResult FindByReceptionistClients(Person receptionist) 
+        {
+            
+            receptionist.CustomerConversationEmployeeIdOsobaNavigations
+        }
         public IActionResult Privacy()
         {
             return View();
