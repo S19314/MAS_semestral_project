@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.Order>
+
+<table class="list-element">
+    <thead>
+        <tr>
+            <th class="element-head">
+                Order Id
+            </th>
+            <th class="element-head">
+                Clent Id
+            </th>
+            <th class="element-head">
+                Receptionist Id
+            </th>
+            <th class="element-head">
+                Creation Date
+            </th>
+            <th class="element-button-head">Actions</th> <!-- Buttons. -->
+        </tr>
+    </thead>
+    <tbody class="table-element-body">
+        <div class="scroll-items">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.IdOrder)
+                </td>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.OsobaIdOsoba)
+                </td>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.Osoba2IdOsoba)
+                </td>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+
+                <td class="element-body">
+                    <a class="button-edit" asp-action="Edit" asp-route-id="@item.IdOrder">Edit</a> |
+                    <a class="button-details" asp-action="Details" asp-route-id="@item.IdOrder">Details</a> |
+                    <a class="button-delete" asp-action="Delete" asp-route-id="@item.IdOrder">Delete</a> |
+                    <a class="button-find" asp-action="FindByClientReceptionists" asp-route-id="@item">Find Receptionists</a>
+                </td>
+            </tr>
+            }
+        </div>
+    </tbody>
+</table>
