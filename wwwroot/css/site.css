@@ -343,6 +343,22 @@ div.elements-table-place {
     display: flex;
     flex-direction: row;
 }
+h3.table-title {
+    display: inline-flex;
+    flex-direction: row;
+    margin-left: 1%;
+    margin-right: 36%;
+}
+
+table.list-element {
+    /* padding: 0% 3% 0% 3%; */
+    padding-left: 1%;
+    padding-right: 7%;
+}
+div.table-title-contener {
+    display: flex;
+    flex-direction: row;
+}
 /*
 div.button-create-position {
     display: inline-block;
