@@ -266,5 +266,10 @@ namespace MAS_semestral_project_MVS.Services
             return dbContext.Offers
                 .ToList<Offer>();
         }
+        public IEnumerable<Order> GetOrders()
+        {
+            return dbContext.Orders
+                .ToList<Order>();
+        }
     }
 }
