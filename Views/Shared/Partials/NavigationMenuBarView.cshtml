@@ -1,14 +1,75 @@
 ﻿
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
+        <!-- 
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MAS_semestral_project_MVS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        -->
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
+            <table>
+                <tr>
+                    <th>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </th>
+                    @{
+                        if (ViewData["navigation_title_page"] == "menu_show_elements")
+                        {
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="ReceptionistList">Show Receptionists</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="ConversationList">Show Conversation</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderList">Show Orders</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="OfferList">Show Offers</a>
+                            </th>
 
+                        }
+                        else if (ViewData["navigation_title_page"] == "menu_register_elements")
+                        {
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="ReceptionistList">Register Receptionists</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="ConversationList">Register Conversation</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderList">Register Orders</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="OfferList">Register Offers</a>
+                            </th>
+                        }
+                        else
+                        {
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MenuRegisterNewElement ">Menu: Register new element</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MenuShowElements">Menu: Show elements</a>
+                            </th>
+                        }
+                    }
+                    <!-- Add Methods in accordince Controllers
+    -->
+                <th class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </th>
+                <th class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Clients">Clients</a>
+                </th>
+                </tr>
+
+
+            </table>
+            <ul class="navbar-nav flex-grow-1">
+                <!-- Сделать из списка таблицу.     -->
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
