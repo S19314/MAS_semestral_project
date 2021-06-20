@@ -1,9 +1,18 @@
 ﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.Person>
 
-<p>
-    <a asp-action="Create">Create New НЕ МЕШАЕТ? Или оствыить?</a>
-</p>
+
 <div class="client-list">
     @Html.Partial("Partials/ClientList")
-    
+    <!--
+    <p>
+        <a class="button-create" asp-action="Create">Create New </a>
+    </p>
+        -->
 </div>
+<div class="button-create-position">
+    <p>
+        <a class="button-create" asp-action="Create">Create New </a>
+    </p>
+</div>
+
+

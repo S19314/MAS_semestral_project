@@ -42,9 +42,10 @@
                         @Html.DisplayFor(modelItem => item.PhoneNumber)
                     </td>
                     <td class="element-body">
-                        <a asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.IdOsoba">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdOsoba">Delete</a>
+                        <a class="button-edit" asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |
+                        <a class="button-details" asp-action="Details" asp-route-id="@item.IdOsoba">Details</a> |
+                        <a class="button-delete" asp-action="Delete" asp-route-id="@item.IdOsoba">Delete</a> |
+                        <a class="button-find" asp-action="FindByClientReceptionists" asp-route-id="@item">Find Receptionists</a>
                     </td>
                 </tr>
             }

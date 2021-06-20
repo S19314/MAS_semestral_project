@@ -171,9 +171,10 @@ div.client-list {
     justify-content: center;
 
 }
-table.list-element tbody.table-element-body div.scroll-items {
+.list-element {
     /* overflow: scroll; */
-    overflow-y: auto;
+     overflow-x: auto;
+    /* display: inline */
 }
 /*
     table.list-element th.element-head:after {
@@ -196,6 +197,120 @@ table.list-element tbody.table-element-body {
     overflow: scroll;
     height: auto; /* 30px;*/
 }
+a.button-edit,
+a.button-details,
+a.button-delete,
+a.button-find,
+a.button-create{
+    font-family: Arial;
+    font-size: 100%;
+    border-radius: 5px;
+}
+
+    a.button-edit:hover,
+    a.button-edit:active {
+        background-color: #5DA962;
+    }
+
+    a.button-edit:link,
+    a.button-edit:visited {
+        background-color: #7CE182;
+        color: white;
+        padding: 4px 5px;
+        text-align: center;
+        text-decoration: none;
+        /* display: auto; */
+    }
+
+
+    a.button-details:hover,
+    a.button-details:active {
+        background-color: #F4CA16;
+    }
+
+    a.button-details:link,
+    a.button-details:visited {
+        background-color: #F4CA16;
+        color: #000000;
+        padding: 4px 5px;
+        text-align: center;
+        text-decoration: none;
+        /* display: auto; */
+    }
+
+    a.button-delete:hover,
+    a.button-delete:active {
+        background-color: #EB4C42;
+    }
+
+    a.button-delete:link,
+    a.button-delete:visited {
+        background-color: #EB4C42;
+        color: white;
+        padding: 4px 5px;
+        text-align: center;
+        text-decoration: none;
+        /* display: auto; */
+    }
+
+    a.button-find:hover,
+    a.button-find:active {
+        background-color: #318CE7;
+    }
+
+    a.button-find:link,
+    a.button-find:visited {
+        background-color: #318CE7   ;
+        color: white;
+        padding: 4px 5px;
+        text-align: center;
+        text-decoration: none;
+        /* display: auto; */
+    }
+    a.button-create:hover,
+    a.button-create:active {
+        background-color: #318CE7;
+    }
+
+    a.button-create:link,
+    a.button-create:visited {
+        background-color: #52C868;
+        color: white;
+        padding: 4px 5px;
+        text-align: center;
+        text-decoration: none;
+        /* display: auto; */
+    }
+div.client-list a.button-create {
+    position: relative;
+    bottom: -100px;
+    display: inline-block;
+    vertical-align: bottom; /* top */
+    z-index: -1;
+    color: red;
+}
+div.button-create-position .button-create {
+    position: relative;
+    top: 50%;
+    display: inline-block;
+    vertical-align: bottom; /* top */
+    right: -69%; /* -1000px;*/
+    /* right: 3*widht/4; /* -1000px;*/
+    z-index: -1;
+    color: white;
+}
+/*
+div.button-create-position {
+    display: inline-block;
+    position: center;
+}
+    */
+/*
+    
+    button-details
+    button-delete
+    button-find
+*/
 /*
     wrapper{
 	position: relative;
