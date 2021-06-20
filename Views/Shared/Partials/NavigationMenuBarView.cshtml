@@ -18,24 +18,27 @@
                         if (ViewData["navigation_title_page"] == "menu_show_elements")
                         {
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="List">Clients</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="List">Show Clients</a>
                             </th>
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="ReceptionistList">Show Receptionists</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="List">Show Receptionists</a>
                             </th>
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="ConversationList">Show Conversation</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="List">Show Conversation</a>
                             </th>
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderList">Show Orders</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="List">Show Orders</a>
                             </th>
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="OfferList">Show Offers</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="List">Show Offers</a>
                             </th>
 
                         }
                         else if (ViewData["navigation_title_page"] == "menu_register_elements")
                         {
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Register">Register Clients</a>
+                            </th>
                             <th class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="Register">Register Receptionists</a>
                             </th>
@@ -47,9 +50,6 @@
                             </th>
                             <th class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="Register">Register Offers</a>
-                            </th>
-                            <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Register">Clients</a>
                             </th>
                         }
                         else

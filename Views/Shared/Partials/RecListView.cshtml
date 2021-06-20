@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.Person>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="element-head">
+                Relation With Company
+            </th>
+            <th class="element-head">
+                Employee Type
+            </th>
+            <th class="element-head">
+                Employee Experience Type
+            </th>
+            <th class="element-head">
+                First Name
+            </th>
+            <th class="element-head">
+                Second Name
+            </th>
+            <th class="element-button-head">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="element-body">
+                @Html.DisplayFor(modelItem => item.RelationWithCompany)
+            </td>
+            <td class="element-body">
+                @Html.DisplayFor(modelItem => item.EmployeeType)
+            </td>
+            <td class="element-body">
+                @Html.DisplayFor(modelItem => item.EmployeeExperienceType)
+            </td>
+            <td class="element-body">
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td class="element-body">
+                @Html.DisplayFor(modelItem => item.SecondName)
+            </td>
+            <td class="element-body">
+                <a class="button-edit" asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |
+                <a class="button-edit" asp-action="Details" asp-route-id="@item.IdOsoba">Details</a> |
+                <a class="button-edit" asp-action="Delete" asp-route-id="@item.IdOsoba">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    

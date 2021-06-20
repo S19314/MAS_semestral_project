@@ -246,5 +246,15 @@ namespace MAS_semestral_project_MVS.Services
                 .ToList<Person>();
         }
 
+        public IEnumerable<Person> GetReceptionists() 
+        {
+            return dbContext.People
+                    .Where(e =>
+                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Employee)
+                    ||
+                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
+                    )
+                    .ToList<Person>();
+        }
     }
 }
