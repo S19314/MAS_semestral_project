@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.Offer>
+
+<table class="list-element">
+    <thead>
+        <tr>
+            <th class="element-head">
+                Offer Id
+            </th>
+            <th class="element-head">
+                Offer Status
+            </th>
+            <th class="element-head">
+                Room Price
+            </th>
+            <th class="element-head">
+                Available From
+            </th>
+            <th class="element-button-head">Actions</th> <!-- Buttons. -->
+        </tr>
+    </thead>
+    <tbody class="table-element-body">
+        <div class="scroll-items">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.OfferStatus)
+                </td>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.RoomPrice)
+                </td>
+                <td class="element-body">
+                    @Html.DisplayFor(modelItem => item.AvailableFrom)
+                </td>
+
+                <td class="element-body">
+                    <a class="button-edit" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="button-details" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="button-delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a class="button-find" asp-action="FindByClientReceptionists" asp-route-id="@item">Find Receptionists</a>
+                </td>
+            </tr>
+            }
+        </div>
+    </tbody>
+</table>

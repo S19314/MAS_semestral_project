@@ -31,5 +31,6 @@ namespace MAS_semestral_project_MVS.Services
         public IEnumerable<Person> GetClients();
         public IEnumerable<Person> GetReceptionists();
         public IEnumerable<CustomerConversation> GetCustomerConversations();
+        public IEnumerable<Offer> GetOffers();
     }
 }

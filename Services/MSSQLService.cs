@@ -261,5 +261,10 @@ namespace MAS_semestral_project_MVS.Services
             return dbContext.CustomerConversations
                 .ToList<CustomerConversation>();
         }
+        public IEnumerable<Offer> GetOffers()
+        {
+            return dbContext.Offers
+                .ToList<Offer>();
+        }
     }
 }
