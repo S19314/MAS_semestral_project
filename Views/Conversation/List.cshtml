@@ -1,0 +1,15 @@
+﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.CustomerConversation>
+
+
+<div class="client-list">
+    @Html.Partial("Partials/ConversationList")
+</div>
+<div class="button-create-position">
+    <p>
+        <a class="button-create" asp-controller="Conversation" asp-action="List">Create New </a>
+        <a class="button-find" asp-controller="Conversation" asp-action="List">Create New </a>
+        <a class="button-find" asp-action="FindByClientReceptionists" asp-route-customerConversation="21">Find Receptionists</a>
+    </p>
+</div>
+
+

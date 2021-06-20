@@ -200,13 +200,26 @@ table.list-element tbody.table-element-body {
 a.button-edit,
 a.button-details,
 a.button-delete,
-a.button-find,
-a.button-create{
+a.button-find
+/*,
+a.button-create*/ {
     font-family: Arial;
     font-size: 100%;
     border-radius: 5px;
 }
+    /*
+p a.button-create {
+    font-family: Arial;
+    font-size: 100%;
+    border-radius: 0px;
 
+}
+a.button-create {
+    font-family: Arial;
+    font-size: 100%;
+    border-radius: 0px;
+}
+    */
     a.button-edit:hover,
     a.button-edit:active {
         background-color: #5DA962;
@@ -267,38 +280,40 @@ a.button-create{
         text-decoration: none;
         /* display: auto; */
     }
-    a.button-create:hover,
-    a.button-create:active {
-        background-color: #318CE7;
-    }
-
-    a.button-create:link,
-    a.button-create:visited {
-        background-color: #52C868;
-        color: white;
-        padding: 4px 5px;
-        text-align: center;
-        text-decoration: none;
-        /* display: auto; */
-    }
-div.client-list a.button-create {
-    position: relative;
-    bottom: -100px;
-    display: inline-block;
-    vertical-align: bottom; /* top */
-    z-index: -1;
-    color: red;
+/* a.button-create:hover,
+a.button-create:active 
+div.button-create-position .button-create:hover,
+div.button-create-position .button-create:active {
+    background-color: #318CE7;
 }
-div.button-create-position .button-create {
+    */
+/* a.button-create:link,
+    a.button-create:visited 
+      
+div.button-create-position .button-create:visited,
+div.button-create-position .button-create:link {
+    background-color: #52C868;
+    color: white;
+    padding: 4px 5px;
+    text-align: center;
+    text-decoration: none;
+    /* display: auto; * /
+}
+*/
+
+/*
+div.button-create-position a.button-create {
     position: relative;
     top: 50%;
     display: inline-block;
-    vertical-align: bottom; /* top */
-    right: -69%; /* -1000px;*/
-    /* right: 3*widht/4; /* -1000px;*/
+    vertical-align: bottom; /* top * /
+    right: -69%; /* -1000px;* /
+    /* right: 3*widht/4; /* -1000px;* /
     z-index: -1;
-    color: white;
+    /* color: white;* /
+    color: black;
 }
+    */
 /*
 div.button-create-position {
     display: inline-block;

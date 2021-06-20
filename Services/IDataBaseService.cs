@@ -30,6 +30,6 @@ namespace MAS_semestral_project_MVS.Services
         public void SetReceptionistMinKnowedLanguages(int minKnowedLanguages);
         public IEnumerable<Person> GetClients();
         public IEnumerable<Person> GetReceptionists();
-
+        public IEnumerable<CustomerConversation> GetCustomerConversations();
     }
 }

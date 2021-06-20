@@ -256,5 +256,10 @@ namespace MAS_semestral_project_MVS.Services
                     )
                     .ToList<Person>();
         }
+        public IEnumerable<CustomerConversation> GetCustomerConversations() 
+        {
+            return dbContext.CustomerConversations
+                .ToList<CustomerConversation>();
+        }
     }
 }

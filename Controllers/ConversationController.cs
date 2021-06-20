@@ -9,6 +9,7 @@ using System.Diagnostics;
 using MAS_semestral_project_MVS.DataBaseModels;
 using MAS_semestral_project_MVS.Services;
 using MAS_semestral_project_MVS.Models;
+using MAS_semestral_project_MVS.DataBaseModels;
 
 namespace MAS_semestral_project_MVS.Controllers
 {
@@ -36,18 +37,22 @@ namespace MAS_semestral_project_MVS.Controllers
         // GET: ConversationController/List
         public IActionResult List()
         {
-            return View(dataBaseService.GetReceptionists());
+            return View(dataBaseService.GetCustomerConversations());
         }
 
 
         // GET: ConversationController/Details/5
-        public IActionResult Details(int id)
+        public IActionResult Details(CustomerConversation customerConversation)
         {
             return View();
         }
 
         // GET: ConversationController/Create
         public IActionResult Create()
+        {
+            return View();
+        }
+        public IActionResult Create(int id)
         {
             return View();
         }
@@ -77,7 +82,7 @@ namespace MAS_semestral_project_MVS.Controllers
         // POST: ConversationController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(CustomerConversation customerConversation)
         {
             try
             {
@@ -90,7 +95,7 @@ namespace MAS_semestral_project_MVS.Controllers
         }
 
         // GET: ConversationController/Delete/5
-        public IActionResult Delete(int id)
+        public IActionResult Delete(CustomerConversation customerConversation)
         {
             return View();
         }
