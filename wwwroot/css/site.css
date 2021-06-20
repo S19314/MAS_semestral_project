@@ -80,6 +80,11 @@ p {
 }
 
 */
+
+
+html {
+    background-color: #EDF0FF;
+}
 table.navbar-table {
     border: 1px solid #1C6EA4;
     background-color: #EEEEEE;
@@ -132,3 +137,64 @@ p.information {
     font-size: 350%;
     text-align: center;
 }
+
+/* CLIENT LIST  */
+table.list-element th.element-head {
+    border: 1px solid #1C6EA4;
+    background-color: #BBFFAF; /* #FFAAAA;*/
+    width: auto;
+    text-align: center;
+    border-collapse: collapse;
+    position: relative;
+    box-sizing: border-box;
+    /*position: relative;
+    text-align: justify;
+    */
+}
+/*
+    table.list-element th.element-head:after {
+        position: relative;
+        
+        width: auto;
+        height: auto;
+        box-sizing: border-box;
+        horizontal-align: top;
+        content: ''; / *   * /
+    }
+    */
+    table .list-element th.element-head, table.list-element td.element-body {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
+/*
+    wrapper{
+	position: relative;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	text-align: justify;
+	/* Свои стили * /
+}
+
+.wrapper:after {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: top;
+    content: '';
+}
+
+.wrapper > div {
+    position: relative;
+    display: inline-block;
+    width: 25%;
+    height: 50px;
+    box-sizing: border-box;
+    text-align: left;
+    vertical-align: top;
+    /* Свои стили * /
+}
+*/
