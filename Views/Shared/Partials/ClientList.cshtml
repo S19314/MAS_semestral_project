@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.Person>
+
+<table class="list-element">
+    <thead>
+        <tr>
+            <th class="element-head">
+                Relation With Company
+            </th>
+            <th class="element-head">
+                First Name
+            </th>
+            <th class="element-head">
+                Second Name
+            </th>
+            <th class="element-head">
+                Passport Data
+            </th>
+            <th class="element-head">
+                Phone Number
+            </th>
+            <th class="element-button-head">Actions</th> <!-- Buttons. -->
+        </tr>
+    </thead>
+    <tbody class="table-element-body">
+        <div class="scroll-items">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="element-body">
+                        @Html.DisplayFor(modelItem => item.RelationWithCompany)
+                    </td>
+                    <td class="element-body">
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td class="element-body">
+                        @Html.DisplayFor(modelItem => item.SecondName)
+                    </td>
+                    <td class="element-body">
+                        @Html.DisplayFor(modelItem => item.PassportData)
+                    </td>
+                    <td class="element-body">
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td class="element-body">
+                        <a asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdOsoba">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdOsoba">Delete</a>
+                    </td>
+                </tr>
+            }
+        </div>
+    </tbody>
+</table>

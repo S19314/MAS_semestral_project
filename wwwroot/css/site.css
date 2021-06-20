@@ -143,6 +143,7 @@ table.list-element th.element-head {
     border: 1px solid #1C6EA4;
     background-color: #BBFFAF; /* #FFAAAA;*/
     width: auto;
+    min-width: 150px;
     text-align: center;
     border-collapse: collapse;
     position: relative;
@@ -150,6 +151,29 @@ table.list-element th.element-head {
     /*position: relative;
     text-align: justify;
     */
+}
+table.list-element th.element-button-head {
+    border: 1px solid #1C6EA4;
+    background-color: #A5E19A; /* #FFAAAA;*/
+    width: auto;
+    min-width: 150px;
+    text-align: center;
+    border-collapse: collapse;
+    position: relative;
+    box-sizing: border-box;
+}
+div.client-list {
+    /* position:center;
+        */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+table.list-element tbody.table-element-body div.scroll-items {
+    /* overflow: scroll; */
+    overflow-y: auto;
 }
 /*
     table.list-element th.element-head:after {
@@ -162,11 +186,16 @@ table.list-element th.element-head {
         content: ''; / *   * /
     }
     */
-    table .list-element th.element-head, table.list-element td.element-body {
+table.list-element th.element-head, table.list-element td.element-body {
     border: 1px solid #AAAAAA;
     padding: 3px 2px;
 }
 
+
+table.list-element tbody.table-element-body {
+    overflow: scroll;
+    height: auto; /* 30px;*/
+}
 /*
     wrapper{
 	position: relative;
