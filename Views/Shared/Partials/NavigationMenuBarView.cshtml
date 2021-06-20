@@ -17,8 +17,11 @@
                     @{
                         if (ViewData["navigation_title_page"] == "menu_show_elements")
                         {
-                            <th class="nav-item">    
-                                 <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="ReceptionistList">Show Receptionists</a>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="List">Clients</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="ReceptionistList">Show Receptionists</a>
                             </th>
                             <th class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="ConversationList">Show Conversation</a>
@@ -34,16 +37,19 @@
                         else if (ViewData["navigation_title_page"] == "menu_register_elements")
                         {
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="ReceptionistList">Register Receptionists</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Receptionist" asp-action="Register">Register Receptionists</a>
                             </th>
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="ConversationList">Register Conversation</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="Register">Register Conversation</a>
                             </th>
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderList">Register Orders</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Register">Register Orders</a>
                             </th>
                             <th class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="OfferList">Register Offers</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="Register">Register Offers</a>
+                            </th>
+                            <th class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Register">Clients</a>
                             </th>
                         }
                         else
@@ -58,12 +64,10 @@
                     }
                     <!-- Add Methods in accordince Controllers
     -->
-                <th class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                </th>
-                <th class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Clients">Clients</a>
-                </th>
+                    <th class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </th>
+
                 </tr>
             </table>
         </div>

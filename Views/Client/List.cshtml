@@ -1,0 +1,101 @@
+﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.Person>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RelationWithCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeExperienceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassportData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InternshipDaysInCurentHotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HourRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastDateChangeRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkShift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxHourRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CleaningGroupIdGroupNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelationWithCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeExperienceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InternshipDaysInCurentHotel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HourRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastDateChangeRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkShift)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxHourRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CleaningGroupIdGroupNavigation.IdGroup)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdOsoba">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdOsoba">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

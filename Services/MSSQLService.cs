@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MAS_semestral_project_MVS.DataBaseModels;
 using Microsoft.EntityFrameworkCore;
+using MAS_semestral_project_MVS.Models.Enums;
+using MAS_semestral_project_MVS.DataBaseModels;
 
 namespace MAS_semestral_project_MVS.Services
 {
@@ -232,5 +234,17 @@ namespace MAS_semestral_project_MVS.Services
             dbContext.Entry(languageEmployee).State = EntityState.Deleted;
             dbContext.SaveChanges();
         }
+
+        public IEnumerable<Person> GetClients() 
+        {
+            return dbContext.People
+                .Where(e =>
+                e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client)
+                ||
+                e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
+                )
+                .ToList<Person>();
+        }
+
     }
 }

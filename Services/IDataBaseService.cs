@@ -28,5 +28,7 @@ namespace MAS_semestral_project_MVS.Services
         public void SetEpmloyeeMaxPlaceWorkQuantity(int maxPlaceWorkQuantity);
         public void SetReceptionistMaxKnowedLanguages(int maxKnowedLanguages);
         public void SetReceptionistMinKnowedLanguages(int minKnowedLanguages);
+        public IEnumerable<Person> GetClients();
+
     }
 }
