@@ -1,8 +1,16 @@
-﻿@{
+﻿@model MAS_semestral_project_MVS.Models.Views.HomeModelView
+
+@{
     ViewData["Title"] = "Home Page";
 }
-
+<!-- Сделать 2 квадрата на одном уровне (Таблицы и названия к ним)-->
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>It is a home page.</p>
+    
+    <div class="elements-table-place">
+        @Html.Partial("Partials/ClientList", Model.Clients)
+        <!-- Если, что, то закину через ViewData[""]-->
+    </div>
+    <div class="elements-table-place">
+        @Html.Partial("Partials/ReceptionistList", Model.Receptionists)
+    </div>
 </div>

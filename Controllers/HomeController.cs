@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using MAS_semestral_project_MVS.Services;
+using MAS_semestral_project_MVS.Models.Views;
 
 namespace MAS_semestral_project_MVS.Controllers
 {
@@ -25,7 +26,11 @@ namespace MAS_semestral_project_MVS.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            // model data
+            var clients = dataBaseService.GetClients();
+            var receptionists = dataBaseService.GetReceptionists();
+            var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
+            return View(homeModelView);
         }
 
         public IActionResult Privacy()

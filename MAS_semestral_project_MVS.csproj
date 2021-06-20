@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Views\" />
     <Folder Include="My_Observation\Images\" />
   </ItemGroup>
 

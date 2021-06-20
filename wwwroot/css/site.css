@@ -339,7 +339,10 @@ div.button-create-position a.button-create {
     /* z-index: -1; */
     color: white;
 }
-    
+div.elements-table-place {
+    display: flex;
+    flex-direction: row;
+}
 /*
 div.button-create-position {
     display: inline-block;
