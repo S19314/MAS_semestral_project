@@ -1,13 +1,13 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
+/*
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
+/* Provide sufficient contrast against white background * /
 a {
   color: #0366d6;
 }
@@ -26,10 +26,10 @@ a {
 
 
 /* Sticky footer styles
--------------------------------------------------- */
+-------------------------------------------------- * /
 html {
-    /* font-size: 14px; */
-    /* font-family: sans-serif; */
+    /* font-size: 14px; * /
+    /* font-family: sans-serif; * /
     font-family: 250%;
 }
 @media (min-width: 768px) {
@@ -40,7 +40,7 @@ html {
         */
         /*
         font-size: 16px;
-            */
+            * /
     }
 }
 
@@ -61,31 +61,72 @@ button.accept-policy {
 }
 
 /* Sticky footer styles
--------------------------------------------------- */
+-------------------------------------------------- * /
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
+  /* Margin bottom by footer height * /
   margin-bottom: 60px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}
 
-/* Add media-property */
-/* */
+
+/* Add media-property * /
+/ * * /
 p {
     font-size: inherit;
 }
 .information {
     font-size: 350%;
 }
+*/
+table.navbar-table {
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+table.navbar-table td, table.navbar-table th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+
+}
 
 
+th.nav-item {
+    background-color: lightgray;
+}
+
+
+a.nav-link{
+    font-family: Arial;
+    font-size: 100%;
+}
+
+
+    a.nav-link:hover,
+    a.nav-link:active {
+        background-color: #91A5FF;
+    }
+    a.nav-link:link,
+    a.nav-link:visited {
+        background-color: #6E89FF;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+    }
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
