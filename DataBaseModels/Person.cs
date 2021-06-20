@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MAS_semestral_project_MVS.Models.Enums;
 using MAS_semestral_project_MVS.DataBaseModels;
 using MAS_semestral_project_MVS.Services;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -21,7 +22,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             OrderOsobaIdOsobaNavigations = new HashSet<Order>();
             PlaceWorks = new HashSet<PlaceWork>();
         }
-
+        
         public int IdOsoba { get; set; }
         private string relationWithCompany;
         public string RelationWithCompany
@@ -69,7 +70,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("This type of object have no permission for access EmployeeType property.");
                 }
-                return employeeType;
+                return employeeExperienceType;
             }
             set
             {
@@ -247,6 +248,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         /// <summary>
         /// Property that depends on type   of Person.
         /// </summary>
+        [NotMapped]
         public decimal MaxHourRate
         {
             get
@@ -300,17 +302,19 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             }
         }
 
-
+        [NotMapped]
         public static int CleanerMaxToolsQuantity
         {
             get { return (int)DataBaseService.GetCleanerMaxToolsQuantityFromClassAttributesInColumn(); }
             set { DataBaseService.SetCleanerMaxToolsQuantityFromClassAttributesInColumn(value); }
         }
+        [NotMapped]
         public static int EpmloyeeMaxPlaceWorkQuantity
         {
             get { return (int)DataBaseService.GetEpmloyeeMaxPlaceWorkQuantity(); }
             set { DataBaseService.SetEpmloyeeMaxPlaceWorkQuantity(value); }
         }
+        [NotMapped]
         public static int ReceptionistMaxKnowedLanguages
         {
             get { return (int)DataBaseService.GetReceptionistMaxKnowedLanguages(); }
