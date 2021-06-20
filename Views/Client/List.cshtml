@@ -10,12 +10,6 @@
                 @Html.DisplayNameFor(model => model.RelationWithCompany)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeExperienceType)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
@@ -27,25 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InternshipDaysInCurentHotel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HourRate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastDateChangeRate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkShift)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaxHourRate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CleaningGroupIdGroupNavigation)
-            </th>
-            <th></th>
+            <th></th> <!-- Buttons. -->
         </tr>
     </thead>
     <tbody>
@@ -53,12 +29,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RelationWithCompany)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeExperienceType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -71,24 +41,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InternshipDaysInCurentHotel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HourRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastDateChangeRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkShift)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxHourRate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CleaningGroupIdGroupNavigation.IdGroup)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |

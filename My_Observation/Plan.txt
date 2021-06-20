@@ -58,14 +58,10 @@ Current task:
 1.2 partial view для таблицы?
 2. ИсапользИспользовать шаблоны длясоздания View модели. " Типы шаблонов представления"
  Сегодня Я должен всё закончить.
- 
- Нафиг часть з БД, сделаю как юыло у Драбика. В одном кусочке, и через id проверка чё за страница - соответчвенное отображение. / План реализации динамического меню: 1. Создаю 2 енци в БД. 1-ая MenuBarItem; 2 WebPageName. 3. KlassAssocycyj между этими двумя классами.  +
- | 2. Маппирую в tmpModels, откуда извлекаю настройки для выше перечисленных энций. +
- |3.  Создаю отдельный PartialView by template-model.
- \4. Добавляю звено рендеринга, где нужно.
- +++_____________++++++++++ Opis GUI:
- 1. NavMenuBar 3 типа: 1_main (Home, Register new element, Show elements); 2_show (Show Receptionist' Show Conversation 'Show Orders', 'Show Offers'); 3_register ( 'Register Receptionist'  'Register Conversation'  'Register Orders' 'Register Offers')
+6. При создании Forms сделать возможность назначить существующего Клиента -> Рецпционистом и наоборот. Мб, добвыить кнопку, мол, создай и выбирай.   
 
+
+ 
 ___________________________---
 Не реализоывно, но возможно понадобится:
 1. Проверка, перед сменой ставки... Сделал, но хз, насклько хорошо сделал.
@@ -121,6 +117,13 @@ Completed tasks:
 3.1 Создать полноценную структуру: wilodziedziczenie, наследования,  overlapping(готов).
 3.2. Добавить интерфейс. Или вместо него, реализовывать метод (для Уборщик-Рецепшионист), который будет проверять, кем являеется Obj -> соответствующий метод.
 5.0 Сделать Menu BAR, но для Register.
+
+Нафиг часть з БД, сделаю как юыло у Драбика. В одном кусочке, и через id проверка чё за страница - соответчвенное отображение. / План реализации динамического меню: 1. Создаю 2 енци в БД. 1-ая MenuBarItem; 2 WebPageName. 3. KlassAssocycyj между этими двумя классами.  +
+ | 2. Маппирую в tmpModels, откуда извлекаю настройки для выше перечисленных энций. +
+ |3.  Создаю отдельный PartialView by template-model.
+ \4. Добавляю звено рендеринга, где нужно.
+ +++_____________++++++++++ Opis GUI:
+ 1. NavMenuBar 3 типа: 1_main (Home, Register new element, Show elements); 2_show (Show Receptionist' Show Conversation 'Show Orders', 'Show Offers'); 3_register ( 'Register Receptionist'  'Register Conversation'  'Register Orders' 'Register Offers')
 
 
 
