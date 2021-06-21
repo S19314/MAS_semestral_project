@@ -15,7 +15,7 @@
             <th class="element-head">
                 Creation Date
             </th>
-            <th class="element-button-head">Actions</th> <!-- Buttons. -->
+            <th class="element-button-head">Actions</th>
         </tr>
     </thead>
     <tbody class="table-element-body">
@@ -40,7 +40,6 @@
                     <a class="button-edit" asp-action="Edit" asp-route-id="@item.IdOrder">Edit</a> |
                     <a class="button-details" asp-action="Details" asp-route-id="@item.IdOrder">Details</a> |
                     <a class="button-delete" asp-action="Delete" asp-route-id="@item.IdOrder">Delete</a> |
-                    <a class="button-find" asp-action="FindByClientReceptionists" asp-route-id="@item">Find Receptionists</a>
                 </td>
             </tr>
             }

@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<MAS_semestral_project_MVS.DataBaseModels.CustomerConversation>
 
 <table class="list-element">
-    <p>Работае передача Obj от View к Controller? </p>
     <thead>
         <tr>
             <th class="element-head">
@@ -16,7 +15,7 @@
             <th class="element-head">
                 Start Date Time
             </th>
-            <th class="element-button-head">Actions</th> <!-- Buttons. -->
+            <th class="element-button-head">Actions</th>
         </tr>
     </thead>
     <tbody class="table-element-body">
@@ -37,10 +36,9 @@
                     @Html.DisplayFor(modelItem => item.StartDateTime)
                 </td>
                 <td class="element-body">
-                    <a class="button-edit" asp-action="Edit" asp-route-customerConversation="@item">Edit</a> |
-                    <a class="button-details" asp-action="Details" asp-route-customerConversation="@item">Details</a> |
-                    <a class="button-delete" asp-action="Delete" asp-route-customerConversation="@item">Delete</a> |
-                    <a class="button-find"  asp-action="FindByClientReceptionists" asp-route-customerConversation="@item">Find Receptionists</a>
+                    <a class="button-edit" asp-action="Edit" asp-route-id="@item.IdCustomerConversation">Edit</a> |
+                    <a class="button-details" asp-action="Details" asp-route-id="@item.IdCustomerConversation">Details</a> |
+                    <a class="button-delete" asp-action="Delete" asp-route-id="@item.IdCustomerConversation">Delete</a> |
                 </td>
             </tr>
             }

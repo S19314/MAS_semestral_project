@@ -15,7 +15,6 @@ namespace MAS_semestral_project_MVS.Controllers
     public class HomeController : Controller
     {
         private readonly IDataBaseService dataBaseService;
-            // MAS_semestralContext dbContext = new MAS_semestralContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger, IDataBaseService service)
@@ -26,13 +25,7 @@ namespace MAS_semestral_project_MVS.Controllers
 
         public IActionResult Index()
         {
-
-
-            // model data
-            // Example: db.Courses.Include(c => c.Students).ToList();
-            // var clients = dataBaseService.GetClients();
             var clients = dataBaseService.GetClientsConnectedWithEmployeeByConversation();
-            // var receptionists = dataBaseService.GetReceptionists();
             var receptionists = dataBaseService.GetEmployeesConnectedWithClientByConversation();
             var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
             return View(homeModelView);
