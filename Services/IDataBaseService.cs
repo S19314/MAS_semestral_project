@@ -35,5 +35,9 @@ namespace MAS_semestral_project_MVS.Services
         public IEnumerable<Order> GetOrders();
         public void AddCustomerConversation(CustomerConversation customerConversation);
         public Person GetPersonById(int id);
+        public int GetMaxIdCustomerConversation();
+        public IEnumerable<Person> GetClientsConnectedWithEmployeeByConversation();
+        public IEnumerable<Person> GetEmployeesConnectedWithClientByConversation();
+
     }
 }

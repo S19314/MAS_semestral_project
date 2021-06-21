@@ -27,21 +27,11 @@ namespace MAS_semestral_project_MVS.Controllers
         public IActionResult Index()
         {
 
-            dataBaseService.AddCustomerConversation(
-                new CustomerConversation
-                {
-                    ClientIdOsoba = 12,
-                    ClientIdOsobaNavigation = dataBaseService.GetPersonById(10),
-                    EmployeeIdOsoba = 11,
-                    EmployeeIdOsobaNavigation = dataBaseService.GetPersonById(11),
-                    MarkServiceQuality = 4,
-                    StartDateTime = new DateTime(2021, 06, 14, 5, 10, 20),
-                    EndDateTime = new DateTime(2021, 06, 14, 15, 10, 20),
-                    ConversationDurationInSeconds = 600
-                }
-            );
+
             // model data
-            var clients = dataBaseService.GetClients();
+            // Example: db.Courses.Include(c => c.Students).ToList();
+            // var clients = dataBaseService.GetClients();
+            var clients = dataBaseService.GetClientsConnectedWithEmployeeByConversation();
             var receptionists = dataBaseService.GetReceptionists();
             var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
             return View(homeModelView);
@@ -50,9 +40,14 @@ namespace MAS_semestral_project_MVS.Controllers
         public IActionResult FindByReceptionistClients(Person receptionist) 
         {
             var clients = CustomerConversation.GetClients(receptionist.CustomerConversationEmployeeIdOsobaNavigations);
+            // var clients = CustomerConversation.GetClients(receptionist.CustomerConversationClientIdOsobaNavigations);
             var receptionists = new List<Person>();
             receptionists.Add(receptionist);
+            ViewData["my_info"] = "rECPTIONISTliSTLength: " + receptionists.Count() + "\nclients.Count(): " + clients.Count() +
+                "\nreceptionist.CustomerConversationClientIdOsobaNavigations" + receptionist.CustomerConversationClientIdOsobaNavigations.Count() 
+                + "\n receptionist.CustomerConversationEmployeeIdOsobaNavigations" + receptionist.CustomerConversationEmployeeIdOsobaNavigations.Count();
             var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
+            // Немнеог нужно изменить.
             return View("Index", homeModelView);
         }
         public IActionResult Privacy()

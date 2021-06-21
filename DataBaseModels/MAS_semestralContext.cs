@@ -99,7 +99,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("CleaningTools_Osoba");
             });
-
+            /* OLD *//*
             modelBuilder.Entity<CustomerConversation>(entity =>
             {
                 entity.HasKey(e => new { e.ClientIdOsoba, e.EmployeeIdOsoba })
@@ -127,6 +127,37 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("CustomerConversation_Employee");
             });
+            */
+            modelBuilder.Entity<CustomerConversation>(entity =>
+            {
+                entity.HasKey(e => e.IdCustomerConversation)
+                    .HasName("CustomerConversation_pk");
+
+                entity.ToTable("CustomerConversation");
+
+                entity.Property(e => e.IdCustomerConversation).ValueGeneratedNever();
+
+                entity.Property(e => e.ClientIdOsoba).HasColumnName("Client_IdOsoba");
+
+                entity.Property(e => e.EmployeIdOsoba).HasColumnName("Employe_IdOsoba");
+
+                entity.Property(e => e.EndDateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.StartDateTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.ClientIdOsobaNavigation)
+                    .WithMany(p => p.CustomerConversationClientIdOsobaNavigations)
+                    .HasForeignKey(d => d.ClientIdOsoba)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("CustomerConversation_Employee");
+
+                entity.HasOne(d => d.EmployeIdOsobaNavigation)
+                    .WithMany(p => p.CustomerConversationEmployeeIdOsobaNavigations)
+                    .HasForeignKey(d => d.EmployeIdOsoba)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("CustomerConversation_Client");
+            });
+
 
             modelBuilder.Entity<KnowedLanguage>(entity =>
             {

@@ -50,7 +50,8 @@ __________
 1. Создал view для клиента. Смаппировал БД в C# -> Создал obj "Client". Круто! Но, к сожалению, в Базе данных только хранение данных и никакой логики. 
 ___________
 Current task:
-Offer -> Order
+Изменить БД, чтобы customerConv имел свой PRimaryKey.
+
 4. От нуля буду писать CSS. Полностью, чтобы ничего не мешало.  И перепроверять на момент валидности ( через соответсвующий сайт).
 1. GUI
 5.5 Сделать partialView для Таблицы Client list, который будет использоваться в Home, ClientList и в Details к некоторым Objs. Мб, нужно будет создать objViewModel  для Select( можно подсмотреть с Metanit). 
@@ -135,10 +136,28 @@ Completed tasks:
 
 _-2313 Доделать кнопки и идти дальше.
 
-
+Offer -> Order
 
 ___________________
 For realization:
 +_+_+_+_+_+_+_+__+
 Перед сдачей:
 1. Убрать Метод Clinets() in HomeController.
+
+
+______________________________
+прИМЕРЫ работающего кода.
+dataBaseService.AddCustomerConversation(
+                new CustomerConversation
+                {
+                    IdCustomerConversation = 1 + dataBaseService.GetMaxIdCustomerConversation(),
+                    ClientIdOsoba = 1,
+                    ClientIdOsobaNavigation = dataBaseService.GetPersonById(1),
+                    EmployeIdOsoba = 11,
+                    EmployeIdOsobaNavigation = dataBaseService.GetPersonById(11),
+                    MarkServiceQuality = 4,
+                    StartDateTime = new DateTime(2021, 06, 14, 5, 10, 20),
+                    EndDateTime = new DateTime(2021, 06, 14, 15, 10, 20),
+                    ConversationDurationInSeconds = 600
+                }
+            );
