@@ -54,7 +54,6 @@ namespace MAS_semestral_project_MVS.Controllers
         [HttpPost]
         public IActionResult CreateByInfo(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
         {
-
             var receptionist = Person.CreateReceptionist(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks, knowedLanguages, workShift);
             dataBaseService.AddReceptionist(receptionist);
             return Redirect("List");
