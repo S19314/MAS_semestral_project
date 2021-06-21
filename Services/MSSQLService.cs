@@ -345,6 +345,17 @@ namespace MAS_semestral_project_MVS.Services
             dbContext.People.Add(receptionist);
             dbContext.SaveChanges();
         }
+        public void AddOffer(Offer offer) 
+        {
+            offer.Id= 1 + dbContext.Offers.Max(e => e.Id);
+            offer.OfferStatus = "Available";
+            dbContext.Offers.Add(offer);
+            dbContext.SaveChanges();
+        }
+        public IEnumerable<Room> GetRooms() 
+        {
+            return dbContext.Rooms;
+        }
 
     }
 }

@@ -1,0 +1,38 @@
+﻿@model MAS_semestral_project_MVS.DataBaseModels.Offer
+
+<h4>Offer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoomPrice" class="control-label"></label>
+                <input asp-for="RoomPrice" class="form-control" />
+                <span asp-validation-for="RoomPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableTo" class="control-label"></label>
+                <input asp-for="AvailableTo" class="form-control" />
+                <span asp-validation-for="AvailableTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableFrom" class="control-label"></label>
+                <input asp-for="AvailableFrom" class="form-control" />
+                <span asp-validation-for="AvailableFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomIdRoom" class="control-label"></label>
+                <select asp-for="RoomIdRoom" class ="form-control" asp-items="ViewBag.RoomIdRoom"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

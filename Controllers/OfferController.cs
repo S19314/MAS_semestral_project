@@ -49,22 +49,18 @@ namespace MAS_semestral_project_MVS.Controllers
         // GET: OfferController/Create
         public IActionResult Create()
         {
+            var rooms = dataBaseService.GetRooms();
+            ViewData["rooms"] = rooms;
             return View();
         }
 
-        // POST: OfferController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult CreateByInfo(decimal RoomPrice, DateTime AvailableTo, DateTime AvailableFrom,  int RoomIdRoom)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+           
+        var offer = new Offer{RoomPrice = RoomPrice, AvailableFrom = AvailableFrom, AvailableTo = AvailableTo, RoomIdRoom = RoomIdRoom};
+            dataBaseService.AddOffer(offer);
+            return Redirect("List");
         }
 
         // GET: OfferController/Edit/5
