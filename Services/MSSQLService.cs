@@ -291,7 +291,7 @@ namespace MAS_semestral_project_MVS.Services
                 e => e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client)
                     ||
                 e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
-                     ).Include(c => c.CustomerConversationClientIdOsobaNavigations).ThenInclude(e => e.EmployeIdOsobaNavigation )
+                     ).Include(c => c.CustomerConversationClientIdOsobaNavigations).ThenInclude(e => e.EmployeIdOsobaNavigation)
                      .ToList();
         }
         public IEnumerable<Person> GetEmployeesConnectedWithClientByConversation()
@@ -305,39 +305,44 @@ namespace MAS_semestral_project_MVS.Services
             //     db.Courses.Include(c => c.Students).ToList();    
             // return dbContext.People.Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.IdCustomerConversation);
         }
-        public IEnumerable<Person> GetEmployeeByIdWithConnectionWithClient(int id) 
+        public IEnumerable<Person> GetEmployeeByIdWithConnectionWithClient(int id)
         {
-            return dbContext.People.Where( e => 
-                e.IdOsoba == id 
-                &&
-                (
-                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Employee)
-                    ||
-                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
-                )
+            return dbContext.People.Where(e =>
+               e.IdOsoba == id
+               &&
+               (
+                   e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Employee)
+                   ||
+                   e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
+               )
                 ).Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.ClientIdOsobaNavigation)
                 .ToList();
         }
-        public IEnumerable<Person> GetClientByIdConnectionWithEmployee(int id) 
+        public IEnumerable<Person> GetClientByIdConnectionWithEmployee(int id)
         {
-            return dbContext.People.Where( e => 
-                e.IdOsoba == id 
-                &&
-                (
-                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client)
-                    ||
-                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
-                )
+            return dbContext.People.Where(e =>
+               e.IdOsoba == id
+               &&
+               (
+                   e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client)
+                   ||
+                   e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
+               )
                 ).Include(c => c.CustomerConversationClientIdOsobaNavigations).ThenInclude(e => e.EmployeIdOsobaNavigation)
                 .ToList();
         }
 
-        public void AddClient(Person client) 
+        public void AddClient(Person client)
         {
-            
-             client.IdOsoba = 1 + dbContext.People.Max(e => e.IdOsoba);
-            
+            client.IdOsoba = 1 + dbContext.People.Max(e => e.IdOsoba);
             dbContext.People.Add(client);
+            dbContext.SaveChanges();
+        }
+
+        public void AddReceptionist(Person receptionist) 
+        {
+            receptionist.IdOsoba = 1 + dbContext.People.Max(e => e.IdOsoba);
+            dbContext.People.Add(receptionist);
             dbContext.SaveChanges();
         }
 

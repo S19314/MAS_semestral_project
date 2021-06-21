@@ -1,0 +1,57 @@
+﻿@model MAS_semestral_project_MVS.DataBaseModels.Person
+
+<h4>Client</h4>
+<hr />
+<div class="form-page">
+    <div class="col-md-4">
+        <form asp-antiforgery="true" asp-action="CreateByInfo" asp-controller="Client">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondName" class="control-label">Second Name</label>
+                <input asp-for="SecondName" class="form-control" />
+                <span asp-validation-for="SecondName" class="text-danger"></span>
+            </div>
+    
+            <div class="form-group">
+                <label asp-for="InternshipDaysInCurentHotel" class="control-label"></label>
+                <input asp-for="InternshipDaysInCurentHotel" class="form-control" />
+                <span asp-validation-for="InternshipDaysInCurentHotel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HourRate" class="control-label"></label>
+                <input asp-for="HourRate" class="form-control" />
+                <span asp-validation-for="HourRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastDateChangeRate" class="control-label"></label>
+                <input asp-for="LastDateChangeRate" class="form-control" />
+                <span asp-validation-for="LastDateChangeRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkShift" class="control-label"></label>
+                <input asp-for="WorkShift" class="form-control" />
+                <span asp-validation-for="WorkShift" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CleaningGroupIdGroup" class="control-label"></label>
+                <select asp-for="CleaningGroupIdGroup" class="form-control" asp-items="ViewBag.CleaningGroupIdGroup"></select>
+            </div>
+    
+            <div class="form-group">
+                <a class="button-back" asp-action="Index">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-primary button-create" placeholder="Create" />
+            </div>
+
+        </form>
+    </div>
+    <div>
+        
+    </div>
+</div>

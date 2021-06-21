@@ -55,9 +55,7 @@ namespace MAS_semestral_project_MVS.Controllers
         [HttpPost]
         public IActionResult CreateByInfo(string FirstName, string SecondName, string PassportData, string PhoneNumber)
         {
-
             var client = Person.CreateClient(FirstName, SecondName, PassportData, PhoneNumber);
-            client.SetRelationWithCompanyAsClient();
             dataBaseService.AddClient(client);
             return Redirect("List");
         }
