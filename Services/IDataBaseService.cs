@@ -38,6 +38,6 @@ namespace MAS_semestral_project_MVS.Services
         public int GetMaxIdCustomerConversation();
         public IEnumerable<Person> GetClientsConnectedWithEmployeeByConversation();
         public IEnumerable<Person> GetEmployeesConnectedWithClientByConversation();
-
+        public IEnumerable<Person> GetEmployeeByIdWithConnectionWithClient(int id);
     }
 }

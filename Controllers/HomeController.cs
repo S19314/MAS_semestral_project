@@ -38,35 +38,24 @@ namespace MAS_semestral_project_MVS.Controllers
             return View(homeModelView);
         }
 
-        public IActionResult FindByReceptionistClients(Person receptionist) 
+        public IActionResult FindByReceptionistClients(int id) 
         {
-            /*
-             public IEnumerable<Person> GetEmployeesConnectedWithClientByConversation()
-        {
-            return dbContext.People.Where(
-                e => e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Employee)
-                    ||
-                e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
-                     ).Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.ClientIdOsobaNavigation)
-                     .ToList();
-            //     db.Courses.Include(c => c.Students).ToList();    
-            // return dbContext.People.Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.IdCustomerConversation);
-        }
-             */
-
-            // receptionist.CustomerConversationEmployeeIdOsobaNavigations.
-            //   var clients = CustomerConversation.GetClients(receptionist.CustomerConversationEmployeeIdOsobaNavigations);
-            // var clients = CustomerConversation.GetClients(receptionist.CustomerConversationClientIdOsobaNavigations);
-            var clients = new List<Person>(); // receptionist.CustomerConversationEmployeeIdOsobaNavigations;
-            foreach (var conversation in receptionist.CustomerConversationEmployeeIdOsobaNavigations)
+            var receptionists = dataBaseService.GetEmployeeByIdWithConnectionWithClient(id);
+            var clients = new List<Person>();
+            foreach(var rec in receptionists) 
             {
-                clients.Add(conversation.ClientIdOsobaNavigation);
+                foreach (var conversation in rec.CustomerConversationEmployeeIdOsobaNavigations)
+                {
+                    clients.Add(conversation.ClientIdOsobaNavigation);
+                }
             }
-            var receptionists = new List<Person>();
-            receptionists.Add(receptionist);
-            ViewData["my_info"] = "rECPTIONISTliSTLength: " + receptionists.Count() + "\nclients.Count(): " + clients.Count() +
+            // var receptionists = new List<Person>();
+            // receptionists.Add(receptionist);
+            /*
+            ViewData["my_info"] = "RecName" + receptionist.SecondName+ "rECPTIONISTliSTLength: " + receptionists.Count() + "\nclients.Count(): " + clients.Count() +
                 "\nreceptionist.CustomerConversationClientIdOsobaNavigations" + receptionist.CustomerConversationClientIdOsobaNavigations.Count() 
                 + "\n receptionist.CustomerConversationEmployeeIdOsobaNavigations" + receptionist.CustomerConversationEmployeeIdOsobaNavigations.Count();
+            */
             var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
             // Немнеог нужно изменить.
             return View("Index", homeModelView);
