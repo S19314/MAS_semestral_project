@@ -388,7 +388,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             this.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
                 RelationWithCompanyEnum.RelationWithCompany.Client_Employee
                 );
-            
+                
         }
         public void SetEmployeeTypeAsDirector()
         {

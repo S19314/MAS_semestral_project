@@ -1,0 +1,52 @@
+﻿@model MAS_semestral_project_MVS.DataBaseModels.CustomerConversation
+
+<h4>CustomerConversation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create_2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdCustomerConversation" class="control-label"></label>
+                <input asp-for="IdCustomerConversation" class="form-control" />
+                <span asp-validation-for="IdCustomerConversation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientIdOsoba" class="control-label"></label>
+                <select asp-for="ClientIdOsoba" class ="form-control" asp-items="ViewBag.ClientIdOsoba"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeIdOsoba" class="control-label"></label>
+                <select asp-for="EmployeIdOsoba" class ="form-control" asp-items="ViewBag.EmployeIdOsoba"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MarkServiceQuality" class="control-label"></label>
+                <input asp-for="MarkServiceQuality" class="form-control" />
+                <span asp-validation-for="MarkServiceQuality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDateTime" class="control-label"></label>
+                <input asp-for="StartDateTime" class="form-control" />
+                <span asp-validation-for="StartDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDateTime" class="control-label"></label>
+                <input asp-for="EndDateTime" class="form-control" />
+                <span asp-validation-for="EndDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConversationDurationInSeconds" class="control-label"></label>
+                <input asp-for="ConversationDurationInSeconds" class="form-control" />
+                <span asp-validation-for="ConversationDurationInSeconds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
