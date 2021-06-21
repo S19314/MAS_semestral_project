@@ -356,6 +356,12 @@ namespace MAS_semestral_project_MVS.Services
         {
             return dbContext.Rooms;
         }
-
+        
+        public void AddOrder(Order order)
+        {
+            order.IdOrder = 1 + dbContext.Orders.Max(e => e.IdOrder);
+            dbContext.Orders.Add(order);
+            dbContext.SaveChanges();
+        }
     }
 }

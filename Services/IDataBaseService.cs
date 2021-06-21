@@ -45,5 +45,6 @@ namespace MAS_semestral_project_MVS.Services
 
         public void AddOffer(Offer offer);
         public IEnumerable<Room> GetRooms();
+        public void AddOrder(Order order);
     }
 }

@@ -49,23 +49,26 @@ namespace MAS_semestral_project_MVS.Controllers
         // GET: OrderController/Create
         public IActionResult Create()
         {
+            ViewData["offers"] = dataBaseService.GetOffers();
+            var receptionists = dataBaseService.GetEmployeesConnectedWithClientByConversation();
+            ViewData["receptionists"] = receptionists;
+            var clients = dataBaseService.GetClientsConnectedWithEmployeeByConversation();
+            ViewData["clients"] = clients;
             return View();
         }
 
         // POST: OrderController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult CreateByInfo(int OfferId, int Osoba2IdOsoba , int OsobaIdOsoba)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+
+            
+            var conv = new Order{ OfferId = OfferId, Osoba2IdOsoba = Osoba2IdOsoba, OsobaIdOsoba = OsobaIdOsoba, CreationDate = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")) };
+            dataBaseService.AddOrder(conv);
+            return Redirect("List");
         }
+
+
 
         // GET: OrderController/Edit/5
         public IActionResult Edit(int id)

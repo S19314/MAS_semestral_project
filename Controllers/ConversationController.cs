@@ -52,16 +52,15 @@ namespace MAS_semestral_project_MVS.Controllers
         {
             var clients = dataBaseService.GetClientsConnectedWithEmployeeByConversation();
             var receptionists = dataBaseService.GetEmployeesConnectedWithClientByConversation();
-            
-            ViewData["clients"] = clients;
             ViewData["receptionists"] = receptionists;
+            ViewData["clients"] = clients;
+            
             return View();
         }
 
         [HttpPost]
         public IActionResult CreateByInfo(int ClientIdOsoba, int EmployeIdOsoba, int MarkServiceQuality, DateTime StartDateTime, DateTime EndDateTime, int ConversationDurationInSeconds )
         {
-
             var conv = new CustomerConversation { ClientIdOsoba = ClientIdOsoba, EmployeIdOsoba = EmployeIdOsoba, MarkServiceQuality = MarkServiceQuality, StartDateTime = StartDateTime, EndDateTime = EndDateTime, ConversationDurationInSeconds = ConversationDurationInSeconds };
             dataBaseService.AddCustomerConversation(conv);
             return Redirect("List");
