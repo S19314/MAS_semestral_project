@@ -3,16 +3,12 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<!-- Сделать 2 квадрата на одном уровне (Таблицы и названия к ним)-->
 <div class="text-center">
     <div class="table-title-contener">
         <h3 class="table-title">Client list</h3>
         <h3 class="table-title">Receptionist list</h3>
     </div>
     <div class="elements-table-place">
-        @* Html.Partial("Partials/ClientList", Model.Clients) *@
-        <!-- Если, что, то закину через ViewData[""]-->
-        <!-- <h3 class="table-title">Client list</h3> -->
         <table class="list-element">
             <thead>
                 <tr>
@@ -25,7 +21,7 @@
                     <th class="element-head">
                         Passport Data
                     </th>
-                    <th class="element-button-head">Actions</th> <!-- Buttons. -->
+                    <th class="element-button-head">Actions</th> 
                 </tr>
             </thead>
             <tbody class="table-element-body">
@@ -43,23 +39,13 @@
                                 @Html.DisplayFor(modelItem => item.PassportData)
                             </td>
                             <td class="element-body">
-                                <!--
-                                <a class="button-edit" asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |
-                                <a class="button-details" asp-action="Details" asp-route-id="@item.IdOsoba">Details</a> |
-                                <a class="button-delete" asp-action="Delete" asp-route-id="@item.IdOsoba">Delete</a> |
-                                -->
-                                <a class="button-find" asp-action="FindByClientReceptionists" asp-route-id="@item">Find Receptionists</a>
+                                <a class="button-find" asp-action="FindByClientReceptionists" asp-route-id="@item.IdOsoba">Find Receptionists</a>
                             </td>
                         </tr>
                     }
                 </div>
             </tbody>
         </table>
-        <!--
-    </div>
-    <div class="elements-table-place">
-            -->
-        <!--  <h3 class="table-title">Receptionist list</h3> -->
     <table class="list-element">
         <thead>
             <tr>
@@ -72,7 +58,7 @@
                 <th class="element-head">
                     Employee Experience Type
                 </th>
-                <th class="element-button-head">Actions</th> <!-- Buttons. -->
+                <th class="element-button-head">Actions</th>
         </tr>
         </thead>
         <tbody class="table-element-body">

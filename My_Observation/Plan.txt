@@ -51,23 +51,20 @@ __________
 1. Создал view для клиента. Смаппировал БД в C# -> Создал obj "Client". Круто! Но, к сожалению, в Базе данных только хранение данных и никакой логики. 
 ___________
 Current task:
-Изменить БД, чтобы customerConv имел свой PRimaryKey.
-
-4. От нуля буду писать CSS. Полностью, чтобы ничего не мешало.  И перепроверять на момент валидности ( через соответсвующий сайт).
+8. Реализовать "find receptionist" в Home. 
+8.1 в остальных местах - убрать эту кнопку.
 1. GUI
 5.5 Сделать partialView для Таблицы Client list, который будет использоваться в Home, ClientList и в Details к некоторым Objs. Мб, нужно будет создать objViewModel  для Select( можно подсмотреть с Metanit). 
-        3. Ехё нужен контроллер.
-        4. Реализовать для кнопок в таблице CSS стиль.
+        
 5. Настроить текст-сообщение внутри/в центре и переходить к созданию    Home св двумя с таблицами.
-5.1 Реализовать таблиц через partialView.
+
 1.2 partial view для таблицы?
 2. ИсапользИспользовать шаблоны длясоздания View модели. " Типы шаблонов представления"
  Сегодня Я должен всё закончить.
 6. При создании Forms сделать возможность назначить существующего Клиента -> Рецпционистом и наоборот. Мб, добвыить кнопку, мол, создай и выбирай.   
 Там где Enum  и поднобное -> use <select>
-Поряжок: 1. Списки + 
-2.0 Сделать partial лист отдельно для HomeList, меньше колонок в таблицах и тогда поместяться 2. Если нет, то убрать пару кнопок.
-2. HomeList + logic(во время создании поменять в View с Id на Obj.); 3. Forms
+Поряжок: 
+3. Forms
  
 ___________________________---
 Не реализоывно, но возможно понадобится:
@@ -103,6 +100,30 @@ ____________
 Если что-то не раоботает, а должно:
 1. CSS + HTML? Соответсвуют ли азвания класс и названия в коде CSS? Может напутал?
 2. Закрой браузер и запусти снова, тогда кэш очиститься, и будет выводить css.
+
+___________________
+For realization:
++_+_+_+_+_+_+_+__+
+Перед сдачей:
+1. Убрать Метод Clinets() in HomeController.
+
+
+______________________________
+прИМЕРЫ работающего кода.
+dataBaseService.AddCustomerConversation(
+                new CustomerConversation
+                {
+                    IdCustomerConversation = 1 + dataBaseService.GetMaxIdCustomerConversation(),
+                    ClientIdOsoba = 1,
+                    ClientIdOsobaNavigation = dataBaseService.GetPersonById(1),
+                    EmployeIdOsoba = 11,
+                    EmployeIdOsobaNavigation = dataBaseService.GetPersonById(11),
+                    MarkServiceQuality = 4,
+                    StartDateTime = new DateTime(2021, 06, 14, 5, 10, 20),
+                    EndDateTime = new DateTime(2021, 06, 14, 15, 10, 20),
+                    ConversationDurationInSeconds = 600
+                }
+            );
 ________________
 Completed tasks:
 1. Add Auto-generation library anad set up it. + 
@@ -138,27 +159,11 @@ Completed tasks:
 _-2313 Доделать кнопки и идти дальше.
 
 Offer -> Order
-
-___________________
-For realization:
-+_+_+_+_+_+_+_+__+
-Перед сдачей:
-1. Убрать Метод Clinets() in HomeController.
-
-
-______________________________
-прИМЕРЫ работающего кода.
-dataBaseService.AddCustomerConversation(
-                new CustomerConversation
-                {
-                    IdCustomerConversation = 1 + dataBaseService.GetMaxIdCustomerConversation(),
-                    ClientIdOsoba = 1,
-                    ClientIdOsobaNavigation = dataBaseService.GetPersonById(1),
-                    EmployeIdOsoba = 11,
-                    EmployeIdOsobaNavigation = dataBaseService.GetPersonById(11),
-                    MarkServiceQuality = 4,
-                    StartDateTime = new DateTime(2021, 06, 14, 5, 10, 20),
-                    EndDateTime = new DateTime(2021, 06, 14, 15, 10, 20),
-                    ConversationDurationInSeconds = 600
-                }
-            );
+Изменить БД, чтобы customerConv имел свой PRimaryKey.
+4. От нуля буду писать CSS. Полностью, чтобы ничего не мешало.  И перепроверять на момент валидности ( через соответсвующий сайт).
+3. Ехё нужен контроллер.
+        4. Реализовать для кнопок в таблице CSS стиль.
+5.1 Реализовать таблиц через partialView.
+1. Списки + 
+2.0 Сделать partial лист отдельно для HomeList, меньше колонок в таблицах и тогда поместяться 2. Если нет, то убрать пару кнопок. +
+2. HomeList + logic(во время создании поменять в View с Id на Obj.);  +

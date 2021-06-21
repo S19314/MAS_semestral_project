@@ -52,6 +52,22 @@ namespace MAS_semestral_project_MVS.Controllers
             var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
             return View("Index", homeModelView);
         }
+
+        public IActionResult FindByClientReceptionists(int id)
+        {
+            var clients = dataBaseService.GetClientByIdConnectionWithEmployee(id); 
+             var receptionists = new List<Person>();
+            foreach (var client in clients)
+            {
+                foreach (var conversation in client.CustomerConversationClientIdOsobaNavigations)
+                {
+                    receptionists.Add(conversation.EmployeIdOsobaNavigation);
+                }
+            }
+            var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
+            return View("Index", homeModelView);
+        }
+
         public IActionResult Privacy()
         {
             return View();

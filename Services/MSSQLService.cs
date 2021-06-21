@@ -318,6 +318,19 @@ namespace MAS_semestral_project_MVS.Services
                 ).Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.ClientIdOsobaNavigation)
                 .ToList();
         }
-
+        public IEnumerable<Person> GetClientByIdConnectionWithEmployee(int id) 
+        {
+            return dbContext.People.Where( e => 
+                e.IdOsoba == id 
+                &&
+                (
+                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client)
+                    ||
+                    e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
+                )
+                ).Include(c => c.CustomerConversationClientIdOsobaNavigations).ThenInclude(e => e.EmployeIdOsobaNavigation)
+                .ToList();
+        }
+        
     }
 }
