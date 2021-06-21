@@ -291,12 +291,21 @@ namespace MAS_semestral_project_MVS.Services
                 e => e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client)
                     ||
                 e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
-                     ).Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.EmployeIdOsobaNavigation);
+                     ).Include(c => c.CustomerConversationClientIdOsobaNavigations).ThenInclude(e => e.EmployeIdOsobaNavigation )
+                     .ToList();
         }
         public IEnumerable<Person> GetEmployeesConnectedWithClientByConversation()
         {
+            return dbContext.People.Where(
+                e => e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Employee)
+                    ||
+                e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
+                     ).Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.ClientIdOsobaNavigation)
+                     .ToList();
             //     db.Courses.Include(c => c.Students).ToList();    
-            return dbContext.People.Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.IdCustomerConversation);
+            // return dbContext.People.Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.IdCustomerConversation);
         }
+
+        
     }
 }

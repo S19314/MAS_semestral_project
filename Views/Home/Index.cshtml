@@ -67,7 +67,7 @@
                     First Name
                 </th>
                 <th class="element-head">
-                    Second Name
+                    Second Name [CLIENT]
                 </th>
                 <th class="element-head">
                     Employee Experience Type
@@ -85,8 +85,12 @@
                         </td>
                         <td class="element-body">
                             @Html.DisplayFor(modelItem => item.SecondName)
+                            @* Html.DisplayFor(modelItem => item.CustomerConversationClientIdOsobaNavigations.First().ClientIdOsobaNavigation.SecondName) *@
                         </td>
                         <td class="element-body">
+                            Count:
+                            @{ item.CustomerConversationClientIdOsobaNavigations.Count(); };
+                            @* Html.DisplayFor(modelItem => item.CustomerConversationClientIdOsobaNavigations.Count())*@
                             @* @Html.DisplayFor(modelItem => item.EmployeeExperienceType) *@
                         </td>
                         <td class="element-body">

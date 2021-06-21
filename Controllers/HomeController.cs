@@ -32,15 +32,36 @@ namespace MAS_semestral_project_MVS.Controllers
             // Example: db.Courses.Include(c => c.Students).ToList();
             // var clients = dataBaseService.GetClients();
             var clients = dataBaseService.GetClientsConnectedWithEmployeeByConversation();
-            var receptionists = dataBaseService.GetReceptionists();
+            // var receptionists = dataBaseService.GetReceptionists();
+            var receptionists = dataBaseService.GetEmployeesConnectedWithClientByConversation();
             var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
             return View(homeModelView);
         }
 
         public IActionResult FindByReceptionistClients(Person receptionist) 
         {
-            var clients = CustomerConversation.GetClients(receptionist.CustomerConversationEmployeeIdOsobaNavigations);
+            /*
+             public IEnumerable<Person> GetEmployeesConnectedWithClientByConversation()
+        {
+            return dbContext.People.Where(
+                e => e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Employee)
+                    ||
+                e.RelationWithCompany == RelationWithCompanyEnum.GetConformityEnumValue(RelationWithCompanyEnum.RelationWithCompany.Client_Employee)
+                     ).Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.ClientIdOsobaNavigation)
+                     .ToList();
+            //     db.Courses.Include(c => c.Students).ToList();    
+            // return dbContext.People.Include(c => c.CustomerConversationEmployeeIdOsobaNavigations).ThenInclude(e => e.IdCustomerConversation);
+        }
+             */
+
+            // receptionist.CustomerConversationEmployeeIdOsobaNavigations.
+            //   var clients = CustomerConversation.GetClients(receptionist.CustomerConversationEmployeeIdOsobaNavigations);
             // var clients = CustomerConversation.GetClients(receptionist.CustomerConversationClientIdOsobaNavigations);
+            var clients = new List<Person>(); // receptionist.CustomerConversationEmployeeIdOsobaNavigations;
+            foreach (var conversation in receptionist.CustomerConversationEmployeeIdOsobaNavigations)
+            {
+                clients.Add(conversation.ClientIdOsobaNavigation);
+            }
             var receptionists = new List<Person>();
             receptionists.Add(receptionist);
             ViewData["my_info"] = "rECPTIONISTliSTLength: " + receptionists.Count() + "\nclients.Count(): " + clients.Count() +
