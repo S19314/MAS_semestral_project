@@ -67,7 +67,7 @@
                     First Name
                 </th>
                 <th class="element-head">
-                    Second Name [CLIENT]
+                    Second Name
                 </th>
                 <th class="element-head">
                     Employee Experience Type
@@ -85,22 +85,11 @@
                         </td>
                         <td class="element-body">
                             @Html.DisplayFor(modelItem => item.SecondName)
-                            @* Html.DisplayFor(modelItem => item.CustomerConversationClientIdOsobaNavigations.First().ClientIdOsobaNavigation.SecondName) *@
+                        </td>
+                        <td class="element-body">                   
+                            @Html.DisplayFor(modelItem => item.EmployeeExperienceType) 
                         </td>
                         <td class="element-body">
-                            @foreach (var conv in item.CustomerConversationEmployeeIdOsobaNavigations)
-                            { 
-                                @Html.DisplayFor(modelItem => conv.ClientIdOsobaNavigation.SecondName)
-                            }
-                            <!-- Html.DisplayFor(modelItem => item.CustomerConversationClientIdOsobaNavigations.Count())
-        Html.DisplayFor(modelItem => item.EmployeeExperienceType) -->
-                        </td>
-                        <td class="element-body">
-                            <!--
-                            <a class="button-edit" asp-action="Edit" asp-route-id="@item.IdOsoba">Edit</a> |
-                            <a class="button-details" asp-action="Details" asp-route-id="@item.IdOsoba">Details</a> |
-                            <a class="button-delete" asp-action="Delete" asp-route-id="@item.IdOsoba">Delete</a> |
-                            -->
                             <a class="button-find" asp-action="FindByReceptionistClients" asp-route-id="@item.IdOsoba">Find Clients</a>
                         </td>
                     </tr>
@@ -110,6 +99,6 @@
         </table>
     <p>@ViewData["my_info"]</p>
 
-        @*Html.Partial("Partials/ReceptionistList", Model.Receptionists)*@
+        
     </div>
 </div>

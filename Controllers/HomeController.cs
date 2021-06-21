@@ -49,15 +49,7 @@ namespace MAS_semestral_project_MVS.Controllers
                     clients.Add(conversation.ClientIdOsobaNavigation);
                 }
             }
-            // var receptionists = new List<Person>();
-            // receptionists.Add(receptionist);
-            /*
-            ViewData["my_info"] = "RecName" + receptionist.SecondName+ "rECPTIONISTliSTLength: " + receptionists.Count() + "\nclients.Count(): " + clients.Count() +
-                "\nreceptionist.CustomerConversationClientIdOsobaNavigations" + receptionist.CustomerConversationClientIdOsobaNavigations.Count() 
-                + "\n receptionist.CustomerConversationEmployeeIdOsobaNavigations" + receptionist.CustomerConversationEmployeeIdOsobaNavigations.Count();
-            */
             var homeModelView = new HomeModelView { Clients = clients, Receptionists = receptionists };
-            // Немнеог нужно изменить.
             return View("Index", homeModelView);
         }
         public IActionResult Privacy()
@@ -74,12 +66,7 @@ namespace MAS_semestral_project_MVS.Controllers
 
            return View();
         }
-        /*
-        public IActionResult HelloWorld()
-        {
-            return PartialView("HelloWorldView");
-        }
-        */
+       
         public IActionResult MenuShowElements() 
         {
             ViewData["navigation_title_page"] = "menu_show_elements";
