@@ -40,5 +40,7 @@ namespace MAS_semestral_project_MVS.Services
         public IEnumerable<Person> GetEmployeesConnectedWithClientByConversation();
         public IEnumerable<Person> GetEmployeeByIdWithConnectionWithClient(int id);
         public IEnumerable<Person> GetClientByIdConnectionWithEmployee(int id);
+        public void AddClient(Person client);
+
     }
 }

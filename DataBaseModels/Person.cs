@@ -100,10 +100,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             }
             set
             {
+            
                 if (!IsClient())
                 {
                     throw new Exception("This type of object have no permission for access to Client property.");
                 }
+            
                 if (!RelationWithCompanyEnum.Contains(relationWithCompany))
                 {
                     throw new Exception("Unsupported RelationWithCompanyEnum.");
@@ -341,6 +343,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         public virtual ICollection<Order> OrderOsobaIdOsobaNavigations { get; set; }
         public virtual ICollection<PlaceWork> PlaceWorks { get; set; }
 
+      
         public bool IsEmployee()
         {
             return RelationWithCompanyEnum.IsEmployee(RelationWithCompany);
@@ -364,24 +367,29 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             this.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
                 RelationWithCompanyEnum.RelationWithCompany.Employee
                 );
+            
         }
         public void SetRelationWithCompanyAsClient()
         {
+            
             this.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
                 RelationWithCompanyEnum.RelationWithCompany.Client
                 );
+            
         }
         public void SetRelationWithCompanyAsClient_Employee()
         {
             this.RelationWithCompany = RelationWithCompanyEnum.GetConformityEnumValue(
                 RelationWithCompanyEnum.RelationWithCompany.Client_Employee
                 );
+            
         }
         public void SetEmployeeTypeAsDirector()
         {
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
                 EmployeeTypeEnum.EmployeeType.Director
                 );
+            
         }
 
         public void SetEmployeeTypeAsCleaner()
@@ -389,6 +397,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
                 EmployeeTypeEnum.EmployeeType.Cleaner
                 );
+            
         }
 
         public void SetEmployeeTypeAsReceptionist()
@@ -396,6 +405,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
                 EmployeeTypeEnum.EmployeeType.Receptionist
                 );
+            
         }
 
         public void SetEmployeeTypeAsCleaner_Receptionist()
@@ -403,12 +413,14 @@ namespace MAS_semestral_project_MVS.DataBaseModels
             this.EmployeeType = EmployeeTypeEnum.GetConformityEnumValue(
                 EmployeeTypeEnum.EmployeeType.Cleaner_Receptionist
                 );
+            
         }
         public void SetEmployeeExperienceTypeAsCleaner_Apprentice()
         {
             this.EmployeeType = EmployeeExperienceTypeEnum.GetConformityEnumValue(
                     EmployeeExperienceTypeEnum.EmployeeExperienceType.Apprentice
                 );
+            
         }
         public void SetEmployeeExperienceTypeAsCleaner_Experienced()
         {

@@ -331,6 +331,15 @@ namespace MAS_semestral_project_MVS.Services
                 ).Include(c => c.CustomerConversationClientIdOsobaNavigations).ThenInclude(e => e.EmployeIdOsobaNavigation)
                 .ToList();
         }
-        
+
+        public void AddClient(Person client) 
+        {
+            
+             client.IdOsoba = 1 + dbContext.People.Max(e => e.IdOsoba);
+            
+            dbContext.People.Add(client);
+            dbContext.SaveChanges();
+        }
+
     }
 }

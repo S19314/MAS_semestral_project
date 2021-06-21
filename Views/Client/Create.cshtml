@@ -1,0 +1,91 @@
+﻿@model MAS_semestral_project_MVS.DataBaseModels.Person
+
+<h4>Client</h4>
+<hr />
+<div class="form-page">
+    <div class="col-md-4">
+        <form asp-antiforgery="true" asp-action="CreateByInfo" asp-controller="Client">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- Перенесим в метод регистраии, а оставить в View только для Details и Edit. -- >
+        <div class="form-group">
+        <label hidden asp-for="RelationWithCompany" class="control-label">Relation With Company</label>
+        <!--<input asp-for="RelationWithCompany" class="form-control" /> -- >
+        <select  asp-for="RelationWithCompany" class="form-control" size="2" name="realation">
+            <option >Chose relation with company</option>
+            <option selected value="Client">Client</option>
+            <option value="Employee">Employee</option>
+            <option value="Client_Employee">Client_Employee</option>
+        </select>
+
+        <span asp-validation-for="RelationWithCompany" class="text-danger"></span>
+
+    </div>            <!---->
+            <!--
+    <div class="form-group">
+        <label asp-for="EmployeeType" class="control-label">Employee Type</label>
+        <input asp-for="EmployeeType" class="form-control" />
+        <span asp-validation-for="EmployeeType" class="text-danger"></span>
+    </div>
+            <div class="form-group">
+                <label asp-for="EmployeeExperienceType" class="control-label"></label>
+                <input asp-for="EmployeeExperienceType" class="form-control" />
+                <span asp-validation-for="EmployeeExperienceType" class="text-danger"></span>
+            </div>
+                -->
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondName" class="control-label">Second Name</label>
+                <input asp-for="SecondName" class="form-control" />
+                <span asp-validation-for="SecondName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassportData" class="control-label">Passport Data </label>
+                <input asp-for="PassportData" class="form-control" />
+                <span asp-validation-for="PassportData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <!--
+    <div class="form-group">
+        <label asp-for="InternshipDaysInCurentHotel" class="control-label"></label>
+        <input asp-for="InternshipDaysInCurentHotel" class="form-control" />
+        <span asp-validation-for="InternshipDaysInCurentHotel" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HourRate" class="control-label"></label>
+        <input asp-for="HourRate" class="form-control" />
+        <span asp-validation-for="HourRate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastDateChangeRate" class="control-label"></label>
+        <input asp-for="LastDateChangeRate" class="form-control" />
+        <span asp-validation-for="LastDateChangeRate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WorkShift" class="control-label"></label>
+        <input asp-for="WorkShift" class="form-control" />
+        <span asp-validation-for="WorkShift" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CleaningGroupIdGroup" class="control-label"></label>
+        <select asp-for="CleaningGroupIdGroup" class="form-control" asp-items="ViewBag.CleaningGroupIdGroup"></select>
+    </div>
+        -->
+            <div class="form-group">
+                <a class="button-back" asp-action="Index">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-primary button-create" placeholder="Create" />
+            </div>
+
+        </form>
+    </div>
+    <div>
+        
+    </div>
+</div>

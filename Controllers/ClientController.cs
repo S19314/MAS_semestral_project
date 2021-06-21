@@ -52,6 +52,16 @@ namespace MAS_semestral_project_MVS.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult CreateByInfo(string FirstName, string SecondName, string PassportData, string PhoneNumber)
+        {
+
+            var client = Person.CreateClient(FirstName, SecondName, PassportData, PhoneNumber);
+            client.SetRelationWithCompanyAsClient();
+            dataBaseService.AddClient(client);
+            return Redirect("List");
+        }
+
         // POST: ClientController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

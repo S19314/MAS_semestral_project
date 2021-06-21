@@ -231,11 +231,43 @@ a.button-edit,
 a.button-details,
 a.button-delete,
 a.button-find,
-div.button-create-position a.button-create {
+div.button-create-position a.button-create,
+a.button-back {
     font-family: Arial;
     font-size: 100%;
     border-radius: 5px;
 }
+
+
+
+    a.button-back:link,
+    a.button-back:visited {
+        color: white;
+        background-color: #E7A94D;
+        padding: 4px 5px;
+        text-align: center;
+        text-decoration: none;
+        /* display: auto; */
+    }
+
+    a.button-back:hover,
+    a.button-back:active {
+        background-color: #E7C086;
+    }
+
+div.form-group {
+    margin-bottom: 1%;
+    margin-right: auto;  
+}
+    
+    /*.btn-primary.button-create 
+input.btn{
+    font-family: Arial;
+    font-size: 100%;
+    border-radius: 5px;
+    color: red;
+}
+    */
     /*
 p a.button-create {
     font-family: Arial;
@@ -249,7 +281,6 @@ a.button-create {
     border-radius: 0px;
 }
     */
-
     a.button-edit:link,
     a.button-edit:visited {
         background-color: #7CE182;
