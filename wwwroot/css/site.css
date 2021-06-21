@@ -1,118 +1,4 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-/*
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background * /
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-
-/* Sticky footer styles
--------------------------------------------------- * /
-html {
-    /* font-size: 14px; * /
-    /* font-family: sans-serif; * /
-    font-family: 250%;
-}
-@media (min-width: 768px) {
-    html {
-        font-family: 250%;
-        /*
-            font-family: sans-serif;
-        */
-        /*
-        font-size: 16px;
-            * /
-    }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- * /
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height * /
-  margin-bottom: 60px;
-}
-
-
-/* Add media-property * /
-/ * * /
-p {
-    font-size: inherit;
-}
-
-*/
-
-/*
-    wrapper{
-	position: relative;
-	display: block;
-	width: 100%;
-	box-sizing: border-box;
-	text-align: justify;
-	/* Свои стили * /
-}
-
-.wrapper:after {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
-    vertical-align: top;
-    content: '';
-}
-
-.wrapper > div {
-    position: relative;
-    display: inline-block;
-    width: 25%;
-    height: 50px;
-    box-sizing: border-box;
-    text-align: left;
-    vertical-align: top;
-    /* Свои стили * /
-}
-*/
-html {
+﻿html {
     background-color: #EDF0FF;
 }
 table.navbar-table {
@@ -139,8 +25,6 @@ a.nav-link{
     font-family: Arial;
     font-size: 100%;
 }
-
-
     
     a.nav-link:link,
     a.nav-link:visited {
@@ -161,30 +45,28 @@ a.nav-link{
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+    line-height: 60px;
 }
 p.information {
     font-size: 350%;
     text-align: center;
 }
 
-/* CLIENT LIST  */
+
 table.list-element th.element-head {
     border: 1px solid #1C6EA4;
-    background-color: #BBFFAF; /* #FFAAAA;*/
+    background-color: #BBFFAF; 
     width: auto;
     min-width: 150px;
     text-align: center;
     border-collapse: collapse;
     position: relative;
     box-sizing: border-box;
-    /*position: relative;
-    text-align: justify;
-    */
+    
 }
 table.list-element th.element-button-head {
     border: 1px solid #1C6EA4;
-    background-color: #A5E19A; /* #FFAAAA;*/
+    background-color: #A5E19A; 
     width: auto;
     min-width: 150px;
     text-align: center;
@@ -193,30 +75,11 @@ table.list-element th.element-button-head {
     box-sizing: border-box;
 }
 div.client-list {
-    /* position:center;
-        */
-
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-}
-.list-element {
-    /* overflow: scroll; */
-     overflow-x: auto;
-    /* display: inline */
-}
-/*
-    table.list-element th.element-head:after {
-        position: relative;
-        
-        width: auto;
-        height: auto;
-        box-sizing: border-box;
-        horizontal-align: top;
-        content: ''; / *   * /
-    }
-    */
 table.list-element th.element-head, table.list-element td.element-body {
     border: 1px solid #AAAAAA;
     padding: 3px 2px;
@@ -225,7 +88,7 @@ table.list-element th.element-head, table.list-element td.element-body {
 
 table.list-element tbody.table-element-body {
     overflow: scroll;
-    height: auto; /* 30px;*/
+    height: auto; 
 }
 a.button-edit,
 a.button-details,
@@ -247,7 +110,7 @@ a.button-back {
         padding: 4px 5px;
         text-align: center;
         text-decoration: none;
-        /* display: auto; */
+        
     }
 
     a.button-back:hover,
@@ -260,27 +123,6 @@ div.form-group {
     margin-right: auto;  
 }
     
-    /*.btn-primary.button-create 
-input.btn{
-    font-family: Arial;
-    font-size: 100%;
-    border-radius: 5px;
-    color: red;
-}
-    */
-    /*
-p a.button-create {
-    font-family: Arial;
-    font-size: 100%;
-    border-radius: 0px;
-
-}
-a.button-create {
-    font-family: Arial;
-    font-size: 100%;
-    border-radius: 0px;
-}
-    */
     a.button-edit:link,
     a.button-edit:visited {
         background-color: #7CE182;
@@ -288,7 +130,7 @@ a.button-create {
         padding: 4px 5px;
         text-align: center;
         text-decoration: none;
-        /* display: auto; */
+
     }
     a.button-edit:hover,
     a.button-edit:active {
@@ -302,7 +144,7 @@ a.button-create {
         padding: 4px 5px;
         text-align: center;
         text-decoration: none;
-        /* display: auto; */
+
     }
     a.button-details:hover,
     a.button-details:active {
@@ -317,7 +159,7 @@ a.button-create {
         padding: 4px 5px;
         text-align: center;
         text-decoration: none;
-        /* display: auto; */
+
     }
     a.button-delete:hover,
     a.button-delete:active {
@@ -331,24 +173,20 @@ a.button-create {
         padding: 4px 5px;
         text-align: center;
         text-decoration: none;
-        /* display: auto; */
+
     }
     a.button-find:hover,
     a.button-find:active {
         background-color: #66A7E7;
     }
 
-/* a.button-create:hover,
-a.button-create:active 
-       */
+ 
 div.button-create-position .button-create:hover,
 div.button-create-position .button-create:active {
     background-color: #318CE7;
 }
 
-/* a.button-create:link,
-    a.button-create:visited 
-    */      
+ 
 div.button-create-position .button-create:visited,
 div.button-create-position .button-create:link {
     background-color: #52C868;
@@ -364,10 +202,7 @@ div.button-create-position a.button-create {
     position: relative;
     top: 50%;
     display: inline-block;
-    /* vertical-align: bottom; */
-    right: -69%; /* -1000px;*/
-    /* right: 3*widht/4; /* -1000px;*/
-    /* z-index: -1; */
+    right: -69%;  
     color: white;
 }
 div.elements-table-place {
@@ -382,7 +217,6 @@ h3.table-title {
 }
 
 table.list-element {
-    /* padding: 0% 3% 0% 3%; */
     padding-left: 1%;
     padding-right: 7%;
 }
@@ -390,9 +224,9 @@ div.table-title-contener {
     display: flex;
     flex-direction: row;
 }
-/*
-div.button-create-position {
-    display: inline-block;
-    position: center;
+
+label.control-label {
+    display:block;  
+    
 }
-    */
+

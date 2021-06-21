@@ -55,7 +55,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("This type of object have no permission for access EmployeeType property.");
                 }
-                if (!EmployeeExperienceTypeEnum.Contains(employeeType))
+                if (!EmployeeTypeEnum.Contains(value))
                 {
                     throw new Exception("Unsupported EmployeeType.");
                 }
@@ -78,10 +78,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("This type of object have no permission for access EmployeeType property.");
                 }
+                /*
                 if (!EmployeeExperienceTypeEnum.Contains(employeeType))
                 {
                     throw new Exception("Unsupported EmployeeType.");
                 }
+                */
                 employeeExperienceType = value;
             }
         }
@@ -154,10 +156,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("This type of object have no permission for access EmployeeType property.");
                 }
-                if (!EmployeeExperienceTypeEnum.Contains(employeeType))
+                /*
+                if (!EmployeeExperienceTypeEnum.Contains(employeeExperienceType))
                 {
                     throw new Exception("Unsupported EmployeeType.");
                 }
+                */
                 internshipDaysInCurentHotel = value;
             }
         }
@@ -174,7 +178,7 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("New HourRate can't bigger than MaxHourRate.");
                 }
-                if (LastDateChangeRate.Value.Subtract(DateTime.Now).TotalDays < 30)
+                if ( hourRate > 0 && LastDateChangeRate.Value.Subtract(DateTime.Now).TotalDays < 30 )
                 {
                     throw new Exception("HourRate can be changed only one in 30 days.");
                 }
@@ -198,10 +202,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
                 {
                     throw new Exception("This type of object have no permission for access EmployeeType property.");
                 }
-                if (!EmployeeExperienceTypeEnum.Contains(employeeType))
+
+                /*if (!EmployeeExperienceTypeEnum.Contains(employeeType))
                 {
                     throw new Exception("Unsupported EmployeeType.");
                 }
+                */
                 lastDateChangeRate = value;
             }
         }
@@ -350,12 +356,12 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
         public bool IsReceptionist()
         {
-            return EmployeeTypeEnum.IsReceptionist(RelationWithCompany);
+            return EmployeeTypeEnum.IsReceptionist(EmployeeType);
         }
 
         public bool IsCleaner()
         {
-            return EmployeeTypeEnum.IsCleaner(RelationWithCompany);
+            return EmployeeTypeEnum.IsCleaner(EmployeeType);
         }
 
         public bool IsClient()
@@ -417,14 +423,14 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         }
         public void SetEmployeeExperienceTypeAsCleaner_Apprentice()
         {
-            this.EmployeeType = EmployeeExperienceTypeEnum.GetConformityEnumValue(
+            this.EmployeeExperienceType = EmployeeExperienceTypeEnum.GetConformityEnumValue(
                     EmployeeExperienceTypeEnum.EmployeeExperienceType.Apprentice
                 );
             
         }
         public void SetEmployeeExperienceTypeAsCleaner_Experienced()
         {
-            this.EmployeeType = EmployeeExperienceTypeEnum.GetConformityEnumValue(
+            this.EmployeeExperienceType = EmployeeExperienceTypeEnum.GetConformityEnumValue(
                     EmployeeExperienceTypeEnum.EmployeeExperienceType.Experienced
                 );
         }
@@ -475,8 +481,8 @@ namespace MAS_semestral_project_MVS.DataBaseModels
         {
             var employee = CreatePerson(firstName, secondName);
             employee.SetRelationWithCompanyAsEmployee();
-            employee.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
             employee.LastDateChangeRate = lastDateChangeRate;
+            employee.InternshipDaysInCurentHotel = internshipDaysInCurentHotel;
             employee.DefineEmployeeExperienceType();
             if (placeWorks.Length + employee.PlaceWorks.Count > Person.EpmloyeeMaxPlaceWorkQuantity)
             {

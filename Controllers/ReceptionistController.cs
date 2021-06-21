@@ -52,9 +52,9 @@ namespace MAS_semestral_project_MVS.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CreateByInfo(string firstName, string secondName, int internshipDaysInCurentHotel, decimal hourRate, DateTime lastDateChangeRate, PlaceWork[] placeWorks, KnowedLanguage[] knowedLanguages, string workShift)
+        public IActionResult CreateByInfo(string FirstName, string SecondName, int InternshipDaysInCurentHotel, decimal HourRate, PlaceWork[] PlaceWorks, KnowedLanguage[] KnowedLanguages, string WorkShift)
         {
-            var receptionist = Person.CreateReceptionist(firstName, secondName, internshipDaysInCurentHotel, hourRate, lastDateChangeRate, placeWorks, knowedLanguages, workShift);
+            var receptionist = Person.CreateReceptionist(FirstName, SecondName, InternshipDaysInCurentHotel, HourRate, DateTime.Now, PlaceWorks, KnowedLanguages, WorkShift);
             dataBaseService.AddReceptionist(receptionist);
             return Redirect("List");
         }

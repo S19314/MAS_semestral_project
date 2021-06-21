@@ -4,7 +4,7 @@
 <hr />
 <div class="form-page">
     <div class="col-md-4">
-        <form asp-antiforgery="true" asp-action="CreateByInfo" asp-controller="Client">
+        <form asp-antiforgery="true" asp-action="CreateByInfo" asp-controller="Receptionist">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label">First Name</label>
@@ -16,29 +16,16 @@
                 <input asp-for="SecondName" class="form-control" />
                 <span asp-validation-for="SecondName" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label asp-for="InternshipDaysInCurentHotel" class="control-label"></label>
-                <input asp-for="InternshipDaysInCurentHotel" class="form-control" />
+                <label asp-for="InternshipDaysInCurentHotel" class="control-label">Internship Days</label>
+                <input asp-for="InternshipDaysInCurentHotel" class="form-control" / >
                 <span asp-validation-for="InternshipDaysInCurentHotel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HourRate" class="control-label"></label>
+                <label asp-for="HourRate" class="control-label">Hour Rate</label>
                 <input asp-for="HourRate" class="form-control" />
                 <span asp-validation-for="HourRate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="LastDateChangeRate" class="control-label"></label>
-                <input asp-for="LastDateChangeRate" class="form-control" />
-                <span asp-validation-for="LastDateChangeRate" class="text-danger"></span>
-            </div>
-            <!--
-            <div class="form-group">
-                <label asp-for="WorkShift" class="control-label"></label>
-                <input asp-for="WorkShift" class="form-control" />
-                <span asp-validation-for="WorkShift" class="text-danger"></span>
-            </div>
-            -->
             <div class="form-group">
                 <label asp-for="WorkShift" class="control-label">Work Shift</label>
                 <input asp-for="WorkShift" list="workShift" class="form-control" placeholder="Work shift"/>
